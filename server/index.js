@@ -50,10 +50,38 @@ const skuSchema = new mongoose.Schema({
     enum: ['SKVI', 'KVI', 'Background (BG)', 'Foreground (FG)'], 
     default: 'Background (BG)' 
   },
+  buying_price: { type: Number, default: 0 },
+  buying_vat: { type: Number, default: 0 },
+  buying_price_without_vat: { type: Number, default: 0 },
   // Legacy fields for backward compatibility
   category: { type: String },
   sub_category: { type: String }
 }, { timestamps: true });
+
+// Pre-save middleware to calculate buying_price_without_vat
+skuSchema.pre('save', function(next) {
+  if (this.buying_price && this.buying_vat > 0) {
+    this.buying_price_without_vat = this.buying_price / (1 + (this.buying_vat / 100));
+  } else if (this.buying_price) {
+    this.buying_price_without_vat = this.buying_price; // If VAT is 0, price without VAT equals price
+  } else {
+    this.buying_price_without_vat = 0;
+  }
+  next();
+});
+
+// Pre-update middleware to calculate buying_price_without_vat
+skuSchema.pre('findOneAndUpdate', function(next) {
+  const update = this.getUpdate();
+  if (update.buying_price && update.buying_vat > 0) {
+    update.buying_price_without_vat = update.buying_price / (1 + (update.buying_vat / 100));
+  } else if (update.buying_price) {
+    update.buying_price_without_vat = update.buying_price; // If VAT is 0, price without VAT equals price
+  } else if (update.buying_price !== undefined || update.buying_vat !== undefined) {
+    update.buying_price_without_vat = 0;
+  }
+  next();
+});
 
 const vendorSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -87,6 +115,8 @@ const priceMappingSchema = new mongoose.Schema({
   vendor_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor', required: true },
   location_id: { type: mongoose.Schema.Types.ObjectId, ref: 'SimpleLocation', required: true },
   price: { type: Number, required: true },
+  struck_price: { type: Number, required: false },
+  is_discounted: { type: Boolean, default: false },
   unit_price: { type: Number, required: true },
   currency: { type: String, default: 'USD' }
 }, { timestamps: true });
@@ -286,6 +316,9 @@ app.get('/api/skus', async (req, res) => {
       sub_category_id: sku.sub_category_id?._id || null,
       sub_category_name: sku.sub_category_id?.name || 'No Sub-Category',
       kvi_label: sku.kvi_label || 'Background (BG)',
+      buying_price: sku.buying_price || 0,
+      buying_vat: sku.buying_vat || 0,
+      buying_price_without_vat: sku.buying_price_without_vat || 0,
       created_at: sku.createdAt
     }));
     res.json(formattedSkus);
@@ -296,7 +329,7 @@ app.get('/api/skus', async (req, res) => {
 
 app.post('/api/skus', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label } = req.body;
+    const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label, buying_price, buying_vat } = req.body;
     const image = req.file ? req.file.filename : null;
 
     const skuData = { name, image, brand, unit, unit_value };
@@ -308,6 +341,12 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
     }
     if (kvi_label && kvi_label !== '') {
       skuData.kvi_label = kvi_label;
+    }
+    if (buying_price && buying_price !== '') {
+      skuData.buying_price = parseFloat(buying_price);
+    }
+    if (buying_vat && buying_vat !== '') {
+      skuData.buying_vat = parseFloat(buying_vat);
     }
 
     const sku = new SKU(skuData);
@@ -321,7 +360,7 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
 
 app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label } = req.body;
+    const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label, buying_price, buying_vat } = req.body;
     const image = req.file ? req.file.filename : undefined;
     const id = req.params.id;
 
@@ -338,6 +377,12 @@ app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
     }
     if (kvi_label && kvi_label !== '') {
       updateData.kvi_label = kvi_label;
+    }
+    if (buying_price && buying_price !== '') {
+      updateData.buying_price = parseFloat(buying_price);
+    }
+    if (buying_vat && buying_vat !== '') {
+      updateData.buying_vat = parseFloat(buying_vat);
     }
     if (image) {
       updateData.image = image;
@@ -695,6 +740,9 @@ app.get('/api/external/skus', async (req, res) => {
       sub_category_id: sku.sub_category_id?._id.toString() || null,
       sub_category_name: sku.sub_category_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
+      buying_price: sku.buying_price || 0,
+      buying_vat: sku.buying_vat || 0,
+      buying_price_without_vat: sku.buying_price_without_vat || 0,
       created_at: sku.createdAt
     }));
     res.json(externalSkus);
@@ -726,6 +774,9 @@ app.get('/api/external/skus/:id', async (req, res) => {
       sub_category_id: sku.sub_category_id?._id.toString() || null,
       sub_category_name: sku.sub_category_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
+      buying_price: sku.buying_price || 0,
+      buying_vat: sku.buying_vat || 0,
+      buying_price_without_vat: sku.buying_price_without_vat || 0,
       created_at: sku.createdAt
     };
     
@@ -814,6 +865,8 @@ app.get('/api/external/all', async (req, res) => {
         vendor_id: mapping.vendor_id._id.toString(),
         location_id: locationId.toString(),
         price: mapping.price,
+        struck_price: mapping.struck_price,
+        is_discounted: mapping.is_discounted,
         unit_price: mapping.unit_price,
         currency: mapping.currency,
         created_at: mapping.createdAt,
@@ -855,6 +908,9 @@ app.get('/api/external/all', async (req, res) => {
         sub_category_id: sku.sub_category_id?._id.toString() || null,
         sub_category_name: sku.sub_category_id?.name || null,
         kvi_label: sku.kvi_label || 'Background (BG)',
+        buying_price: sku.buying_price || 0,
+        buying_vat: sku.buying_vat || 0,
+        buying_price_without_vat: sku.buying_price_without_vat || 0,
         created_at: sku.createdAt
       })),
       vendors: vendors.map(vendor => ({
@@ -947,6 +1003,8 @@ app.get('/api/external/price-mappings', async (req, res) => {
         vendor_id: mapping.vendor_id._id.toString(),
         location_id: locationId.toString(),
         price: mapping.price,
+        struck_price: mapping.struck_price,
+        is_discounted: mapping.is_discounted,
         unit_price: mapping.unit_price,
         currency: mapping.currency,
         created_at: mapping.createdAt,
@@ -1007,6 +1065,8 @@ app.get('/api/external/price-mappings/:id', async (req, res) => {
       vendor_id: priceMapping.vendor_id._id.toString(),
       location_id: locationId.toString(),
       price: priceMapping.price,
+      struck_price: priceMapping.struck_price,
+      is_discounted: priceMapping.is_discounted,
       unit_price: priceMapping.unit_price,
       currency: priceMapping.currency,
       created_at: priceMapping.createdAt,
@@ -1183,6 +1243,8 @@ app.get('/api/price-mappings', async (req, res) => {
         vendor_id: mapping.vendor_id._id,
         location_id: locationId,
         price: mapping.price,
+        struck_price: mapping.struck_price,
+        is_discounted: mapping.is_discounted,
         unit_price: mapping.unit_price,
         currency: mapping.currency,
         created_at: mapping.createdAt,
@@ -1204,12 +1266,17 @@ app.get('/api/price-mappings', async (req, res) => {
 
 app.post('/api/price-mappings', async (req, res) => {
   try {
-    const { sku_id, vendor_id, location_id, price, currency } = req.body;
+    const { sku_id, vendor_id, location_id, price, struck_price, is_discounted, currency } = req.body;
 
     // Get SKU to calculate unit price
     const sku = await SKU.findById(sku_id);
     if (!sku) {
       return res.status(400).json({ error: 'SKU not found' });
+    }
+
+    // Validate struck price if provided
+    if (struck_price && struck_price >= price) {
+      return res.status(400).json({ error: 'Struck price must be lower than the regular price' });
     }
 
     // Calculate unit price
@@ -1226,6 +1293,8 @@ app.post('/api/price-mappings', async (req, res) => {
     if (existingMapping) {
       // Update existing mapping
       existingMapping.price = price;
+      existingMapping.struck_price = struck_price || null;
+      existingMapping.is_discounted = is_discounted || false;
       existingMapping.unit_price = unitPrice;
       existingMapping.currency = currency || 'USD';
       const updated = await existingMapping.save();
@@ -1237,6 +1306,8 @@ app.post('/api/price-mappings', async (req, res) => {
         vendor_id,
         location_id,
         price,
+        struck_price: struck_price || null,
+        is_discounted: is_discounted || false,
         unit_price: unitPrice,
         currency: currency || 'USD'
       });
@@ -1276,10 +1347,17 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
     // Process each row
     for (let index = 0; index < data.length; index++) {
       const row = data[index];
-      const { sku_id, vendor_id, location_id, price, currency } = row;
+      const { sku_id, vendor_id, location_id, price, struck_price, is_discounted, currency } = row;
 
       if (!sku_id || !vendor_id || !location_id || !price) {
         errors.push(`Row ${index + 2}: Missing required fields (sku_id, vendor_id, location_id, price)`);
+        errorCount++;
+        continue;
+      }
+
+      // Validate struck price if provided
+      if (struck_price && struck_price >= price) {
+        errors.push(`Row ${index + 2}: Struck price must be lower than the regular price`);
         errorCount++;
         continue;
       }
@@ -1321,6 +1399,8 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
         if (existingMapping) {
           // Update existing
           existingMapping.price = price;
+          existingMapping.struck_price = struck_price || null;
+          existingMapping.is_discounted = is_discounted || false;
           existingMapping.unit_price = unitPrice;
           existingMapping.currency = currency || 'USD';
           await existingMapping.save();
@@ -1331,6 +1411,8 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
             vendor_id: vendor_id,
             location_id: location_id,
             price,
+            struck_price: struck_price || null,
+            is_discounted: is_discounted || false,
             unit_price: unitPrice,
             currency: currency || 'USD'
           });

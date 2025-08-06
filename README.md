@@ -8,6 +8,7 @@ A comprehensive web application for managing SKUs, vendors, locations, and price
 - Create SKUs with name, brand, unit type, unit value, and images
 - Support for various units (piece, kg, liters, grams, ml, pounds, ounces)
 - Image upload and display functionality
+- Buying price and VAT management with automatic calculation of price without VAT
 - Full CRUD operations (Create, Read, Update, Delete)
 
 ### Vendor Management
@@ -152,7 +153,7 @@ The application uses SQLite for data storage. The database file (`price_tracker.
 
 ### Database Schema
 
-- **skus**: id, name, image, brand, unit, unit_value, created_at
+- **skus**: id, name, image, brand, unit, unit_value, buying_price, buying_vat, buying_price_without_vat, created_at
 - **vendors**: id, name, logo, created_at
 - **locations**: id, district_name, country, created_at
 - **price_mappings**: id, sku_id, vendor_id, location_id, price, currency, created_at, updated_at

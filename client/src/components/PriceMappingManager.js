@@ -13,6 +13,8 @@ const PriceMappingManager = () => {
     vendor_id: '',
     location_id: '',
     price: '',
+    struck_price: '',
+    is_discounted: false,
     currency: 'USD'
   });
   const [excelFile, setExcelFile] = useState(null);
@@ -45,12 +47,22 @@ const PriceMappingManager = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate struck price
+    if (formData.struck_price && parseFloat(formData.struck_price) >= parseFloat(formData.price)) {
+      alert('Struck price must be lower than the regular price');
+      return;
+    }
+    
     try {
       await priceMappingAPI.create(formData);
       fetchData();
       resetForm();
     } catch (error) {
       console.error('Error creating price mapping:', error);
+      if (error.response?.data?.error) {
+        alert(error.response.data.error);
+      }
     }
   };
 
@@ -92,6 +104,8 @@ const PriceMappingManager = () => {
       vendor_id: '',
       location_id: '',
       price: '',
+      struck_price: '',
+      is_discounted: false,
       currency: 'USD'
     });
     setShowModal(false);
@@ -168,6 +182,12 @@ const PriceMappingManager = () => {
                       Price
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Struck Price
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Discounted
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Unit Price
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -196,7 +216,40 @@ const PriceMappingManager = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {mapping.currency} {mapping.price}
+                        {mapping.struck_price ? (
+                          <span className="line-through text-gray-500">
+                            {mapping.currency} {mapping.price}
+                          </span>
+                        ) : (
+                          <span className="text-gray-900">
+                            {mapping.currency} {mapping.price}
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {mapping.struck_price ? (
+                          <div>
+                            <span className="text-green-600 font-medium">
+                              {mapping.currency} {mapping.struck_price}
+                            </span>
+                            <div className="text-xs text-green-600 font-medium">
+                              -{Math.round(((mapping.price - mapping.struck_price) / mapping.price) * 100)}% off
+                            </div>
+                          </div>
+                        ) : (
+                          <span className="text-gray-400">-</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {mapping.is_discounted ? (
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            Yes
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                            No
+                          </span>
+                        )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {mapping.currency} {mapping.unit_price ? mapping.unit_price.toFixed(4) : 'N/A'}
@@ -292,6 +345,30 @@ const PriceMappingManager = () => {
                   </p>
                 </div>
                 <div>
+                  <label className="block text-sm font-medium text-gray-700">Struck Price</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={formData.struck_price}
+                    onChange={(e) => setFormData({ ...formData, struck_price: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Optional: Discounted price (must be lower than current price)
+                  </p>
+                </div>
+                <div>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      checked={formData.is_discounted}
+                      onChange={(e) => setFormData({ ...formData, is_discounted: e.target.checked })}
+                      className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    />
+                    <span className="ml-2 text-sm font-medium text-gray-700">Is Discounted</span>
+                  </label>
+                </div>
+                <div>
                   <label className="block text-sm font-medium text-gray-700">Currency</label>
                   <select
                     value={formData.currency}
@@ -333,7 +410,7 @@ const PriceMappingManager = () => {
               <h3 className="text-lg font-medium text-gray-900 mb-4">Upload Excel File</h3>
               <div className="mb-4 p-4 bg-blue-50 rounded-md">
                 <p className="text-sm text-blue-700">
-                  Excel file should have columns: sku_id, vendor_id, location_id, price, currency
+                  Excel file should have columns: sku_id, vendor_id, location_id, price, struck_price (optional), is_discounted (optional), currency
                 </p>
                 <p className="text-xs text-blue-600 mt-1">
                   Use the actual database IDs for SKUs, vendors, and price locations. You can find these IDs in their respective management pages.
@@ -343,6 +420,9 @@ const PriceMappingManager = () => {
                 </p>
                 <p className="text-xs text-blue-600 mt-1">
                   <strong>Note:</strong> Unit price will be automatically calculated by dividing the price by the SKU's unit value.
+                </p>
+                <p className="text-xs text-blue-600 mt-1">
+                  <strong>Note:</strong> struck_price must be lower than price if provided. is_discounted should be true/false.
                 </p>
               </div>
               <form onSubmit={handleExcelUpload} className="space-y-4">

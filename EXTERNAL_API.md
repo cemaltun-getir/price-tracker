@@ -57,7 +57,7 @@ GET /api/external/price-locations/:id
 ```
 
 ### 3. SKUs
-Product information including name, brand, unit, category, and subcategory.
+Product information including name, brand, unit, category, subcategory, and buying price details.
 
 **Get all SKUs:**
 ```
@@ -83,6 +83,9 @@ GET /api/external/skus/:id
   "sub_category_id": "sub_category_id",
   "sub_category_name": "Sub Category Name",
   "kvi_label": "SKVI|KVI|Background (BG)|Foreground (FG)",
+  "buying_price": 15.99,
+  "buying_vat": 20.0,
+  "buying_price_without_vat": 13.33,
   "created_at": "2024-01-01T00:00:00.000Z"
 }
 ```
@@ -131,6 +134,8 @@ GET /api/external/price-mappings/:id
   "vendor_id": "vendor_id",
   "location_id": "location_id",
   "price": 15.99,
+  "struck_price": 19.99,
+  "is_discounted": true,
   "unit_price": 7.995,
   "currency": "USD",
   "created_at": "2024-01-01T00:00:00.000Z",
