@@ -14,6 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 // Create uploads directory if it doesn't exist
 if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
@@ -1438,6 +1441,11 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error processing Excel file: ' + error.message });
   }
+});
+
+// Catch all handler: send back React's index.html file for any non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.listen(PORT, () => {

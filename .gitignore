@@ -2,15 +2,8 @@
 node_modules/
 */node_modules/
 
-# Database
-server/price_tracker.db
-
-# Uploads
-server/uploads/
-
-# Build outputs
-client/build/
-client/dist/
+# Production builds
+/client/build
 
 # Environment variables
 .env
@@ -18,6 +11,10 @@ client/dist/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Database
+*.db
+*.sqlite
 
 # Logs
 npm-debug.log*
@@ -38,11 +35,20 @@ coverage/
 # nyc test coverage
 .nyc_output
 
-# ESLint cache
-.eslintcache
+# Dependency directories
+jspm_packages/
 
 # Optional npm cache directory
 .npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
 
 # Optional REPL history
 .node_repl_history
@@ -52,9 +58,6 @@ coverage/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variables file
-.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -84,7 +87,6 @@ temp/
 .idea/
 *.swp
 *.swo
-*~
 
 # OS generated files
 .DS_Store
@@ -93,4 +95,8 @@ temp/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
+
+# Upload directories (but keep the folder structure)
+/server/uploads/*
+!/server/uploads/.gitkeep
