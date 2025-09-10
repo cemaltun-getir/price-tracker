@@ -31,11 +31,8 @@ if (!fs.existsSync('uploads/logos')) {
 // MongoDB connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/price-tracker';
 
-// Log static IP information if QuotaGuard is configured
-if (process.env.QUOTAGUARDSTATIC_URL) {
-  console.log('QuotaGuard Static IPs configured: 52.5.238.209, 52.6.13.167');
-  console.log('Make sure these IPs are whitelisted in MongoDB Atlas Network Access');
-}
+// Log current setup information
+console.log('MongoDB connection configured for:', MONGODB_URI.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
