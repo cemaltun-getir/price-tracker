@@ -1472,6 +1472,32 @@ app.get('/api/server-ip', (req, res) => {
   });
 });
 
+// Debug endpoint to test MongoDB connection
+app.get('/api/db-status', async (req, res) => {
+  try {
+    const connectionState = mongoose.connection.readyState;
+    const states = {
+      0: 'disconnected',
+      1: 'connected',
+      2: 'connecting',
+      3: 'disconnecting'
+    };
+    
+    res.json({
+      connection_state: states[connectionState],
+      connection_state_code: connectionState,
+      database_name: mongoose.connection.db ? mongoose.connection.db.databaseName : 'not connected',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+      connection_state: 'error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Catch all handler: send back React's index.html file for any non-API routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
