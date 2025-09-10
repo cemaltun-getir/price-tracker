@@ -1443,6 +1443,16 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
   }
 });
 
+// Debug endpoint to get server IP
+app.get('/api/server-ip', (req, res) => {
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  res.json({ 
+    server_ip: ip,
+    headers: req.headers,
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Catch all handler: send back React's index.html file for any non-API routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
