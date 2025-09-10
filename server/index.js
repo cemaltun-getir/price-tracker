@@ -34,19 +34,29 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/price-
 // Log current setup information
 console.log('MongoDB connection configured for:', MONGODB_URI.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
-mongoose.connect(MONGODB_URI, {
-  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
-  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-  maxPoolSize: 10, // Maintain up to 10 socket connections
-  bufferCommands: false, // Disable mongoose buffering
-})
-  .then(() => {
+// Connect to MongoDB and start server only after connection is established
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+      maxPoolSize: 10, // Maintain up to 10 socket connections
+    });
     console.log('Connected to MongoDB Atlas successfully');
     console.log('Database:', MONGODB_URI.split('/').pop().split('?')[0]);
-  })
-  .catch((err) => {
+    
+    // Start server only after DB connection is established
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
     console.error('Error connecting to MongoDB:', err);
-  });
+    process.exit(1);
+  }
+}
+
+// Initialize database connection
+connectToDatabase();
 
 // Mongoose Schemas
 const skuSchema = new mongoose.Schema({
@@ -1467,6 +1477,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-}); 
+// Server is started in connectToDatabase() function after DB connection 
