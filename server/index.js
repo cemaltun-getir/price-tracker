@@ -34,9 +34,16 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/price-
 // Log current setup information
 console.log('MongoDB connection configured for:', MONGODB_URI.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, {
+  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+  maxPoolSize: 10, // Maintain up to 10 socket connections
+  bufferMaxEntries: 0, // Disable mongoose buffering
+  bufferCommands: false, // Disable mongoose buffering
+})
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB Atlas successfully');
+    console.log('Database:', MONGODB_URI.split('/').pop().split('?')[0]);
   })
   .catch((err) => {
     console.error('Error connecting to MongoDB:', err);
