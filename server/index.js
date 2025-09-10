@@ -37,16 +37,30 @@ console.log('MongoDB connection configured for:', MONGODB_URI.replace(/\/\/[^:]+
 // Connect to MongoDB with retry logic
 async function connectToDatabase() {
   try {
+    console.log('Attempting to connect to MongoDB Atlas...');
     await mongoose.connect(MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+      serverSelectionTimeoutMS: 10000, // Increase timeout to 10s
       socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
       maxPoolSize: 10, // Maintain up to 10 socket connections
+      connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
+      authSource: 'admin', // Specify auth source
     });
-    console.log('Connected to MongoDB Atlas successfully');
+    console.log('✅ Connected to MongoDB Atlas successfully');
     console.log('Database:', MONGODB_URI.split('/').pop().split('?')[0]);
   } catch (err) {
-    console.error('Error connecting to MongoDB:', err);
+    console.error('❌ Error connecting to MongoDB:', err.message);
+    console.error('Error details:', {
+      name: err.name,
+      code: err.code,
+      codeName: err.codeName
+    });
     console.log('Server will start anyway, but database operations will fail until connection is established');
+    
+    // Retry connection after 30 seconds
+    setTimeout(() => {
+      console.log('Retrying MongoDB connection...');
+      connectToDatabase();
+    }, 30000);
   }
 }
 
