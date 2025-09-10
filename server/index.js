@@ -5,6 +5,8 @@ const multer = require('multer');
 const xlsx = require('xlsx');
 const path = require('path');
 const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,7 +19,14 @@ app.use('/uploads', express.static('uploads'));
 // Serve static files from React build
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-// Create uploads directory if it doesn't exist
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// Create uploads directory if it doesn't exist (fallback for local development)
 if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
 }
@@ -171,8 +180,26 @@ const Location = mongoose.model('Location', locationSchema);
 const SimpleLocation = mongoose.model('SimpleLocation', simpleLocationSchema);
 const PriceMapping = mongoose.model('PriceMapping', priceMappingSchema);
 
-// Multer configuration for file uploads
-const storage = multer.diskStorage({
+// Cloudinary storage configuration
+const cloudinaryStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: (req, file) => {
+      if (file.fieldname === 'image') {
+        return 'price-tracker/images';
+      } else if (file.fieldname === 'logo') {
+        return 'price-tracker/logos';
+      } else {
+        return 'price-tracker/uploads';
+      }
+    },
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+    transformation: [{ width: 500, height: 500, crop: 'limit', quality: 'auto' }]
+  },
+});
+
+// Fallback to local storage if Cloudinary is not configured
+const localStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     if (file.fieldname === 'image') {
       cb(null, 'uploads/images/');
@@ -188,6 +215,8 @@ const storage = multer.diskStorage({
   }
 });
 
+// Use Cloudinary if configured, otherwise use local storage
+const storage = process.env.CLOUDINARY_CLOUD_NAME ? cloudinaryStorage : localStorage;
 const upload = multer({ storage: storage });
 
 // Helper function to extract numerical value from unit_value
@@ -366,7 +395,8 @@ app.get('/api/skus', async (req, res) => {
 app.post('/api/skus', upload.single('image'), async (req, res) => {
   try {
     const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label, buying_price, buying_vat } = req.body;
-    const image = req.file ? req.file.filename : null;
+    // Use Cloudinary URL if available, otherwise use filename
+    const image = req.file ? (req.file.path || req.file.filename) : null;
 
     const skuData = { name, image, brand, unit, unit_value };
     if (category_id && category_id !== '') {
@@ -397,7 +427,8 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
 app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
   try {
     const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label, buying_price, buying_vat } = req.body;
-    const image = req.file ? req.file.filename : undefined;
+    // Use Cloudinary URL if available, otherwise use filename
+    const image = req.file ? (req.file.path || req.file.filename) : undefined;
     const id = req.params.id;
 
     const updateData = { name, brand, unit, unit_value };
@@ -459,7 +490,8 @@ app.get('/api/vendors', async (req, res) => {
 app.post('/api/vendors', upload.single('logo'), async (req, res) => {
   try {
     const { name } = req.body;
-    const logo = req.file ? req.file.filename : null;
+    // Use Cloudinary URL if available, otherwise use filename
+    const logo = req.file ? (req.file.path || req.file.filename) : null;
 
     const vendor = new Vendor({ name, logo });
     const savedVendor = await vendor.save();
@@ -473,7 +505,8 @@ app.post('/api/vendors', upload.single('logo'), async (req, res) => {
 app.put('/api/vendors/:id', upload.single('logo'), async (req, res) => {
   try {
     const { name } = req.body;
-    const logo = req.file ? req.file.filename : undefined;
+    // Use Cloudinary URL if available, otherwise use filename
+    const logo = req.file ? (req.file.path || req.file.filename) : undefined;
     const id = req.params.id;
 
     const updateData = { name };
