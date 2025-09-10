@@ -34,7 +34,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/price-
 // Log current setup information
 console.log('MongoDB connection configured for:', MONGODB_URI.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
-// Connect to MongoDB and start server only after connection is established
+// Connect to MongoDB with retry logic
 async function connectToDatabase() {
   try {
     await mongoose.connect(MONGODB_URI, {
@@ -44,18 +44,18 @@ async function connectToDatabase() {
     });
     console.log('Connected to MongoDB Atlas successfully');
     console.log('Database:', MONGODB_URI.split('/').pop().split('?')[0]);
-    
-    // Start server only after DB connection is established
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
-    process.exit(1);
+    console.log('Server will start anyway, but database operations will fail until connection is established');
   }
 }
 
-// Initialize database connection
+// Start server immediately and connect to database in parallel
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Initialize database connection (non-blocking)
 connectToDatabase();
 
 // Mongoose Schemas
