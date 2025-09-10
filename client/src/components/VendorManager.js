@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { vendorAPI } from '../services/api';
 
+// Helper function to get the correct logo URL
+const getLogoUrl = (logoPath) => {
+  if (!logoPath) return null;
+  
+  // If it's already a full URL (Cloudinary), return as is
+  if (logoPath.startsWith('http://') || logoPath.startsWith('https://')) {
+    return logoPath;
+  }
+  
+  // Otherwise, it's a local filename, construct the URL
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? window.location.origin 
+    : 'http://localhost:3001';
+  return `${baseUrl}/uploads/logos/${logoPath}`;
+};
+
 const VendorManager = () => {
   const [vendors, setVendors] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -114,15 +130,18 @@ const VendorManager = () => {
             <div className="h-32 bg-gray-100 flex items-center justify-center">
               {vendor.logo ? (
                 <img
-                  src={`http://localhost:3001/uploads/logos/${vendor.logo}`}
+                  src={getLogoUrl(vendor.logo)}
                   alt={vendor.name}
                   className="h-20 w-20 object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
                 />
-              ) : (
-                <div className="text-gray-400 text-4xl font-bold">
-                  {vendor.name.charAt(0).toUpperCase()}
-                </div>
-              )}
+              ) : null}
+              <div className={`text-gray-400 text-4xl font-bold ${vendor.logo ? 'hidden' : 'flex'} items-center justify-center`}>
+                {vendor.name.charAt(0).toUpperCase()}
+              </div>
             </div>
             <div className="p-4">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">{vendor.name}</h3>

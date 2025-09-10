@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { skuAPI, categoryAPI, subCategoryAPI } from '../services/api';
 
+// Helper function to get the correct image URL
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return null;
+  
+  // If it's already a full URL (Cloudinary), return as is
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  
+  // Otherwise, it's a local filename, construct the URL
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? window.location.origin 
+    : 'http://localhost:3001';
+  return `${baseUrl}/uploads/images/${imagePath}`;
+};
+
 const SKUManager = () => {
   const [skus, setSkus] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -183,13 +199,17 @@ const SKUManager = () => {
             <div className="h-48 bg-gray-200 flex items-center justify-center">
               {sku.image ? (
                 <img
-                  src={`http://localhost:3001/uploads/images/${sku.image}`}
+                  src={getImageUrl(sku.image)}
                   alt={sku.name}
                   className="h-full w-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'block';
+                  }}
                 />
-              ) : (
-                <div className="text-gray-400">No Image</div>
-              )}
+              ) : null}
+              {!sku.image && <div className="text-gray-400">No Image</div>}
+              <div className="text-gray-400 hidden">Image not found</div>
             </div>
             <div className="p-4">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">{sku.name}</h3>
