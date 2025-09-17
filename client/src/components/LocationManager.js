@@ -7,15 +7,11 @@ const LocationManager = () => {
   const [editingLocation, setEditingLocation] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
-    province: '',
-    district: '',
+    city: '',
     region: '',
     demography: '',
     size: '',
-    domain: '',
-    // Legacy fields for backward compatibility
-    district_name: '',
-    country: ''
+    domain: ''
   });
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState(null);
@@ -54,15 +50,11 @@ const LocationManager = () => {
     setEditingLocation(location);
     setFormData({
       name: location.name || '',
-      province: location.province || '',
-      district: location.district || '',
+      city: location.city || '',
       region: location.region || '',
       demography: location.demography || '',
       size: location.size || '',
-      domain: location.domain || '',
-      // Legacy fields for backward compatibility
-      district_name: location.district_name || '',
-      country: location.country || ''
+      domain: location.domain || ''
     });
     setShowModal(true);
   };
@@ -91,15 +83,11 @@ const LocationManager = () => {
   const resetForm = () => {
     setFormData({
       name: '',
-      province: '',
-      district: '',
+      city: '',
       region: '',
       demography: '',
       size: '',
-      domain: '',
-      // Legacy fields for backward compatibility
-      district_name: '',
-      country: ''
+      domain: ''
     });
     setEditingLocation(null);
     setShowModal(false);
@@ -145,13 +133,12 @@ const LocationManager = () => {
                     </div>
                     <div className="ml-4">
                       <div className="text-sm font-medium text-gray-900">
-                        {location.name || location.district_name}
+                        {location.name}
                       </div>
                       <div className="text-sm text-gray-500">
-                        {location.province || location.country}
+                        {location.city}
                       </div>
                       <div className="text-xs text-gray-400 mt-1">
-                        {location.district && `${location.district} • `}
                         {location.region && `${location.region} • `}
                         {location.demography && `${location.demography} • `}
                         {location.size && `${location.size}`}
@@ -215,29 +202,18 @@ const LocationManager = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Province *</label>
+                    <label className="block text-sm font-medium text-gray-700">City *</label>
                     <input
                       type="text"
                       required
-                      value={formData.province}
-                      onChange={(e) => setFormData({ ...formData, province: e.target.value })}
+                      value={formData.city}
+                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                       className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
                       placeholder="Istanbul"
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">District *</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.district}
-                      onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
-                      placeholder="Kadikoy"
-                    />
-                  </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Region *</label>
                     <input
@@ -246,11 +222,9 @@ const LocationManager = () => {
                       value={formData.region}
                       onChange={(e) => setFormData({ ...formData, region: e.target.value })}
                       className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
-                      placeholder="Marmara"
+                      placeholder="Kadikoy"
                     />
                   </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Demography *</label>
                     <select
@@ -266,6 +240,8 @@ const LocationManager = () => {
                       <option value="Traditional">Traditional</option>
                     </select>
                   </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Size *</label>
                     <select
@@ -286,19 +262,19 @@ const LocationManager = () => {
                       <option value="GB Maxi">GB Maxi</option>
                     </select>
                   </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Domain *</label>
-                  <select
-                    required
-                    value={formData.domain}
-                    onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
-                  >
-                    <option value="">Select Domain</option>
-                    <option value="Getir">Getir</option>
-                    <option value="Getir Büyük">Getir Büyük</option>
-                  </select>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Domain *</label>
+                    <select
+                      required
+                      value={formData.domain}
+                      onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
+                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                    >
+                      <option value="">Select Domain</option>
+                      <option value="Getir">Getir</option>
+                      <option value="Getir Büyük">Getir Büyük</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="flex space-x-3">
                   <button

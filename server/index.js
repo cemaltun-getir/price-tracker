@@ -135,15 +135,11 @@ const vendorSchema = new mongoose.Schema({
 
 const locationSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  province: { type: String, required: true },
-  district: { type: String, required: true },
+  city: { type: String, required: true },
   region: { type: String, required: true },
   demography: { type: String, required: true },
   size: { type: String, required: true },
-  domain: { type: String, required: true },
-  // Legacy fields for backward compatibility
-  district_name: { type: String },
-  country: { type: String }
+  domain: { type: String, required: true }
 }, { timestamps: true });
 
 const categorySchema = new mongoose.Schema({
@@ -537,15 +533,11 @@ app.get('/api/locations', async (req, res) => {
     const formattedLocations = locations.map(location => ({
       id: location._id,
       name: location.name,
-      province: location.province,
-      district: location.district,
+      city: location.city,
       region: location.region,
       demography: location.demography,
       size: location.size,
       domain: location.domain,
-      // Legacy fields for backward compatibility
-      district_name: location.district_name || location.district,
-      country: location.country,
       created_at: location.createdAt
     }));
     res.json(formattedLocations);
@@ -558,48 +550,27 @@ app.post('/api/locations', async (req, res) => {
   try {
     const { 
       name, 
-      province, 
-      district, 
+      city, 
       region, 
       demography, 
       size, 
-      domain,
-      // Legacy fields for backward compatibility
-      district_name, 
-      country 
+      domain
     } = req.body;
 
-    const locationData = {};
-    
-    // New format
-    if (name && province && district && region && demography && size && domain) {
-      locationData.name = name;
-      locationData.province = province;
-      locationData.district = district;
-      locationData.region = region;
-      locationData.demography = demography;
-      locationData.size = size;
-      locationData.domain = domain;
-    }
-    // Legacy format support
-    else if (district_name && country) {
-      locationData.district_name = district_name;
-      locationData.country = country;
-      // Set default values for required new fields
-      locationData.name = district_name;
-      locationData.province = country;
-      locationData.district = district_name;
-      locationData.region = 'Unknown';
-      locationData.demography = 'Unknown';
-      locationData.size = 'Unknown';
-      locationData.domain = 'Unknown';
-    } else {
-      return res.status(400).json({ error: 'Missing required fields' });
+    if (!name || !city || !region || !demography || !size || !domain) {
+      return res.status(400).json({ error: 'Missing required fields: name, city, region, demography, size, domain' });
     }
 
-    const location = new Location(locationData);
-    const savedLocation = await location.save();
+    const location = new Location({
+      name,
+      city,
+      region,
+      demography,
+      size,
+      domain
+    });
     
+    const savedLocation = await location.save();
     res.json({ id: savedLocation._id, message: 'Location created successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -610,31 +581,21 @@ app.put('/api/locations/:id', async (req, res) => {
   try {
     const { 
       name, 
-      province, 
-      district, 
+      city, 
       region, 
       demography, 
       size, 
-      domain,
-      // Legacy fields for backward compatibility
-      district_name, 
-      country 
+      domain
     } = req.body;
 
     const updateData = {};
     
-    // New format
     if (name !== undefined) updateData.name = name;
-    if (province !== undefined) updateData.province = province;
-    if (district !== undefined) updateData.district = district;
+    if (city !== undefined) updateData.city = city;
     if (region !== undefined) updateData.region = region;
     if (demography !== undefined) updateData.demography = demography;
     if (size !== undefined) updateData.size = size;
     if (domain !== undefined) updateData.domain = domain;
-    
-    // Legacy format support
-    if (district_name !== undefined) updateData.district_name = district_name;
-    if (country !== undefined) updateData.country = country;
 
     await Location.findByIdAndUpdate(req.params.id, updateData);
     res.json({ message: 'Location updated successfully' });
@@ -716,8 +677,7 @@ app.get('/api/external/locations', async (req, res) => {
     const externalLocations = locations.map(location => ({
       id: location._id.toString(),
       name: location.name,
-      province: location.province,
-      district: location.district,
+      city: location.city,
       region: location.region,
       demography: location.demography,
       size: location.size,
@@ -740,8 +700,7 @@ app.get('/api/external/locations/:id', async (req, res) => {
     const externalLocation = {
       id: location._id.toString(),
       name: location.name,
-      province: location.province,
-      district: location.district,
+      city: location.city,
       region: location.region,
       demography: location.demography,
       size: location.size,
@@ -953,8 +912,7 @@ app.get('/api/external/all', async (req, res) => {
       locations: locations.map(location => ({
         id: location._id.toString(),
         name: location.name,
-        province: location.province,
-        district: location.district,
+        city: location.city,
         region: location.region,
         demography: location.demography,
         size: location.size,
