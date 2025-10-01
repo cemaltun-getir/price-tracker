@@ -11,7 +11,7 @@ const LocationManager = () => {
     region: '',
     demography: '',
     size: '',
-    domain: ''
+    domains: []
   });
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState(null);
@@ -33,6 +33,13 @@ const LocationManager = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate domains
+    if (formData.domains.length === 0) {
+      alert('Please select at least one domain');
+      return;
+    }
+    
     try {
       if (editingLocation) {
         await locationAPI.update(editingLocation.id, formData);
@@ -54,7 +61,7 @@ const LocationManager = () => {
       region: location.region || '',
       demography: location.demography || '',
       size: location.size || '',
-      domain: location.domain || ''
+      domains: location.domains || []
     });
     setShowModal(true);
   };
@@ -87,7 +94,7 @@ const LocationManager = () => {
       region: '',
       demography: '',
       size: '',
-      domain: ''
+      domains: []
     });
     setEditingLocation(null);
     setShowModal(false);
@@ -142,7 +149,7 @@ const LocationManager = () => {
                         {location.region && `${location.region} • `}
                         {location.demography && `${location.demography} • `}
                         {location.size && `${location.size}`}
-                        {location.domain && ` • ${location.domain}`}
+                        {location.domains && location.domains.length > 0 && ` • ${location.domains.join(', ')}`}
                       </div>
                       <div className="text-xs text-gray-400 font-mono mt-1">
                         ID: {location.id}
@@ -263,17 +270,35 @@ const LocationManager = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Domain *</label>
-                    <select
-                      required
-                      value={formData.domain}
-                      onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
-                    >
-                      <option value="">Select Domain</option>
-                      <option value="Getir">Getir</option>
-                      <option value="Getir Büyük">Getir Büyük</option>
-                    </select>
+                    <label className="block text-sm font-medium text-gray-700">Domains *</label>
+                    <div className="mt-2 space-y-2">
+                      {['Getir', 'Getir Büyük'].map((domain) => (
+                        <label key={domain} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            checked={formData.domains.includes(domain)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setFormData({
+                                  ...formData,
+                                  domains: [...formData.domains, domain]
+                                });
+                              } else {
+                                setFormData({
+                                  ...formData,
+                                  domains: formData.domains.filter(d => d !== domain)
+                                });
+                              }
+                            }}
+                            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                          />
+                          <span className="ml-2 text-sm text-gray-700">{domain}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {formData.domains.length === 0 && (
+                      <p className="mt-1 text-sm text-red-600">Please select at least one domain</p>
+                    )}
                   </div>
                 </div>
                 <div className="flex space-x-3">

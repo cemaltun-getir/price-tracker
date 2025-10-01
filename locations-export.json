@@ -1,0 +1,6002 @@
+[
+  {
+    "name": "AlanyaDoğu",
+    "city": "Çorum",
+    "region": "Nilüfer",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerBelde",
+    "city": "Aksaray",
+    "region": "Yüreğir",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sarıçam",
+    "city": "Bursa",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NarlıdereÜst",
+    "city": "Ankara",
+    "region": "Kağıthane",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeDoğu",
+    "city": "Nevşehir",
+    "region": "Ümraniye",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferPazar",
+    "city": "Mersin",
+    "region": "Kağıthane",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziÜst",
+    "city": "Adana",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirAlt",
+    "city": "İzmir",
+    "region": "Beşiktaş",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutÇarşı",
+    "city": "Tokat",
+    "region": "Sarıçam",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Şişli",
+    "city": "İzmir",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaAlt",
+    "city": "Muğla",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çatalca",
+    "city": "İzmir",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükçekmeceBelde",
+    "city": "Isparta",
+    "region": "Zeytinburnu",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kadıköy",
+    "city": "Kocaeli",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliGüney",
+    "city": "Konya",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezGüney",
+    "city": "İzmir",
+    "region": "Avcılar",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PozantıSite",
+    "city": "Tekirdağ",
+    "region": "İnegöl",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Üsküdar",
+    "city": "Muğla",
+    "region": "Serik",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OsmangaziMerkez",
+    "city": "Çorum",
+    "region": "Döşemealtı",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziBatı",
+    "city": "Van",
+    "region": "Esenler",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarabağlarBelde",
+    "city": "Muğla",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gaziosmanpaşa",
+    "city": "Tekirdağ",
+    "region": "Esenyurt",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SultangaziYeni",
+    "city": "Kahramanmaraş",
+    "region": "Konyaaltı",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutBatı",
+    "city": "Mersin",
+    "region": "Yumurtalık",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeyoğluAlt",
+    "city": "Tekirdağ",
+    "region": "Zeytinburnu",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇankayaPazar",
+    "city": "Sivas",
+    "region": "Kemer",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Ümraniye",
+    "city": "Elazığ",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇankayaÇarşı",
+    "city": "Isparta",
+    "region": "Aksu",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziSanayi",
+    "city": "Kırklareli",
+    "region": "Döşemealtı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliDoğu",
+    "city": "Nevşehir",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MamakPazar",
+    "city": "Tekirdağ",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KaraisalıKüçük",
+    "city": "Ordu",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkDoğu",
+    "city": "Kayseri",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çankaya",
+    "city": "Gaziantep",
+    "region": "Büyükçekmece",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonyaaltıPazar",
+    "city": "Sivas",
+    "region": "Silivri",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MuratpaşaYeni",
+    "city": "Afyon",
+    "region": "Büyükorhan",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AltındağOrta",
+    "city": "Trabzon",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Fatih",
+    "city": "Isparta",
+    "region": "Büyükçekmece",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kozan",
+    "city": "Bursa",
+    "region": "Balçova",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çukurova",
+    "city": "Trabzon",
+    "region": "Sincan",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaBatı",
+    "city": "Diyarbakır",
+    "region": "Ümraniye",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikKöy",
+    "city": "Isparta",
+    "region": "Sincan",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaAlt",
+    "city": "Uşak",
+    "region": "Eyüpsultan",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezOrta",
+    "city": "Nevşehir",
+    "region": "Konak",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükçekmeceKöy",
+    "city": "Kastamonu",
+    "region": "Şişli",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Keçiören",
+    "city": "Giresun",
+    "region": "Gaziemir",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükorhan",
+    "city": "Kocaeli",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.256Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kepez",
+    "city": "Şanlıurfa",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Maltepe",
+    "city": "Malatya",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MudanyaEski",
+    "city": "Eskişehir",
+    "region": "Osmangazi",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezSanayi",
+    "city": "Giresun",
+    "region": "Esenyurt",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KemerYeni",
+    "city": "Konya",
+    "region": "Bornova",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakDoğu",
+    "city": "Giresun",
+    "region": "Pendik",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KaraisalıYeni",
+    "city": "Kastamonu",
+    "region": "Büyükorhan",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜmraniyePlaza",
+    "city": "Erzurum",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Başakşehir",
+    "city": "Samsun",
+    "region": "Konak",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KadıköyOrta",
+    "city": "Nevşehir",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yenimahalle",
+    "city": "Zonguldak",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşBüyük",
+    "city": "Kahramanmaraş",
+    "region": "Manavgat",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Silivri",
+    "city": "Erzurum",
+    "region": "Büyükçekmece",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PozantıKöy",
+    "city": "Hatay",
+    "region": "Güzelbahçe",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanPazar",
+    "city": "Malatya",
+    "region": "Sincan",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KağıthaneAlt",
+    "city": "Tekirdağ",
+    "region": "Konyaaltı",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bornova",
+    "city": "Kayseri",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KaraisalıDoğu",
+    "city": "Eskişehir",
+    "region": "Kemer",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BaşakşehirYeni",
+    "city": "Aydın",
+    "region": "Sancaktepe",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezSite",
+    "city": "Sivas",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Şişli",
+    "city": "Osmaniye",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çiğli",
+    "city": "Konya",
+    "region": "Yumurtalık",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karşıyaka",
+    "city": "Samsun",
+    "region": "Harmancık",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaPazar",
+    "city": "Afyon",
+    "region": "Harmancık",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karaisalı",
+    "city": "Giresun",
+    "region": "Kemer",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ArnavutköyEski",
+    "city": "Denizli",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerKüçük",
+    "city": "Sakarya",
+    "region": "Bahçelievler",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AtaşehirYeni",
+    "city": "Malatya",
+    "region": "Küçükçekmece",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Maltepe",
+    "city": "Antalya",
+    "region": "Büyükorhan",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KadıköyYeni",
+    "city": "Kırklareli",
+    "region": "Pendik",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GemlikDoğu",
+    "city": "Uşak",
+    "region": "Bahçelievler",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Konak",
+    "city": "Şanlıurfa",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşOrganize",
+    "city": "Amasya",
+    "region": "Sarıyer",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜmraniyePlaza",
+    "city": "Giresun",
+    "region": "Bahçelievler",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımSite",
+    "city": "Konya",
+    "region": "Balçova",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkGüney",
+    "city": "Kırklareli",
+    "region": "Pendik",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MudanyaGüney",
+    "city": "Sivas",
+    "region": "Yüreğir",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AltındağKuzey",
+    "city": "Çankırı",
+    "region": "Gaziemir",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SerikÜst",
+    "city": "Adana",
+    "region": "Büyükorhan",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gemlik",
+    "city": "Sakarya",
+    "region": "Çankaya",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerBatı",
+    "city": "Kocaeli",
+    "region": "Kemer",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüGüney",
+    "city": "Amasya",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarabağlarOrganize",
+    "city": "Aydın",
+    "region": "Küçükçekmece",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MamakYeni",
+    "city": "Afyon",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AlanyaSite",
+    "city": "Osmaniye",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SilivriÜst",
+    "city": "Sinop",
+    "region": "Balçova",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KemerMerkez",
+    "city": "Kocaeli",
+    "region": "Yüreğir",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Manavgat",
+    "city": "Samsun",
+    "region": "Karşıyaka",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Alanya",
+    "city": "Osmaniye",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güzelbahçe",
+    "city": "Trabzon",
+    "region": "Bayrampaşa",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.246Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KeçiörenEski",
+    "city": "Malatya",
+    "region": "Eyüpsultan",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.241Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bağcılar",
+    "city": "Zonguldak",
+    "region": "Pursaklar",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.241Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenyurtMerkez",
+    "city": "Ankara",
+    "region": "Döşemealtı",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.241Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "İnegölMerkez",
+    "city": "Tokat",
+    "region": "Konak",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.241Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Maltepe",
+    "city": "Sakarya",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.241Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AvcılarSite",
+    "city": "Antalya",
+    "region": "Yumurtalık",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.241Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AvcılarMerkez",
+    "city": "Afyon",
+    "region": "Sincan",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutDoğu",
+    "city": "Kırşehir",
+    "region": "Serik",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BağcılarBatı",
+    "city": "Mersin",
+    "region": "Alanya",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahalleDoğu",
+    "city": "Uşak",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeyoğluBüyük",
+    "city": "Yozgat",
+    "region": "Beylikdüzü",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaPlaza",
+    "city": "Ankara",
+    "region": "Kozan",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahallePazar",
+    "city": "Mersin",
+    "region": "Keçiören",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KozanBüyük",
+    "city": "Kahramanmaraş",
+    "region": "Karabağlar",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahalleKöy",
+    "city": "Afyon",
+    "region": "Sarıyer",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıyerKüçük",
+    "city": "Samsun",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferBatı",
+    "city": "Ankara",
+    "region": "Aksu",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliSite",
+    "city": "İzmir",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakKüçük",
+    "city": "Tekirdağ",
+    "region": "Bayrampaşa",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PursaklarEski",
+    "city": "Ankara",
+    "region": "Küçükçekmece",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükçekmece",
+    "city": "Hatay",
+    "region": "Pursaklar",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kağıthane",
+    "city": "Kocaeli",
+    "region": "Yumurtalık",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikOrta",
+    "city": "Kahramanmaraş",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferPazar",
+    "city": "Gaziantep",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutYeni",
+    "city": "Mersin",
+    "region": "Kağıthane",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇukurovaSite",
+    "city": "Isparta",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımOrganize",
+    "city": "Ordu",
+    "region": "Pendik",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yüreğir",
+    "city": "Eskişehir",
+    "region": "Etimesgut",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kemer",
+    "city": "Hatay",
+    "region": "Arnavutköy",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarşıyakaAlt",
+    "city": "Çankırı",
+    "region": "Sincan",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MaltepeOrganize",
+    "city": "Nevşehir",
+    "region": "Kepez",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GaziosmanpaşaEski",
+    "city": "Kahramanmaraş",
+    "region": "Ümraniye",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kartal",
+    "city": "Muğla",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikÜst",
+    "city": "Adana",
+    "region": "Eyüpsultan",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezKöy",
+    "city": "Balıkesir",
+    "region": "Aksu",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenlerOrganize",
+    "city": "Aydın",
+    "region": "Orhangazi",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SultangaziDoğu",
+    "city": "Sinop",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Altındağ",
+    "city": "Eskişehir",
+    "region": "Seyhan",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeDoğu",
+    "city": "Kayseri",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanBüyük",
+    "city": "Yozgat",
+    "region": "Sancaktepe",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AksuPazar",
+    "city": "Diyarbakır",
+    "region": "Bahçelievler",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezMahalle",
+    "city": "Malatya",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Serik",
+    "city": "Hatay",
+    "region": "Küçükçekmece",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüSite",
+    "city": "Çorum",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkSanayi",
+    "city": "Kahramanmaraş",
+    "region": "Kepez",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezGüney",
+    "city": "Antalya",
+    "region": "Büyükçekmece",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gaziemir",
+    "city": "Düzce",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferMerkez",
+    "city": "Kırklareli",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanBüyük",
+    "city": "Balıkesir",
+    "region": "Yıldırım",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaMerkez",
+    "city": "Rize",
+    "region": "Sarıçam",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.240Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "HarmancıkEski",
+    "city": "Zonguldak",
+    "region": "Balçova",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇatalcaGüney",
+    "city": "Kocaeli",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıyerBatı",
+    "city": "Samsun",
+    "region": "Bayrampaşa",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliMerkez",
+    "city": "Ankara",
+    "region": "Yüreğir",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Pendik",
+    "city": "Giresun",
+    "region": "Ceyhan",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KeçiörenKüçük",
+    "city": "Giresun",
+    "region": "Başakşehir",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇankayaSanayi",
+    "city": "Ankara",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkMerkez",
+    "city": "Afyon",
+    "region": "Gaziosmanpaşa",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakDoğu",
+    "city": "Kastamonu",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüzelbahçeKöy",
+    "city": "Aydın",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenlerKüçük",
+    "city": "Şanlıurfa",
+    "region": "Gemlik",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KartalAlt",
+    "city": "İstanbul",
+    "region": "Seyhan",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanOrta",
+    "city": "Trabzon",
+    "region": "Küçükçekmece",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇankayaPazar",
+    "city": "Mersin",
+    "region": "Pozantı",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkBatı",
+    "city": "Van",
+    "region": "Pendik",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanGüney",
+    "city": "Sivas",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenyurtKuzey",
+    "city": "Denizli",
+    "region": "Nilüfer",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KozanOrta",
+    "city": "Erzurum",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziSanayi",
+    "city": "Muğla",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BağcılarAlt",
+    "city": "Kayseri",
+    "region": "Küçükçekmece",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GaziosmanpaşaSite",
+    "city": "Muğla",
+    "region": "Yıldırım",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güngören",
+    "city": "Bursa",
+    "region": "Çankaya",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇankayaBüyük",
+    "city": "Aydın",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Beylikdüzü",
+    "city": "Sinop",
+    "region": "Kepez",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yumurtalık",
+    "city": "Hatay",
+    "region": "Sincan",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GemlikOrganize",
+    "city": "Tokat",
+    "region": "İnegöl",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bayrampaşa",
+    "city": "Manisa",
+    "region": "Kozan",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikÇarşı",
+    "city": "Manisa",
+    "region": "Seyhan",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ZeytinburnuSite",
+    "city": "Ankara",
+    "region": "Serik",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PozantıPazar",
+    "city": "Osmaniye",
+    "region": "Kartal",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Maltepe",
+    "city": "Tokat",
+    "region": "Sincan",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AltındağPlaza",
+    "city": "Tokat",
+    "region": "Nilüfer",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KeçiörenMahalle",
+    "city": "Bursa",
+    "region": "Altındağ",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇukurovaSanayi",
+    "city": "Afyon",
+    "region": "Bağcılar",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahalleSite",
+    "city": "Isparta",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziMerkez",
+    "city": "Balıkesir",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karşıyaka",
+    "city": "Ankara",
+    "region": "Çiğli",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Muratpaşa",
+    "city": "Giresun",
+    "region": "Orhangazi",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Avcılar",
+    "city": "Bursa",
+    "region": "Gaziosmanpaşa",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MamakMahalle",
+    "city": "Erzurum",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BayrampaşaÜst",
+    "city": "Afyon",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezKöy",
+    "city": "Yozgat",
+    "region": "Beylikdüzü",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükçekmece",
+    "city": "Uşak",
+    "region": "Pursaklar",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarşıyakaOrta",
+    "city": "Denizli",
+    "region": "İnegöl",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SincanPlaza",
+    "city": "Samsun",
+    "region": "Bornova",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşAlt",
+    "city": "Samsun",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "DöşemealtıKüçük",
+    "city": "Trabzon",
+    "region": "İnegöl",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SilivriBüyük",
+    "city": "İzmir",
+    "region": "Gemlik",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ManavgatBüyük",
+    "city": "Konya",
+    "region": "Konak",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşEski",
+    "city": "Afyon",
+    "region": "Karabağlar",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.235Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KadıköyDoğu",
+    "city": "Zonguldak",
+    "region": "Sultangazi",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KemerSanayi",
+    "city": "Şanlıurfa",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BağcılarOrta",
+    "city": "Balıkesir",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gaziemir",
+    "city": "Gaziantep",
+    "region": "Üsküdar",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AltındağMahalle",
+    "city": "Rize",
+    "region": "Arnavutköy",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kartal",
+    "city": "Sinop",
+    "region": "Esenler",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Eyüpsultan",
+    "city": "Adana",
+    "region": "Muratpaşa",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaMerkez",
+    "city": "Hatay",
+    "region": "Mudanya",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜmraniyeEski",
+    "city": "Hatay",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Keçiören",
+    "city": "Zonguldak",
+    "region": "Büyükorhan",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Serik",
+    "city": "Hatay",
+    "region": "Bayrampaşa",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çiğli",
+    "city": "Düzce",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sincan",
+    "city": "Ankara",
+    "region": "Mamak",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MudanyaKöy",
+    "city": "Kastamonu",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükorhan",
+    "city": "Sivas",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜsküdarDoğu",
+    "city": "Tekirdağ",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AtaşehirPlaza",
+    "city": "İzmir",
+    "region": "Sincan",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇatalcaBatı",
+    "city": "Tokat",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüPlaza",
+    "city": "Kayseri",
+    "region": "Eyüpsultan",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanOrta",
+    "city": "Gaziantep",
+    "region": "Karaisalı",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahalleEski",
+    "city": "Van",
+    "region": "Ümraniye",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BayrampaşaBelde",
+    "city": "Şanlıurfa",
+    "region": "Beşiktaş",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükçekmeceMerkez",
+    "city": "Şanlıurfa",
+    "region": "Büyükorhan",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜmraniyeÇarşı",
+    "city": "Bursa",
+    "region": "Ceyhan",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirSanayi",
+    "city": "Nevşehir",
+    "region": "Pozantı",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezBatı",
+    "city": "Giresun",
+    "region": "Konak",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kadıköy",
+    "city": "Sinop",
+    "region": "Sancaktepe",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenyurtAlt",
+    "city": "Diyarbakır",
+    "region": "Yüreğir",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BornovaKüçük",
+    "city": "Elazığ",
+    "region": "Sarıyer",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güzelbahçe",
+    "city": "Eskişehir",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanPlaza",
+    "city": "Düzce",
+    "region": "Üsküdar",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliÇarşı",
+    "city": "Adana",
+    "region": "Pendik",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımDoğu",
+    "city": "Adana",
+    "region": "Beşiktaş",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükorhan",
+    "city": "Hatay",
+    "region": "Kartal",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sarıçam",
+    "city": "Rize",
+    "region": "Karşıyaka",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Mudanya",
+    "city": "Mersin",
+    "region": "Çiğli",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BağcılarBelde",
+    "city": "Adana",
+    "region": "Döşemealtı",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikAlt",
+    "city": "Antalya",
+    "region": "Keçiören",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MudanyaBelde",
+    "city": "Afyon",
+    "region": "Narlıdere",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NarlıdereEski",
+    "city": "Kırşehir",
+    "region": "Fatih",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Nilüfer",
+    "city": "Eskişehir",
+    "region": "Sarıyer",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Avcılar",
+    "city": "Eskişehir",
+    "region": "Üsküdar",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Döşemealtı",
+    "city": "Manisa",
+    "region": "Alanya",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Arnavutköy",
+    "city": "İzmir",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerOrta",
+    "city": "Kayseri",
+    "region": "Narlıdere",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GaziosmanpaşaDoğu",
+    "city": "Rize",
+    "region": "Başakşehir",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüzelbahçeOrganize",
+    "city": "Osmaniye",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KozanÇarşı",
+    "city": "Trabzon",
+    "region": "Silivri",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KadıköyMahalle",
+    "city": "Mersin",
+    "region": "Sultangazi",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Manavgat",
+    "city": "Konya",
+    "region": "Zeytinburnu",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.228Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükçekmecePlaza",
+    "city": "Balıkesir",
+    "region": "Bağcılar",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çukurova",
+    "city": "Çorum",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KeçiörenMerkez",
+    "city": "Zonguldak",
+    "region": "Pozantı",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeMahalle",
+    "city": "Kayseri",
+    "region": "Kozan",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Üsküdar",
+    "city": "Kırklareli",
+    "region": "Çiğli",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KemerPlaza",
+    "city": "Konya",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Avcılar",
+    "city": "Düzce",
+    "region": "Yüreğir",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Balçova",
+    "city": "Aksaray",
+    "region": "Bornova",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AksuOrganize",
+    "city": "Kırşehir",
+    "region": "Küçükçekmece",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kartal",
+    "city": "Osmaniye",
+    "region": "Yüreğir",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Beşiktaş",
+    "city": "Yozgat",
+    "region": "İnegöl",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "HarmancıkPlaza",
+    "city": "Sivas",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KozanSanayi",
+    "city": "Eskişehir",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüAlt",
+    "city": "Sakarya",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Maltepe",
+    "city": "Hatay",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SultangaziÇarşı",
+    "city": "Kocaeli",
+    "region": "Aksu",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ArnavutköySanayi",
+    "city": "Gaziantep",
+    "region": "Şişli",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeÜst",
+    "city": "Ordu",
+    "region": "Esenyurt",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Mamak",
+    "city": "Konya",
+    "region": "Yumurtalık",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenKuzey",
+    "city": "Samsun",
+    "region": "Narlıdere",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliBelde",
+    "city": "Manisa",
+    "region": "Yıldırım",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gemlik",
+    "city": "Bursa",
+    "region": "Silivri",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarşıyakaDoğu",
+    "city": "Yozgat",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜmraniyeSanayi",
+    "city": "Kocaeli",
+    "region": "Arnavutköy",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KartalAlt",
+    "city": "Adana",
+    "region": "Büyükorhan",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliBelde",
+    "city": "Nevşehir",
+    "region": "Kepez",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çiğli",
+    "city": "Sivas",
+    "region": "Silivri",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ManavgatYeni",
+    "city": "Eskişehir",
+    "region": "Karaisalı",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GemlikOrganize",
+    "city": "Afyon",
+    "region": "Döşemealtı",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonyaaltıGüney",
+    "city": "Muğla",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeMahalle",
+    "city": "Samsun",
+    "region": "Ceyhan",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükçekmeceÜst",
+    "city": "Van",
+    "region": "Keçiören",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüzelbahçeAlt",
+    "city": "Rize",
+    "region": "Seyhan",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BayrampaşaYeni",
+    "city": "İstanbul",
+    "region": "Ümraniye",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüBüyük",
+    "city": "Aydın",
+    "region": "Eyüpsultan",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaMerkez",
+    "city": "Bursa",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıyerDoğu",
+    "city": "Kırklareli",
+    "region": "Seyhan",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KaraisalıPlaza",
+    "city": "Manisa",
+    "region": "Eyüpsultan",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ZeytinburnuOrganize",
+    "city": "Denizli",
+    "region": "Manavgat",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NarlıdereSanayi",
+    "city": "Gaziantep",
+    "region": "Sancaktepe",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerAlt",
+    "city": "Diyarbakır",
+    "region": "Seyhan",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenlerKüçük",
+    "city": "Isparta",
+    "region": "Küçükçekmece",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Serik",
+    "city": "Kayseri",
+    "region": "Zeytinburnu",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Narlıdere",
+    "city": "Samsun",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliKuzey",
+    "city": "Malatya",
+    "region": "Kemer",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yenimahalle",
+    "city": "Muğla",
+    "region": "Yumurtalık",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karaisalı",
+    "city": "Adana",
+    "region": "Yüreğir",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Döşemealtı",
+    "city": "Bursa",
+    "region": "Seyhan",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıyerEski",
+    "city": "Gaziantep",
+    "region": "Altındağ",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güzelbahçe",
+    "city": "Isparta",
+    "region": "Beylikdüzü",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.222Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AvcılarBatı",
+    "city": "Kayseri",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PozantıBelde",
+    "city": "Tokat",
+    "region": "Pendik",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PursaklarMerkez",
+    "city": "Kastamonu",
+    "region": "Serik",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gaziosmanpaşa",
+    "city": "Kastamonu",
+    "region": "Bağcılar",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ArnavutköyEski",
+    "city": "Çankırı",
+    "region": "Nilüfer",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Eyüpsultan",
+    "city": "Osmaniye",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Avcılar",
+    "city": "Mersin",
+    "region": "Bornova",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşMerkez",
+    "city": "Yozgat",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AlanyaKüçük",
+    "city": "Elazığ",
+    "region": "Ataşehir",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Osmangazi",
+    "city": "Aydın",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Arnavutköy",
+    "city": "Çorum",
+    "region": "Bayrampaşa",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karabağlar",
+    "city": "Van",
+    "region": "Beşiktaş",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikKuzey",
+    "city": "Tekirdağ",
+    "region": "Seyhan",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kozan",
+    "city": "Çankırı",
+    "region": "Pendik",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜmraniyePlaza",
+    "city": "Erzurum",
+    "region": "Aksu",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliBüyük",
+    "city": "Isparta",
+    "region": "Başakşehir",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenlerAlt",
+    "city": "Tokat",
+    "region": "Yenimahalle",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güzelbahçe",
+    "city": "Çorum",
+    "region": "Sultangazi",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KaraisalıOrganize",
+    "city": "Uşak",
+    "region": "Balçova",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezOrta",
+    "city": "Sakarya",
+    "region": "Sultangazi",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "DöşemealtıDoğu",
+    "city": "Afyon",
+    "region": "Yumurtalık",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahalleAlt",
+    "city": "Isparta",
+    "region": "Büyükorhan",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferAlt",
+    "city": "Elazığ",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NarlıdereBatı",
+    "city": "Sakarya",
+    "region": "Nilüfer",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerSite",
+    "city": "Diyarbakır",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ManavgatPlaza",
+    "city": "Samsun",
+    "region": "Kartal",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KüçükçekmeceBelde",
+    "city": "Tokat",
+    "region": "Beyoğlu",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeMerkez",
+    "city": "Bursa",
+    "region": "Eyüpsultan",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeyoğluOrta",
+    "city": "Mersin",
+    "region": "Çatalca",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SultangaziOrganize",
+    "city": "Gaziantep",
+    "region": "Konak",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliÜst",
+    "city": "Konya",
+    "region": "Kepez",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Pursaklar",
+    "city": "Muğla",
+    "region": "Ataşehir",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanPazar",
+    "city": "İzmir",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerPlaza",
+    "city": "Kahramanmaraş",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "HarmancıkMerkez",
+    "city": "Ordu",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ManavgatYeni",
+    "city": "Şanlıurfa",
+    "region": "Nilüfer",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanKuzey",
+    "city": "Giresun",
+    "region": "Bayrampaşa",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaKuzey",
+    "city": "Çorum",
+    "region": "Balçova",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BakırköyKöy",
+    "city": "Muğla",
+    "region": "Altındağ",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutEski",
+    "city": "Ordu",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Zeytinburnu",
+    "city": "Isparta",
+    "region": "Döşemealtı",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziEski",
+    "city": "Gaziantep",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Döşemealtı",
+    "city": "İstanbul",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kemer",
+    "city": "Zonguldak",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaKöy",
+    "city": "Erzurum",
+    "region": "Gaziemir",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliPlaza",
+    "city": "Samsun",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanÜst",
+    "city": "Van",
+    "region": "Eyüpsultan",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SerikPazar",
+    "city": "Sivas",
+    "region": "Orhangazi",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bahçelievler",
+    "city": "Konya",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüKüçük",
+    "city": "İzmir",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.215Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MamakBelde",
+    "city": "Kahramanmaraş",
+    "region": "Gaziemir",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Muratpaşa",
+    "city": "Gaziantep",
+    "region": "Üsküdar",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Merkez",
+    "city": "Kırşehir",
+    "region": "Keçiören",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıçamGüney",
+    "city": "Adana",
+    "region": "Seyhan",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bayrampaşa",
+    "city": "Aksaray",
+    "region": "Esenyurt",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirÜst",
+    "city": "Mersin",
+    "region": "Çiğli",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜsküdarYeni",
+    "city": "Çankırı",
+    "region": "Çankaya",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımSanayi",
+    "city": "Tekirdağ",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇatalcaAlt",
+    "city": "Tokat",
+    "region": "Aksu",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Beşiktaş",
+    "city": "Kahramanmaraş",
+    "region": "Konyaaltı",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahallePlaza",
+    "city": "Erzurum",
+    "region": "Osmangazi",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezÜst",
+    "city": "Manisa",
+    "region": "Sultangazi",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirOrta",
+    "city": "Van",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BağcılarDoğu",
+    "city": "Çorum",
+    "region": "İnegöl",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Balçova",
+    "city": "Manisa",
+    "region": "Sarıyer",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenPazar",
+    "city": "Amasya",
+    "region": "Orhangazi",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PursaklarÇarşı",
+    "city": "Rize",
+    "region": "Eyüpsultan",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerBüyük",
+    "city": "Gaziantep",
+    "region": "Esenyurt",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MudanyaBatı",
+    "city": "Ankara",
+    "region": "Kozan",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanÜst",
+    "city": "Tekirdağ",
+    "region": "Kozan",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kağıthane",
+    "city": "Çankırı",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SilivriKüçük",
+    "city": "Kastamonu",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "FatihBatı",
+    "city": "Diyarbakır",
+    "region": "Bağcılar",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BağcılarOrta",
+    "city": "Ordu",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çukurova",
+    "city": "Rize",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PozantıMahalle",
+    "city": "Kırklareli",
+    "region": "Karabağlar",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Konyaaltı",
+    "city": "Isparta",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüOrganize",
+    "city": "İzmir",
+    "region": "Gemlik",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BakırköyKuzey",
+    "city": "İzmir",
+    "region": "Bornova",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıyerBüyük",
+    "city": "Osmaniye",
+    "region": "Güzelbahçe",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziÜst",
+    "city": "Tokat",
+    "region": "Karabağlar",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Harmancık",
+    "city": "Çankırı",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenPazar",
+    "city": "Eskişehir",
+    "region": "Alanya",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bornova",
+    "city": "Isparta",
+    "region": "Esenyurt",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sancaktepe",
+    "city": "Trabzon",
+    "region": "Kartal",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "DöşemealtıEski",
+    "city": "Sakarya",
+    "region": "Karabağlar",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "FatihÜst",
+    "city": "Adana",
+    "region": "Bayrampaşa",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SincanSite",
+    "city": "Mersin",
+    "region": "Kemer",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SancaktepeDoğu",
+    "city": "Düzce",
+    "region": "Kağıthane",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇukurovaOrta",
+    "city": "Trabzon",
+    "region": "Esenler",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarabağlarPazar",
+    "city": "Sakarya",
+    "region": "Merkez",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Etimesgut",
+    "city": "Aksaray",
+    "region": "Pursaklar",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziÜst",
+    "city": "Nevşehir",
+    "region": "Esenyurt",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutBatı",
+    "city": "Rize",
+    "region": "Kemer",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezEski",
+    "city": "Antalya",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KeçiörenOrta",
+    "city": "Samsun",
+    "region": "Muratpaşa",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "DöşemealtıÇarşı",
+    "city": "Nevşehir",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikBüyük",
+    "city": "Ankara",
+    "region": "Mudanya",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BaşakşehirYeni",
+    "city": "Balıkesir",
+    "region": "Narlıdere",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Mamak",
+    "city": "Eskişehir",
+    "region": "Gaziemir",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.208Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KadıköySite",
+    "city": "Ankara",
+    "region": "Esenyurt",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıçamEski",
+    "city": "Kastamonu",
+    "region": "Yıldırım",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Serik",
+    "city": "Van",
+    "region": "Osmangazi",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PursaklarEski",
+    "city": "Sivas",
+    "region": "Kepez",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AvcılarÜst",
+    "city": "Konya",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BayrampaşaPazar",
+    "city": "Zonguldak",
+    "region": "Sarıçam",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Seyhan",
+    "city": "Aksaray",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "CeyhanDoğu",
+    "city": "Elazığ",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Esenler",
+    "city": "Kastamonu",
+    "region": "Avcılar",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ArnavutköyOrganize",
+    "city": "Aydın",
+    "region": "Bayrampaşa",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sancaktepe",
+    "city": "Kırklareli",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SerikDoğu",
+    "city": "Osmaniye",
+    "region": "Kepez",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GemlikDoğu",
+    "city": "Amasya",
+    "region": "Pozantı",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "CeyhanGüney",
+    "city": "Kayseri",
+    "region": "Fatih",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MudanyaOrganize",
+    "city": "Konya",
+    "region": "Kepez",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıçamPazar",
+    "city": "Muğla",
+    "region": "Yıldırım",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Beşiktaş",
+    "city": "Kocaeli",
+    "region": "Çiğli",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirBüyük",
+    "city": "Kahramanmaraş",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çatalca",
+    "city": "Van",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüzelbahçeBelde",
+    "city": "Sivas",
+    "region": "Sultangazi",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferMerkez",
+    "city": "Muğla",
+    "region": "Pendik",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KemerOrta",
+    "city": "Elazığ",
+    "region": "Çukurova",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yüreğir",
+    "city": "Hatay",
+    "region": "Yıldırım",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AlanyaGüney",
+    "city": "Balıkesir",
+    "region": "İnegöl",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutPlaza",
+    "city": "Hatay",
+    "region": "Muratpaşa",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanOrta",
+    "city": "Konya",
+    "region": "Muratpaşa",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşKuzey",
+    "city": "Uşak",
+    "region": "Yenimahalle",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezSite",
+    "city": "Sivas",
+    "region": "Bağcılar",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakPlaza",
+    "city": "Yozgat",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanAlt",
+    "city": "Samsun",
+    "region": "Gaziemir",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Muratpaşa",
+    "city": "Gaziantep",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanGüney",
+    "city": "Sinop",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KağıthaneSite",
+    "city": "Aksaray",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Fatih",
+    "city": "Kayseri",
+    "region": "Serik",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ZeytinburnuMahalle",
+    "city": "Sakarya",
+    "region": "Orhangazi",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KemerBatı",
+    "city": "İstanbul",
+    "region": "Karaisalı",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BaşakşehirDoğu",
+    "city": "Balıkesir",
+    "region": "Fatih",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sarıçam",
+    "city": "Aydın",
+    "region": "Balçova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükçekmece",
+    "city": "Hatay",
+    "region": "Çukurova",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıyerKöy",
+    "city": "Diyarbakır",
+    "region": "Güngören",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yıldırım",
+    "city": "Balıkesir",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÜsküdarKöy",
+    "city": "Balıkesir",
+    "region": "Beylikdüzü",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇatalcaBüyük",
+    "city": "İzmir",
+    "region": "Büyükçekmece",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kozan",
+    "city": "Sinop",
+    "region": "Eyüpsultan",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KağıthaneÜst",
+    "city": "Eskişehir",
+    "region": "Gaziosmanpaşa",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SultangaziPazar",
+    "city": "Düzce",
+    "region": "Sarıyer",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EyüpsultanKuzey",
+    "city": "Kayseri",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SilivriÜst",
+    "city": "Giresun",
+    "region": "Küçükçekmece",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OsmangaziBüyük",
+    "city": "Manisa",
+    "region": "Maltepe",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüzelbahçeEski",
+    "city": "Samsun",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.203Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SarıçamAlt",
+    "city": "Erzurum",
+    "region": "Mudanya",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GaziosmanpaşaDoğu",
+    "city": "Aydın",
+    "region": "Keçiören",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikBatı",
+    "city": "Tokat",
+    "region": "Mudanya",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bağcılar",
+    "city": "Kastamonu",
+    "region": "Küçükçekmece",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Küçükçekmece",
+    "city": "Sivas",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Orhangazi",
+    "city": "Hatay",
+    "region": "Çiğli",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Üsküdar",
+    "city": "Antalya",
+    "region": "Bahçelievler",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güngören",
+    "city": "Balıkesir",
+    "region": "Beylikdüzü",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenyurtOrganize",
+    "city": "Zonguldak",
+    "region": "Bahçelievler",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeyoğluSite",
+    "city": "Samsun",
+    "region": "Kağıthane",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OsmangaziSanayi",
+    "city": "Nevşehir",
+    "region": "Kepez",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakKöy",
+    "city": "Manisa",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Üsküdar",
+    "city": "İstanbul",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sarıyer",
+    "city": "Adana",
+    "region": "Başakşehir",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Seyhan",
+    "city": "Aksaray",
+    "region": "Beşiktaş",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AtaşehirPazar",
+    "city": "Elazığ",
+    "region": "Döşemealtı",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BayrampaşaKuzey",
+    "city": "Balıkesir",
+    "region": "Maltepe",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımKöy",
+    "city": "Van",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kağıthane",
+    "city": "Giresun",
+    "region": "Bahçelievler",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OsmangaziYeni",
+    "city": "Elazığ",
+    "region": "Gaziosmanpaşa",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AksuÇarşı",
+    "city": "Gaziantep",
+    "region": "Narlıdere",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakPlaza",
+    "city": "Bursa",
+    "region": "Çiğli",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüzelbahçeKuzey",
+    "city": "Afyon",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenOrganize",
+    "city": "Çorum",
+    "region": "Sarıçam",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Çukurova",
+    "city": "Balıkesir",
+    "region": "Karabağlar",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SilivriGüney",
+    "city": "Tokat",
+    "region": "Zeytinburnu",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakPazar",
+    "city": "Bursa",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PursaklarSite",
+    "city": "Bursa",
+    "region": "Çankaya",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanGüney",
+    "city": "Aydın",
+    "region": "Sarıçam",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Mudanya",
+    "city": "Aydın",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezDoğu",
+    "city": "Malatya",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OsmangaziMerkez",
+    "city": "Balıkesir",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MaltepeMerkez",
+    "city": "Diyarbakır",
+    "region": "Konak",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SincanKuzey",
+    "city": "Kırşehir",
+    "region": "Esenler",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kozan",
+    "city": "Muğla",
+    "region": "Ceyhan",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Mamak",
+    "city": "Kayseri",
+    "region": "Yıldırım",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "CeyhanBüyük",
+    "city": "Eskişehir",
+    "region": "Arnavutköy",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karaisalı",
+    "city": "Isparta",
+    "region": "Yenimahalle",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Etimesgut",
+    "city": "Aydın",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KonakYeni",
+    "city": "Yozgat",
+    "region": "Karabağlar",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferPlaza",
+    "city": "İstanbul",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güzelbahçe",
+    "city": "Afyon",
+    "region": "Kemer",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sultangazi",
+    "city": "Kırşehir",
+    "region": "Çukurova",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BornovaKuzey",
+    "city": "Aksaray",
+    "region": "Bahçelievler",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarabağlarÇarşı",
+    "city": "Çankırı",
+    "region": "Pursaklar",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BornovaÇarşı",
+    "city": "Amasya",
+    "region": "Konyaaltı",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BalçovaÜst",
+    "city": "Aydın",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bayrampaşa",
+    "city": "Antalya",
+    "region": "Eyüpsultan",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PozantıOrta",
+    "city": "Adana",
+    "region": "Harmancık",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Merkez",
+    "city": "Ordu",
+    "region": "Konyaaltı",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.197Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenEski",
+    "city": "Kocaeli",
+    "region": "Konyaaltı",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ZeytinburnuMahalle",
+    "city": "Trabzon",
+    "region": "Sarıçam",
+    "demography": "Traditional",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KartalBüyük",
+    "city": "İzmir",
+    "region": "Ümraniye",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "HarmancıkPazar",
+    "city": "Rize",
+    "region": "Çatalca",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "CeyhanGüney",
+    "city": "Aydın",
+    "region": "İnegöl",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BayrampaşaEski",
+    "city": "Balıkesir",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BaşakşehirMahalle",
+    "city": "Ordu",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MamakBüyük",
+    "city": "Kırklareli",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "İnegöl",
+    "city": "Van",
+    "region": "Sincan",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerÇarşı",
+    "city": "Ankara",
+    "region": "Zeytinburnu",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bahçelievler",
+    "city": "Çorum",
+    "region": "Beylikdüzü",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kağıthane",
+    "city": "İzmir",
+    "region": "Güngören",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezAlt",
+    "city": "Rize",
+    "region": "Döşemealtı",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "PendikSite",
+    "city": "Samsun",
+    "region": "Manavgat",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüMahalle",
+    "city": "Kahramanmaraş",
+    "region": "Sultangazi",
+    "demography": "Traditional",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeylikdüzüEski",
+    "city": "Kastamonu",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "DöşemealtıKuzey",
+    "city": "Kocaeli",
+    "region": "Aksu",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BahçelievlerBatı",
+    "city": "Nevşehir",
+    "region": "Konak",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇukurovaBatı",
+    "city": "Trabzon",
+    "region": "Altındağ",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Avcılar",
+    "city": "Çorum",
+    "region": "Keçiören",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Arnavutköy",
+    "city": "Trabzon",
+    "region": "Yenimahalle",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Güngören",
+    "city": "Elazığ",
+    "region": "Bayrampaşa",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "CeyhanSanayi",
+    "city": "Elazığ",
+    "region": "Harmancık",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bağcılar",
+    "city": "Zonguldak",
+    "region": "Sincan",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanKuzey",
+    "city": "Şanlıurfa",
+    "region": "Döşemealtı",
+    "demography": "Upper Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımOrganize",
+    "city": "Antalya",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sarıyer",
+    "city": "Amasya",
+    "region": "Büyükorhan",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YıldırımKuzey",
+    "city": "Rize",
+    "region": "Beylikdüzü",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KepezPazar",
+    "city": "Amasya",
+    "region": "Yenimahalle",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenÜst",
+    "city": "Sivas",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yenimahalle",
+    "city": "Van",
+    "region": "Arnavutköy",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KağıthaneOrganize",
+    "city": "Trabzon",
+    "region": "Küçükçekmece",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KağıthaneÇarşı",
+    "city": "Balıkesir",
+    "region": "Esenyurt",
+    "demography": "Upper Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkBatı",
+    "city": "Gaziantep",
+    "region": "Avcılar",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Narlıdere",
+    "city": "İstanbul",
+    "region": "Kozan",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanKüçük",
+    "city": "Yozgat",
+    "region": "Aksu",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Kemer",
+    "city": "Kırklareli",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Etimesgut",
+    "city": "İstanbul",
+    "region": "Orhangazi",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ZeytinburnuSanayi",
+    "city": "Amasya",
+    "region": "Arnavutköy",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SincanMahalle",
+    "city": "Eskişehir",
+    "region": "Esenyurt",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Karşıyaka",
+    "city": "Samsun",
+    "region": "Fatih",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SincanBelde",
+    "city": "Denizli",
+    "region": "Küçükçekmece",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SerikEski",
+    "city": "Erzurum",
+    "region": "Bakırköy",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BakırköyEski",
+    "city": "Erzurum",
+    "region": "Çukurova",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "NilüferMerkez",
+    "city": "Kahramanmaraş",
+    "region": "Sultangazi",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yüreğir",
+    "city": "Trabzon",
+    "region": "İnegöl",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KartalÜst",
+    "city": "Nevşehir",
+    "region": "Alanya",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Üsküdar",
+    "city": "Erzurum",
+    "region": "Muratpaşa",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Büyükorhan",
+    "city": "Kırklareli",
+    "region": "Kadıköy",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Konak",
+    "city": "Tekirdağ",
+    "region": "Merkez",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.188Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Sincan",
+    "city": "Konya",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AltındağOrta",
+    "city": "Yozgat",
+    "region": "Gaziosmanpaşa",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanOrganize",
+    "city": "Çankırı",
+    "region": "Bornova",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KozanMerkez",
+    "city": "Elazığ",
+    "region": "Altındağ",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yüreğir",
+    "city": "Trabzon",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MamakKöy",
+    "city": "Afyon",
+    "region": "Fatih",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BornovaKüçük",
+    "city": "Sakarya",
+    "region": "Pursaklar",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliAlt",
+    "city": "Kırşehir",
+    "region": "Sincan",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YumurtalıkOrta",
+    "city": "Yozgat",
+    "region": "Harmancık",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AlanyaBelde",
+    "city": "Bursa",
+    "region": "Ataşehir",
+    "demography": "Traditional",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OsmangaziPlaza",
+    "city": "Adana",
+    "region": "Esenler",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliKuzey",
+    "city": "Osmaniye",
+    "region": "Küçükçekmece",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AksuMerkez",
+    "city": "Tokat",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bahçelievler",
+    "city": "Ordu",
+    "region": "Karabağlar",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanYeni",
+    "city": "Zonguldak",
+    "region": "Kozan",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahalleOrganize",
+    "city": "Malatya",
+    "region": "Maltepe",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EsenyurtEski",
+    "city": "Kastamonu",
+    "region": "Başakşehir",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Keçiören",
+    "city": "Şanlıurfa",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ŞişliYeni",
+    "city": "Tokat",
+    "region": "Pendik",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AlanyaSanayi",
+    "city": "Osmaniye",
+    "region": "Serik",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Ümraniye",
+    "city": "Uşak",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirBatı",
+    "city": "Uşak",
+    "region": "Bayrampaşa",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Zeytinburnu",
+    "city": "Afyon",
+    "region": "Yüreğir",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MerkezOrta",
+    "city": "Eskişehir",
+    "region": "Güngören",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Eyüpsultan",
+    "city": "Aksaray",
+    "region": "Bağcılar",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanOrta",
+    "city": "Antalya",
+    "region": "Pendik",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ÇiğliMerkez",
+    "city": "Kayseri",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YüreğirPazar",
+    "city": "Van",
+    "region": "Büyükçekmece",
+    "demography": "Upper Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bornova",
+    "city": "Ankara",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GüngörenSite",
+    "city": "Hatay",
+    "region": "Kağıthane",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "MuratpaşaGüney",
+    "city": "Kırşehir",
+    "region": "Avcılar",
+    "demography": "Traditional",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanKöy",
+    "city": "Ankara",
+    "region": "Pozantı",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "GaziemirPazar",
+    "city": "Kahramanmaraş",
+    "region": "Silivri",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Gemlik",
+    "city": "Bursa",
+    "region": "Eyüpsultan",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.165Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Yumurtalık",
+    "city": "Çankırı",
+    "region": "Bayrampaşa",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BeşiktaşKüçük",
+    "city": "Nevşehir",
+    "region": "Gemlik",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Merkez",
+    "city": "Rize",
+    "region": "Konak",
+    "demography": "Upper Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Üsküdar",
+    "city": "İstanbul",
+    "region": "Büyükçekmece",
+    "demography": "Upper Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Bornova",
+    "city": "Tekirdağ",
+    "region": "Etimesgut",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SeyhanSanayi",
+    "city": "Çorum",
+    "region": "Kartal",
+    "demography": "Traditional",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "EtimesgutSanayi",
+    "city": "Kocaeli",
+    "region": "Osmangazi",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "BüyükorhanDoğu",
+    "city": "Sivas",
+    "region": "Beşiktaş",
+    "demography": "Premium",
+    "size": "Extra Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "OrhangaziBelde",
+    "city": "Kahramanmaraş",
+    "region": "Çankaya",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Nilüfer",
+    "city": "Afyon",
+    "region": "Harmancık",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "YenimahallePlaza",
+    "city": "Erzurum",
+    "region": "Merkez",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "KarşıyakaKüçük",
+    "city": "Osmaniye",
+    "region": "Esenyurt",
+    "demography": "Premium",
+    "size": "Mini",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "AltındağOrganize",
+    "city": "Sakarya",
+    "region": "Ümraniye",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Pozantı",
+    "city": "Van",
+    "region": "Kağıthane",
+    "demography": "Traditional",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "SilivriYeni",
+    "city": "Çankırı",
+    "region": "Beyoğlu",
+    "demography": "Premium",
+    "size": "Maxi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.164Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "CeyhanPazar",
+    "city": "Van",
+    "region": "Gaziemir",
+    "demography": "Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-09-09T08:09:43.163Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Hisarüstü",
+    "city": "İstanbul",
+    "region": "Beşiktaş",
+    "demography": "Upper Premium",
+    "size": "Midi",
+    "domain": "Getir",
+    "createdAt": "2025-07-30T11:07:20.488Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "Mamak",
+    "city": "Ankara",
+    "region": "Mamak",
+    "demography": "Premium",
+    "size": "GB Maxi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-07-30T11:06:31.901Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  },
+  {
+    "name": "ZincirlikuyuBüyük",
+    "city": "Istanbul",
+    "region": "Şişli",
+    "demography": "Premium",
+    "size": "GB Midi",
+    "domain": "Getir Büyük",
+    "createdAt": "2025-07-28T14:13:26.291Z",
+    "updatedAt": "2025-09-17T06:22:34.695Z"
+  }
+]

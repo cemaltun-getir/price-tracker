@@ -139,7 +139,7 @@ const locationSchema = new mongoose.Schema({
   region: { type: String, required: true },
   demography: { type: String, required: true },
   size: { type: String, required: true },
-  domain: { type: String, required: true }
+  domains: { type: [String], required: true, default: [] }
 }, { timestamps: true });
 
 const categorySchema = new mongoose.Schema({
@@ -537,7 +537,7 @@ app.get('/api/locations', async (req, res) => {
       region: location.region,
       demography: location.demography,
       size: location.size,
-      domain: location.domain,
+      domains: location.domains || [],
       created_at: location.createdAt
     }));
     res.json(formattedLocations);
@@ -554,11 +554,11 @@ app.post('/api/locations', async (req, res) => {
       region, 
       demography, 
       size, 
-      domain
+      domains
     } = req.body;
 
-    if (!name || !city || !region || !demography || !size || !domain) {
-      return res.status(400).json({ error: 'Missing required fields: name, city, region, demography, size, domain' });
+    if (!name || !city || !region || !demography || !size || !domains || !Array.isArray(domains) || domains.length === 0) {
+      return res.status(400).json({ error: 'Missing required fields: name, city, region, demography, size, domains (array)' });
     }
 
     const location = new Location({
@@ -567,7 +567,7 @@ app.post('/api/locations', async (req, res) => {
       region,
       demography,
       size,
-      domain
+      domains
     });
     
     const savedLocation = await location.save();
@@ -585,7 +585,7 @@ app.put('/api/locations/:id', async (req, res) => {
       region, 
       demography, 
       size, 
-      domain
+      domains
     } = req.body;
 
     const updateData = {};
@@ -595,7 +595,12 @@ app.put('/api/locations/:id', async (req, res) => {
     if (region !== undefined) updateData.region = region;
     if (demography !== undefined) updateData.demography = demography;
     if (size !== undefined) updateData.size = size;
-    if (domain !== undefined) updateData.domain = domain;
+    if (domains !== undefined) {
+      if (!Array.isArray(domains) || domains.length === 0) {
+        return res.status(400).json({ error: 'domains must be a non-empty array' });
+      }
+      updateData.domains = domains;
+    }
 
     await Location.findByIdAndUpdate(req.params.id, updateData);
     res.json({ message: 'Location updated successfully' });
@@ -681,7 +686,7 @@ app.get('/api/external/locations', async (req, res) => {
       region: location.region,
       demography: location.demography,
       size: location.size,
-      domain: location.domain
+      domains: location.domains || []
     }));
     res.json(externalLocations);
   } catch (error) {
@@ -704,7 +709,7 @@ app.get('/api/external/locations/:id', async (req, res) => {
       region: location.region,
       demography: location.demography,
       size: location.size,
-      domain: location.domain
+      domains: location.domains || []
     };
     
     res.json(externalLocation);
@@ -916,7 +921,7 @@ app.get('/api/external/all', async (req, res) => {
         region: location.region,
         demography: location.demography,
         size: location.size,
-        domain: location.domain
+        domains: location.domains || []
       })),
       price_locations: priceLocations.map(location => ({
         id: location._id.toString(),
