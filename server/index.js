@@ -88,8 +88,14 @@ const skuSchema = new mongoose.Schema({
   brand: String,
   unit: { type: String, required: true },
   unit_value: { type: String, required: true },
+  // Legacy category fields (for backward compatibility)
   category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: false },
   sub_category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'SubCategory', required: false },
+  // New 4-level category references
+  category_level1_id: { type: mongoose.Schema.Types.ObjectId, ref: 'CategoryLevel1', required: false },
+  category_level2_id: { type: mongoose.Schema.Types.ObjectId, ref: 'CategoryLevel2', required: false },
+  category_level3_id: { type: mongoose.Schema.Types.ObjectId, ref: 'CategoryLevel3', required: false },
+  category_level4_id: { type: mongoose.Schema.Types.ObjectId, ref: 'CategoryLevel4', required: false },
   kvi_label: { 
     type: String, 
     enum: ['SKVI', 'KVI', 'Background (BG)', 'Foreground (FG)'], 
@@ -142,14 +148,29 @@ const locationSchema = new mongoose.Schema({
   domains: { type: [String], required: true, default: [] }
 }, { timestamps: true });
 
-const categorySchema = new mongoose.Schema({
+// Category hierarchy schemas (4 levels)
+// Level 1 uses legacy collection name 'categories'
+const categoryLevel1Schema = new mongoose.Schema({
   name: { type: String, required: true, unique: true }
-}, { timestamps: true });
+}, { timestamps: true, collection: 'categories' });
 
-const subCategorySchema = new mongoose.Schema({
+// Level 2 uses legacy collection name 'subcategories' and legacy field name 'category_id'
+const categoryLevel2Schema = new mongoose.Schema({
   name: { type: String, required: true },
+  // legacy field name maintained for compatibility with existing data and UI
   category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }
-}, { timestamps: true });
+}, { timestamps: true, collection: 'subcategories' });
+
+// Level 3 and 4 are new collections
+const categoryLevel3Schema = new mongoose.Schema({
+  name: { type: String, required: true },
+  category_level2_id: { type: mongoose.Schema.Types.ObjectId, ref: 'CategoryLevel2', required: true }
+}, { timestamps: true, collection: 'categorylevel3' });
+
+const categoryLevel4Schema = new mongoose.Schema({
+  name: { type: String, required: true },
+  category_level3_id: { type: mongoose.Schema.Types.ObjectId, ref: 'CategoryLevel3', required: true }
+}, { timestamps: true, collection: 'categorylevel4' });
 
 const priceMappingSchema = new mongoose.Schema({
   sku_id: { type: mongoose.Schema.Types.ObjectId, ref: 'SKU', required: true },
@@ -168,8 +189,13 @@ const simpleLocationSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Models
-const Category = mongoose.model('Category', categorySchema);
-const SubCategory = mongoose.model('SubCategory', subCategorySchema);
+const CategoryLevel1 = mongoose.model('CategoryLevel1', categoryLevel1Schema);
+const CategoryLevel2 = mongoose.model('CategoryLevel2', categoryLevel2Schema);
+const CategoryLevel3 = mongoose.model('CategoryLevel3', categoryLevel3Schema);
+const CategoryLevel4 = mongoose.model('CategoryLevel4', categoryLevel4Schema);
+// Legacy aliases to keep existing refs/populates working
+const Category = mongoose.model('Category', categoryLevel1Schema);
+const SubCategory = mongoose.model('SubCategory', categoryLevel2Schema);
 const SKU = mongoose.model('SKU', skuSchema);
 const Vendor = mongoose.model('Vendor', vendorSchema);
 const Location = mongoose.model('Location', locationSchema);
@@ -222,21 +248,27 @@ const extractUnitValue = (unitValueString) => {
   return match ? parseFloat(match[1]) : 1; // Default to 1 if no number found
 };
 
-// Category Routes
-app.get('/api/categories', async (req, res) => {
+// Category Level 1 Routes
+app.get('/api/categories', async (req, res) => { // legacy alias for level 1
   try {
-    const categories = await Category.find().sort({ createdAt: -1 });
+    const categories = await CategoryLevel1.find().sort({ createdAt: -1 });
     const formattedCategories = await Promise.all(categories.map(async category => {
-      const subCategoriesCount = await SubCategory.countDocuments({ category_id: category._id });
-      const skusCount = await SKU.countDocuments({ category_id: category._id });
+      const level2Items = await CategoryLevel2.find({ category_id: category._id }).select('_id');
+      const level2Ids = level2Items.map(i => i._id);
+      const level3Items = await CategoryLevel3.find({ category_level2_id: { $in: level2Ids } }).select('_id');
+      const level3Ids = level3Items.map(i => i._id);
+      const level4Items = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+      const level4Ids = level4Items.map(i => i._id);
+      const level2Count = level2Ids.length;
+      const skusCount = await SKU.countDocuments({ category_level4_id: { $in: level4Ids } });
       
       return {
         id: category._id,
         name: category.name,
         created_at: category.createdAt,
-        sub_categories_count: subCategoriesCount,
+        sub_categories_count: level2Count,
         skus_count: skusCount,
-        can_delete: subCategoriesCount === 0 && skusCount === 0
+        can_delete: level2Count === 0 && skusCount === 0
       };
     }));
     res.json(formattedCategories);
@@ -245,10 +277,10 @@ app.get('/api/categories', async (req, res) => {
   }
 });
 
-app.post('/api/categories', async (req, res) => {
+app.post('/api/categories', async (req, res) => { // legacy alias for level 1
   try {
     const { name } = req.body;
-    const category = new Category({ name });
+    const category = new CategoryLevel1({ name });
     const savedCategory = await category.save();
     res.json({ id: savedCategory._id, message: 'Category created successfully' });
   } catch (error) {
@@ -256,29 +288,35 @@ app.post('/api/categories', async (req, res) => {
   }
 });
 
-app.put('/api/categories/:id', async (req, res) => {
+app.put('/api/categories/:id', async (req, res) => { // legacy alias for level 1
   try {
     const { name } = req.body;
-    await Category.findByIdAndUpdate(req.params.id, { name });
+    await CategoryLevel1.findByIdAndUpdate(req.params.id, { name });
     res.json({ message: 'Category updated successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-app.delete('/api/categories/:id', async (req, res) => {
+app.delete('/api/categories/:id', async (req, res) => { // legacy alias for level 1
   try {
-    // First check if any sub-categories reference this category
-    const subCategoriesCount = await SubCategory.countDocuments({ category_id: req.params.id });
-    if (subCategoriesCount > 0) {
+    // Check if any level 2 categories reference this level 1
+    const level2Count = await CategoryLevel2.countDocuments({ category_id: req.params.id });
+    if (level2Count > 0) {
       return res.status(400).json({ 
-        error: `Cannot delete category. It has ${subCategoriesCount} sub-category(ies) that must be deleted first.`,
-        details: { type: 'sub_categories', count: subCategoriesCount }
+        error: `Cannot delete category. It has ${level2Count} child category(ies) that must be deleted first.`,
+        details: { type: 'category_level2', count: level2Count }
       });
     }
     
-    // Check if any SKUs reference this category
-    const skusCount = await SKU.countDocuments({ category_id: req.params.id });
+    // Check if any SKUs reference this category via level 4 descendants
+    const level2Items = await CategoryLevel2.find({ category_id: req.params.id }).select('_id');
+    const level2Ids = level2Items.map(i => i._id);
+    const level3Items = await CategoryLevel3.find({ category_level2_id: { $in: level2Ids } }).select('_id');
+    const level3Ids = level3Items.map(i => i._id);
+    const level4Items = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+    const level4Ids = level4Items.map(i => i._id);
+    const skusCount = await SKU.countDocuments({ category_level4_id: { $in: level4Ids } });
     if (skusCount > 0) {
       return res.status(400).json({ 
         error: `Cannot delete category. It is being used by ${skusCount} product(s). Please change the category of these products first.`,
@@ -286,72 +324,232 @@ app.delete('/api/categories/:id', async (req, res) => {
       });
     }
     
-    await Category.findByIdAndDelete(req.params.id);
+    await CategoryLevel1.findByIdAndDelete(req.params.id);
     res.json({ message: 'Category deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// Sub-Category Routes
-app.get('/api/sub-categories', async (req, res) => {
+// Category Level 2 Routes (legacy endpoint name kept for compatibility)
+app.get('/api/sub-categories', async (req, res) => { // alias for level 2
   try {
-    const { category_id } = req.query;
+    const { category_id } = req.query; // parent level1 id
     const filter = category_id ? { category_id } : {};
-    const subCategories = await SubCategory.find(filter).populate('category_id', 'name').sort({ createdAt: -1 });
-    const formattedSubCategories = await Promise.all(subCategories.map(async subCategory => {
-      const skusCount = await SKU.countDocuments({ sub_category_id: subCategory._id });
+    const level2Categories = await CategoryLevel2.find(filter).populate('category_id', 'name').sort({ createdAt: -1 });
+    const formatted = await Promise.all(level2Categories.map(async item => {
+      const childCount = await CategoryLevel3.countDocuments({ category_level2_id: item._id });
+      const level3Items = await CategoryLevel3.find({ category_level2_id: item._id }).select('_id');
+      const level3Ids = level3Items.map(i => i._id);
+      const level4Items = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+      const level4Ids = level4Items.map(i => i._id);
+      const skusCount = await SKU.countDocuments({ category_level4_id: { $in: level4Ids } });
       
       return {
-        id: subCategory._id,
-        name: subCategory.name,
-        category_id: subCategory.category_id._id,
-        category_name: subCategory.category_id.name,
-        created_at: subCategory.createdAt,
+        id: item._id,
+        name: item.name,
+        category_id: item.category_id._id,
+        category_name: item.category_id.name,
+        created_at: item.createdAt,
         skus_count: skusCount,
-        can_delete: skusCount === 0
+        children_count: childCount,
+        can_delete: skusCount === 0 && childCount === 0
       };
     }));
-    res.json(formattedSubCategories);
+    res.json(formatted);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-app.post('/api/sub-categories', async (req, res) => {
+app.post('/api/sub-categories', async (req, res) => { // alias for level 2
   try {
-    const { name, category_id } = req.body;
-    const subCategory = new SubCategory({ name, category_id });
-    const savedSubCategory = await subCategory.save();
-    res.json({ id: savedSubCategory._id, message: 'Sub-category created successfully' });
+    const { name, category_id } = req.body; // parent level1 id
+    const item = new CategoryLevel2({ name, category_id });
+    const saved = await item.save();
+    res.json({ id: saved._id, message: 'Sub-category created successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-app.put('/api/sub-categories/:id', async (req, res) => {
+app.put('/api/sub-categories/:id', async (req, res) => { // alias for level 2
   try {
-    const { name, category_id } = req.body;
-    await SubCategory.findByIdAndUpdate(req.params.id, { name, category_id });
+    const { name, category_id } = req.body; // parent level1 id
+    await CategoryLevel2.findByIdAndUpdate(req.params.id, { name, category_id });
     res.json({ message: 'Sub-category updated successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-app.delete('/api/sub-categories/:id', async (req, res) => {
+app.delete('/api/sub-categories/:id', async (req, res) => { // alias for level 2
   try {
-    // Check if any SKUs reference this sub-category
-    const skusCount = await SKU.countDocuments({ sub_category_id: req.params.id });
+    // Check if any level 3 categories reference this level 2
+    const childCount = await CategoryLevel3.countDocuments({ category_level2_id: req.params.id });
+    if (childCount > 0) {
+      return res.status(400).json({ 
+        error: `Cannot delete sub-category. It has ${childCount} child category(ies) that must be deleted first.`,
+        details: { type: 'category_level3', count: childCount }
+      });
+    }
+
+    // Check if any SKUs reference this level 2 via level 4 descendants
+    const level3Items = await CategoryLevel3.find({ category_level2_id: req.params.id }).select('_id');
+    const level3Ids = level3Items.map(i => i._id);
+    const level4Items = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+    const level4Ids = level4Items.map(i => i._id);
+    const skusCount = await SKU.countDocuments({ category_level4_id: { $in: level4Ids } });
     if (skusCount > 0) {
       return res.status(400).json({ 
-        error: `Cannot delete sub-category. It is being used by ${skusCount} product(s). Please change the sub-category of these products first.`,
+        error: `Cannot delete sub-category. It is being used by ${skusCount} product(s).`,
         details: { type: 'skus', count: skusCount }
       });
     }
-    
-    await SubCategory.findByIdAndDelete(req.params.id);
+
+    await CategoryLevel2.findByIdAndDelete(req.params.id);
     res.json({ message: 'Sub-category deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Category Level 3 Routes
+app.get('/api/category-level3', async (req, res) => {
+  try {
+    const level2_id = req.query.level2_id || req.query.category_level2_id;
+    const filter = level2_id ? { category_level2_id: level2_id } : {};
+    const items = await CategoryLevel3.find(filter).populate('category_level2_id', 'name').sort({ createdAt: -1 });
+    const formatted = await Promise.all(items.map(async item => {
+      const childCount = await CategoryLevel4.countDocuments({ category_level3_id: item._id });
+      const level4Items = await CategoryLevel4.find({ category_level3_id: item._id }).select('_id');
+      const level4Ids = level4Items.map(i => i._id);
+      const skusCount = await SKU.countDocuments({ category_level4_id: { $in: level4Ids } });
+      return {
+        id: item._id,
+        name: item.name,
+        level2_id: item.category_level2_id._id,
+        level2_name: item.category_level2_id.name,
+        children_count: childCount,
+        skus_count: skusCount,
+        created_at: item.createdAt,
+        can_delete: skusCount === 0 && childCount === 0
+      };
+    }));
+    res.json(formatted);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/category-level3', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const level2_id = req.body.level2_id || req.body.category_level2_id;
+    const item = new CategoryLevel3({ name, category_level2_id: level2_id });
+    const saved = await item.save();
+    res.json({ id: saved._id, message: 'Category level 3 created successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.put('/api/category-level3/:id', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const level2_id = req.body.level2_id || req.body.category_level2_id;
+    await CategoryLevel3.findByIdAndUpdate(req.params.id, { name, category_level2_id: level2_id });
+    res.json({ message: 'Category level 3 updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.delete('/api/category-level3/:id', async (req, res) => {
+  try {
+    const childCount = await CategoryLevel4.countDocuments({ category_level3_id: req.params.id });
+    if (childCount > 0) {
+      return res.status(400).json({
+        error: `Cannot delete category level 3. It has ${childCount} child category(ies).`,
+        details: { type: 'category_level4', count: childCount }
+      });
+    }
+
+    const level4Items = await CategoryLevel4.find({ category_level3_id: req.params.id }).select('_id');
+    const level4Ids = level4Items.map(i => i._id);
+    const skusCount = await SKU.countDocuments({ category_level4_id: { $in: level4Ids } });
+    if (skusCount > 0) {
+      return res.status(400).json({
+        error: `Cannot delete category level 3. It is used by ${skusCount} product(s).`,
+        details: { type: 'skus', count: skusCount }
+      });
+    }
+
+    await CategoryLevel3.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Category level 3 deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Category Level 4 Routes
+app.get('/api/category-level4', async (req, res) => {
+  try {
+    const level3_id = req.query.level3_id || req.query.category_level3_id;
+    const filter = level3_id ? { category_level3_id: level3_id } : {};
+    const items = await CategoryLevel4.find(filter).populate('category_level3_id', 'name').sort({ createdAt: -1 });
+    const formatted = await Promise.all(items.map(async item => {
+      const skusCount = await SKU.countDocuments({ category_level4_id: item._id });
+      return {
+        id: item._id,
+        name: item.name,
+        level3_id: item.category_level3_id._id,
+        level3_name: item.category_level3_id.name,
+        skus_count: skusCount,
+        created_at: item.createdAt,
+        can_delete: skusCount === 0
+      };
+    }));
+    res.json(formatted);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/category-level4', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const level3_id = req.body.level3_id || req.body.category_level3_id;
+    const item = new CategoryLevel4({ name, category_level3_id: level3_id });
+    const saved = await item.save();
+    res.json({ id: saved._id, message: 'Category level 4 created successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.put('/api/category-level4/:id', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const level3_id = req.body.level3_id || req.body.category_level3_id;
+    await CategoryLevel4.findByIdAndUpdate(req.params.id, { name, category_level3_id: level3_id });
+    res.json({ message: 'Category level 4 updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.delete('/api/category-level4/:id', async (req, res) => {
+  try {
+    const skusCount = await SKU.countDocuments({ category_level4_id: req.params.id });
+    if (skusCount > 0) {
+      return res.status(400).json({
+        error: `Cannot delete category level 4. It is used by ${skusCount} product(s).`,
+        details: { type: 'skus', count: skusCount }
+      });
+    }
+    await CategoryLevel4.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Category level 4 deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -361,8 +559,25 @@ app.delete('/api/sub-categories/:id', async (req, res) => {
 app.get('/api/skus', async (req, res) => {
   try {
     const skus = await SKU.find()
-      .populate('category_id', 'name')
-      .populate('sub_category_id', 'name')
+      .populate('category_level4_id', 'name')
+      .populate({
+        path: 'category_level4_id',
+        populate: {
+          path: 'category_level3_id',
+          model: 'CategoryLevel3',
+          select: 'name',
+          populate: {
+            path: 'category_level2_id',
+            model: 'CategoryLevel2',
+            select: 'name',
+            populate: {
+              path: 'category_id',
+              model: 'Category',
+              select: 'name'
+            }
+          }
+        }
+      })
       .sort({ createdAt: -1 });
     // Convert to match SQLite response format
     const formattedSkus = skus.map(sku => ({
@@ -372,10 +587,15 @@ app.get('/api/skus', async (req, res) => {
       brand: sku.brand,
       unit: sku.unit,
       unit_value: sku.unit_value,
-      category_id: sku.category_id?._id || null,
-      category_name: sku.category_id?.name || 'No Category',
-      sub_category_id: sku.sub_category_id?._id || null,
-      sub_category_name: sku.sub_category_id?.name || 'No Sub-Category',
+      // Only level 4 binding; derive names up the tree if populated
+      category_level4_id: sku.category_level4_id?._id || null,
+      category_level4_name: sku.category_level4_id?.name || null,
+      category_level3_id: sku.category_level4_id?.category_level3_id?._id || null,
+      category_level3_name: sku.category_level4_id?.category_level3_id?.name || null,
+      category_level2_id: sku.category_level4_id?.category_level3_id?.category_level2_id?._id || null,
+      category_level2_name: sku.category_level4_id?.category_level3_id?.category_level2_id?.name || null,
+      category_level1_id: sku.category_level4_id?.category_level3_id?.category_level2_id?.category_id?._id || null,
+      category_level1_name: sku.category_level4_id?.category_level3_id?.category_level2_id?.category_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
       buying_price: sku.buying_price || 0,
       buying_vat: sku.buying_vat || 0,
@@ -390,17 +610,13 @@ app.get('/api/skus', async (req, res) => {
 
 app.post('/api/skus', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label, buying_price, buying_vat } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat } = req.body;
+    const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : null;
 
     const skuData = { name, image, brand, unit, unit_value };
-    if (category_id && category_id !== '') {
-      skuData.category_id = category_id;
-    }
-    if (sub_category_id && sub_category_id !== '') {
-      skuData.sub_category_id = sub_category_id;
-    }
+    if (cat4 && cat4 !== '') skuData.category_level4_id = cat4;
     if (kvi_label && kvi_label !== '') {
       skuData.kvi_label = kvi_label;
     }
@@ -422,22 +638,20 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
 
 app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, category_id, sub_category_id, kvi_label, buying_price, buying_vat } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat } = req.body;
+    const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : undefined;
     const id = req.params.id;
 
     const updateData = { name, brand, unit, unit_value };
-    if (category_id && category_id !== '') {
-      updateData.category_id = category_id;
-    } else {
-      updateData.category_id = null;
-    }
-    if (sub_category_id && sub_category_id !== '') {
-      updateData.sub_category_id = sub_category_id;
-    } else {
-      updateData.sub_category_id = null;
-    }
+    updateData.category_level4_id = cat4 || null;
+    // Clear legacy and intermediate fields to enforce level 4 only
+    updateData.category_id = null;
+    updateData.sub_category_id = null;
+    updateData.category_level1_id = null;
+    updateData.category_level2_id = null;
+    updateData.category_level3_id = null;
     if (kvi_label && kvi_label !== '') {
       updateData.kvi_label = kvi_label;
     }
@@ -756,9 +970,39 @@ app.get('/api/external/price-locations/:id', async (req, res) => {
 // External API endpoint for SKUs data distribution
 app.get('/api/external/skus', async (req, res) => {
   try {
-    const skus = await SKU.find()
-      .populate('category_id', 'name')
-      .populate('sub_category_id', 'name')
+    const {
+      category_level1_id,
+      category_level2_id,
+      category_level3_id,
+      category_level4_id,
+      category_id, // legacy alias for level1
+      sub_category_id // legacy alias for level2
+    } = req.query;
+
+    let filter = {};
+    if (category_level4_id) {
+      filter.category_level4_id = category_level4_id;
+    } else if (category_level3_id) {
+      const level4 = await CategoryLevel4.find({ category_level3_id }).select('_id');
+      filter.category_level4_id = { $in: level4.map(i => i._id) };
+    } else if (category_level2_id || sub_category_id) {
+      const l2 = category_level2_id || sub_category_id;
+      const level3 = await CategoryLevel3.find({ category_level2_id: l2 }).select('_id');
+      const level3Ids = level3.map(i => i._id);
+      const level4 = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+      filter.category_level4_id = { $in: level4.map(i => i._id) };
+    } else if (category_level1_id || category_id) {
+      const l1 = category_level1_id || category_id;
+      const level2 = await CategoryLevel2.find({ category_id: l1 }).select('_id');
+      const level2Ids = level2.map(i => i._id);
+      const level3 = await CategoryLevel3.find({ category_level2_id: { $in: level2Ids } }).select('_id');
+      const level3Ids = level3.map(i => i._id);
+      const level4 = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+      filter.category_level4_id = { $in: level4.map(i => i._id) };
+    }
+
+    const skus = await SKU.find(filter)
+      .populate('category_level4_id', 'name')
       .sort({ createdAt: -1 });
     
     const externalSkus = skus.map(sku => ({
@@ -768,10 +1012,9 @@ app.get('/api/external/skus', async (req, res) => {
       brand: sku.brand,
       unit: sku.unit,
       unit_value: sku.unit_value,
-      category_id: sku.category_id?._id.toString() || null,
-      category_name: sku.category_id?.name || null,
-      sub_category_id: sku.sub_category_id?._id.toString() || null,
-      sub_category_name: sku.sub_category_id?.name || null,
+      // Full category path derived from level 4
+      category_level4_id: sku.category_level4_id?._id.toString() || null,
+      category_level4_name: sku.category_level4_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
       buying_price: sku.buying_price || 0,
       buying_vat: sku.buying_vat || 0,
@@ -788,8 +1031,7 @@ app.get('/api/external/skus', async (req, res) => {
 app.get('/api/external/skus/:id', async (req, res) => {
   try {
     const sku = await SKU.findById(req.params.id)
-      .populate('category_id', 'name')
-      .populate('sub_category_id', 'name');
+      .populate('category_level4_id', 'name');
     
     if (!sku) {
       return res.status(404).json({ error: 'SKU not found' });
@@ -802,10 +1044,8 @@ app.get('/api/external/skus/:id', async (req, res) => {
       brand: sku.brand,
       unit: sku.unit,
       unit_value: sku.unit_value,
-      category_id: sku.category_id?._id.toString() || null,
-      category_name: sku.category_id?.name || null,
-      sub_category_id: sku.sub_category_id?._id.toString() || null,
-      sub_category_name: sku.sub_category_id?.name || null,
+      category_level4_id: sku.category_level4_id?._id.toString() || null,
+      category_level4_name: sku.category_level4_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
       buying_price: sku.buying_price || 0,
       buying_vat: sku.buying_vat || 0,
@@ -859,10 +1099,41 @@ app.get('/api/external/vendors/:id', async (req, res) => {
 // External API endpoint for all data types in one response
 app.get('/api/external/all', async (req, res) => {
   try {
+    const {
+      category_level1_id,
+      category_level2_id,
+      category_level3_id,
+      category_level4_id,
+      category_id, // legacy alias for level1
+      sub_category_id // legacy alias for level2
+    } = req.query;
+
+    let skuFilter = {};
+    if (category_level4_id) {
+      skuFilter.category_level4_id = category_level4_id;
+    } else if (category_level3_id) {
+      const level4 = await CategoryLevel4.find({ category_level3_id }).select('_id');
+      skuFilter.category_level4_id = { $in: level4.map(i => i._id) };
+    } else if (category_level2_id || sub_category_id) {
+      const l2 = category_level2_id || sub_category_id;
+      const level3 = await CategoryLevel3.find({ category_level2_id: l2 }).select('_id');
+      const level3Ids = level3.map(i => i._id);
+      const level4 = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+      skuFilter.category_level4_id = { $in: level4.map(i => i._id) };
+    } else if (category_level1_id || category_id) {
+      const l1 = category_level1_id || category_id;
+      const level2 = await CategoryLevel2.find({ category_id: l1 }).select('_id');
+      const level2Ids = level2.map(i => i._id);
+      const level3 = await CategoryLevel3.find({ category_level2_id: { $in: level2Ids } }).select('_id');
+      const level3Ids = level3.map(i => i._id);
+      const level4 = await CategoryLevel4.find({ category_level3_id: { $in: level3Ids } }).select('_id');
+      skuFilter.category_level4_id = { $in: level4.map(i => i._id) };
+    }
+
     const [locations, priceLocations, skus, vendors, priceMappings, categories, subCategories] = await Promise.all([
       Location.find().sort({ createdAt: -1 }),
       SimpleLocation.find().sort({ createdAt: -1 }),
-      SKU.find().populate('category_id', 'name').populate('sub_category_id', 'name').sort({ createdAt: -1 }),
+      SKU.find(skuFilter).populate('category_level4_id', 'name').sort({ createdAt: -1 }),
       Vendor.find().sort({ createdAt: -1 }),
       PriceMapping.find().populate('sku_id', 'name brand unit unit_value').populate('vendor_id', 'name').sort({ createdAt: -1 }),
       Category.find().sort({ createdAt: -1 }),
@@ -935,10 +1206,8 @@ app.get('/api/external/all', async (req, res) => {
         brand: sku.brand,
         unit: sku.unit,
         unit_value: sku.unit_value,
-        category_id: sku.category_id?._id.toString() || null,
-        category_name: sku.category_id?.name || null,
-        sub_category_id: sku.sub_category_id?._id.toString() || null,
-        sub_category_name: sku.sub_category_id?.name || null,
+        category_level4_id: sku.category_level4_id?._id.toString() || null,
+        category_level4_name: sku.category_level4_id?.name || null,
         kvi_label: sku.kvi_label || 'Background (BG)',
         buying_price: sku.buying_price || 0,
         buying_vat: sku.buying_vat || 0,
@@ -1120,27 +1389,46 @@ app.get('/api/external/price-mappings/:id', async (req, res) => {
 // External API endpoint for categories data distribution
 app.get('/api/external/categories', async (req, res) => {
   try {
-    const categories = await Category.find().sort({ createdAt: -1 });
+    const categories = await CategoryLevel1.find().sort({ createdAt: -1 });
     const externalCategories = await Promise.all(categories.map(async category => {
-      const subCategories = await SubCategory.find({ category_id: category._id }).sort({ createdAt: -1 });
-      const skusCount = await SKU.countDocuments({ category_id: category._id });
-      
+      const level2 = await CategoryLevel2.find({ category_id: category._id }).sort({ createdAt: -1 });
+      const level2WithChildren = await Promise.all(level2.map(async l2 => {
+        const level3 = await CategoryLevel3.find({ category_level2_id: l2._id }).sort({ createdAt: -1 });
+        const level3WithChildren = await Promise.all(level3.map(async l3 => {
+          const level4 = await CategoryLevel4.find({ category_level3_id: l3._id }).sort({ createdAt: -1 });
+          const l3Skus = await SKU.countDocuments({ category_level3_id: l3._id });
+          return {
+            id: l3._id.toString(),
+            name: l3.name,
+            created_at: l3.createdAt,
+            skus_count: l3Skus,
+            children: await Promise.all(level4.map(async l4 => {
+              const l4Skus = await SKU.countDocuments({ category_level4_id: l4._id });
+              return {
+                id: l4._id.toString(),
+                name: l4.name,
+                created_at: l4.createdAt,
+                skus_count: l4Skus
+              };
+            }))
+          };
+        }));
+        const l2Skus = await SKU.countDocuments({ category_level2_id: l2._id });
+        return {
+          id: l2._id.toString(),
+          name: l2.name,
+          created_at: l2.createdAt,
+          skus_count: l2Skus,
+          children: level3WithChildren
+        };
+      }));
+      const skusCount = await SKU.countDocuments({ category_level1_id: category._id });
       return {
         id: category._id.toString(),
         name: category.name,
         created_at: category.createdAt,
-        sub_categories_count: subCategories.length,
         skus_count: skusCount,
-        sub_categories: await Promise.all(subCategories.map(async subCategory => {
-          const subCategorySkusCount = await SKU.countDocuments({ sub_category_id: subCategory._id });
-          
-          return {
-            id: subCategory._id.toString(),
-            name: subCategory.name,
-            created_at: subCategory.createdAt,
-            skus_count: subCategorySkusCount
-          };
-        }))
+        children: level2WithChildren
       };
     }));
     res.json(externalCategories);
@@ -1189,10 +1477,10 @@ app.get('/api/external/sub-categories', async (req, res) => {
   try {
     const { category_id } = req.query;
     const filter = category_id ? { category_id } : {};
-    const subCategories = await SubCategory.find(filter).populate('category_id', 'name').sort({ createdAt: -1 });
+    const subCategories = await CategoryLevel2.find(filter).populate('category_id', 'name').sort({ createdAt: -1 });
     
     const externalSubCategories = await Promise.all(subCategories.map(async subCategory => {
-      const skusCount = await SKU.countDocuments({ sub_category_id: subCategory._id });
+      const skusCount = await SKU.countDocuments({ $or: [ { category_level2_id: subCategory._id }, { sub_category_id: subCategory._id } ] });
       
       return {
         id: subCategory._id.toString(),

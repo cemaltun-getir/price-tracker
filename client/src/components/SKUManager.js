@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { skuAPI, categoryAPI, subCategoryAPI } from '../services/api';
+import { skuAPI, categoryAPI, subCategoryAPI, categoryLevel3API, categoryLevel4API } from '../services/api';
 
 // Helper function to get the correct image URL
 const getImageUrl = (imagePath) => {
@@ -21,6 +21,8 @@ const SKUManager = () => {
   const [skus, setSkus] = useState([]);
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
+  const [level3Categories, setLevel3Categories] = useState([]);
+  const [level4Categories, setLevel4Categories] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editingSku, setEditingSku] = useState(null);
   const [formData, setFormData] = useState({
@@ -28,8 +30,10 @@ const SKUManager = () => {
     brand: '',
     unit: '',
     unit_value: '',
-    category_id: '',
-    sub_category_id: '',
+    category_id: '', // legacy level 1
+    sub_category_id: '', // legacy level 2
+    category_level3_id: '',
+    category_level4_id: '',
     kvi_label: 'Background (BG)',
     buying_price: '',
     buying_vat: '',
@@ -71,13 +75,43 @@ const SKUManager = () => {
       console.error('Error fetching sub-categories:', error);
     }
   };
+  const fetchLevel3 = async (level2Id) => {
+    try {
+      const response = await categoryLevel3API.getAll(level2Id);
+      setLevel3Categories(response.data);
+    } catch (error) {
+      console.error('Error fetching level 3:', error);
+    }
+  };
+  const fetchLevel4 = async (level3Id) => {
+    try {
+      const response = await categoryLevel4API.getAll(level3Id);
+      setLevel4Categories(response.data);
+    } catch (error) {
+      console.error('Error fetching level 4:', error);
+    }
+  };
 
   const handleCategoryChange = (categoryId) => {
-    setFormData({ ...formData, category_id: categoryId, sub_category_id: '' });
+    setFormData({ ...formData, category_id: categoryId, sub_category_id: '', category_level3_id: '', category_level4_id: '' });
     setSubCategories([]);
-    if (categoryId) {
-      fetchSubCategories(categoryId);
-    }
+    setLevel3Categories([]);
+    setLevel4Categories([]);
+    if (categoryId) fetchSubCategories(categoryId);
+  };
+  const handleLevel2Change = (level2Id) => {
+    setFormData({ ...formData, sub_category_id: level2Id, category_level3_id: '', category_level4_id: '' });
+    setLevel3Categories([]);
+    setLevel4Categories([]);
+    if (level2Id) fetchLevel3(level2Id);
+  };
+  const handleLevel3Change = (level3Id) => {
+    setFormData({ ...formData, category_level3_id: level3Id, category_level4_id: '' });
+    setLevel4Categories([]);
+    if (level3Id) fetchLevel4(level3Id);
+  };
+  const handleLevel4Change = (level4Id) => {
+    setFormData({ ...formData, category_level4_id: level4Id });
   };
 
   const handleSubmit = async (e) => {
@@ -92,6 +126,9 @@ const SKUManager = () => {
     data.append('kvi_label', formData.kvi_label);
     data.append('buying_price', formData.buying_price);
     data.append('buying_vat', formData.buying_vat);
+    // New category levels
+    // Only level 4 is authoritative for product-category relation
+    data.append('category_level4_id', formData.category_level4_id);
     if (formData.image) {
       data.append('image', formData.image);
     }
@@ -116,16 +153,26 @@ const SKUManager = () => {
       brand: sku.brand,
       unit: sku.unit,
       unit_value: sku.unit_value,
-      category_id: sku.category_id || '',
-      sub_category_id: sku.sub_category_id || '',
+      category_id: sku.category_id || sku.category_level1_id || '',
+      sub_category_id: sku.sub_category_id || sku.category_level2_id || '',
+      category_level3_id: sku.category_level3_id || '',
+      category_level4_id: sku.category_level4_id || '',
       kvi_label: sku.kvi_label || 'Background (BG)',
       buying_price: sku.buying_price || '',
       buying_vat: sku.buying_vat || '',
       image: null
     });
     // Load sub-categories for the selected category
-    if (sku.category_id) {
-      fetchSubCategories(sku.category_id);
+    if (sku.category_id || sku.category_level1_id) {
+      const cat1 = sku.category_id || sku.category_level1_id;
+      fetchSubCategories(cat1);
+      if (sku.sub_category_id || sku.category_level2_id) {
+        const cat2 = sku.sub_category_id || sku.category_level2_id;
+        fetchLevel3(cat2);
+        if (sku.category_level3_id) {
+          fetchLevel4(sku.category_level3_id);
+        }
+      }
     }
     setShowModal(true);
   };
@@ -159,6 +206,8 @@ const SKUManager = () => {
       unit_value: '',
       category_id: '',
       sub_category_id: '',
+      category_level3_id: '',
+      category_level4_id: '',
       kvi_label: 'Background (BG)',
       buying_price: '',
       buying_vat: '',
@@ -334,20 +383,54 @@ const SKUManager = () => {
                   <p className="text-sm text-gray-500 mt-1">Note: Category is optional for now. You can create categories in the Categories page.</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Sub-Category</label>
+                  <label className="block text-sm font-medium text-gray-700">Category Level 2</label>
                   <select
                     value={formData.sub_category_id}
-                    onChange={(e) => setFormData({ ...formData, sub_category_id: e.target.value })}
+                    onChange={(e) => handleLevel2Change(e.target.value)}
                     className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
                     disabled={!formData.category_id}
                   >
-                    <option value="">Select Sub-Category</option>
+                    <option value="">Select Level 2</option>
                     {subCategories.map((subCategory) => (
                       <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
                     ))}
                   </select>
                   {!formData.category_id && (
-                    <p className="text-sm text-gray-500 mt-1">Please select a category first</p>
+                    <p className="text-sm text-gray-500 mt-1">Please select a level 1 category first</p>
+                  )}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Category Level 3</label>
+                  <select
+                    value={formData.category_level3_id}
+                    onChange={(e) => handleLevel3Change(e.target.value)}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                    disabled={!formData.sub_category_id}
+                  >
+                    <option value="">Select Level 3</option>
+                    {level3Categories.map((c3) => (
+                      <option key={c3.id} value={c3.id}>{c3.name}</option>
+                    ))}
+                  </select>
+                  {!formData.sub_category_id && (
+                    <p className="text-sm text-gray-500 mt-1">Please select a level 2 category first</p>
+                  )}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Category Level 4</label>
+                  <select
+                    value={formData.category_level4_id}
+                    onChange={(e) => handleLevel4Change(e.target.value)}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                    disabled={!formData.category_level3_id}
+                  >
+                    <option value="">Select Level 4</option>
+                    {level4Categories.map((c4) => (
+                      <option key={c4.id} value={c4.id}>{c4.name}</option>
+                    ))}
+                  </select>
+                  {!formData.category_level3_id && (
+                    <p className="text-sm text-gray-500 mt-1">Please select a level 3 category first</p>
                   )}
                 </div>
                 <div>

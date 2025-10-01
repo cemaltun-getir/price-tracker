@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { categoryAPI, subCategoryAPI } from '../services/api';
+import { categoryAPI, subCategoryAPI, categoryLevel3API, categoryLevel4API } from '../services/api';
 
 const CategoryManager = () => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
+  const [level3Categories, setLevel3Categories] = useState([]);
+  const [level4Categories, setLevel4Categories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedLevel2, setSelectedLevel2] = useState(null);
+  const [selectedLevel3, setSelectedLevel3] = useState(null);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [showSubCategoryModal, setShowSubCategoryModal] = useState(false);
+  const [showLevel3Modal, setShowLevel3Modal] = useState(false);
+  const [showLevel4Modal, setShowLevel4Modal] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
   const [editingSubCategory, setEditingSubCategory] = useState(null);
+  const [editingLevel3, setEditingLevel3] = useState(null);
+  const [editingLevel4, setEditingLevel4] = useState(null);
   const [categoryFormData, setCategoryFormData] = useState({ name: '' });
   const [subCategoryFormData, setSubCategoryFormData] = useState({ 
     name: '', 
     category_id: '' 
   });
+  const [level3FormData, setLevel3FormData] = useState({ name: '', level2_id: '' });
+  const [level4FormData, setLevel4FormData] = useState({ name: '', level3_id: '' });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +48,22 @@ const CategoryManager = () => {
       setSubCategories(response.data);
     } catch (error) {
       console.error('Error fetching sub-categories:', error);
+    }
+  };
+  const fetchLevel3 = async (level2Id = null) => {
+    try {
+      const response = await categoryLevel3API.getAll(level2Id);
+      setLevel3Categories(response.data);
+    } catch (error) {
+      console.error('Error fetching level 3 categories:', error);
+    }
+  };
+  const fetchLevel4 = async (level3Id = null) => {
+    try {
+      const response = await categoryLevel4API.getAll(level3Id);
+      setLevel4Categories(response.data);
+    } catch (error) {
+      console.error('Error fetching level 4 categories:', error);
     }
   };
 
@@ -72,6 +98,42 @@ const CategoryManager = () => {
       alert(error.response?.data?.error || 'Error saving sub-category');
     }
   };
+  const handleLevel3Submit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = { name: level3FormData.name, level2_id: level3FormData.level2_id };
+      if (editingLevel3) {
+        await categoryLevel3API.update(editingLevel3.id, payload);
+      } else {
+        await categoryLevel3API.create(payload);
+      }
+      fetchLevel3(selectedLevel2);
+      setLevel3FormData({ name: '', level2_id: selectedLevel2 || '' });
+      setEditingLevel3(null);
+      setShowLevel3Modal(false);
+    } catch (error) {
+      console.error('Error saving level 3 category:', error);
+      alert(error.response?.data?.error || 'Error saving level 3 category');
+    }
+  };
+  const handleLevel4Submit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = { name: level4FormData.name, level3_id: level4FormData.level3_id };
+      if (editingLevel4) {
+        await categoryLevel4API.update(editingLevel4.id, payload);
+      } else {
+        await categoryLevel4API.create(payload);
+      }
+      fetchLevel4(selectedLevel3);
+      setLevel4FormData({ name: '', level3_id: selectedLevel3 || '' });
+      setEditingLevel4(null);
+      setShowLevel4Modal(false);
+    } catch (error) {
+      console.error('Error saving level 4 category:', error);
+      alert(error.response?.data?.error || 'Error saving level 4 category');
+    }
+  };
 
   const handleCategoryEdit = (category) => {
     setEditingCategory(category);
@@ -86,6 +148,16 @@ const CategoryManager = () => {
       category_id: subCategory.category_id 
     });
     setShowSubCategoryModal(true);
+  };
+  const handleLevel3Edit = (item) => {
+    setEditingLevel3(item);
+    setLevel3FormData({ name: item.name, level2_id: selectedLevel2 || item.level2_id });
+    setShowLevel3Modal(true);
+  };
+  const handleLevel4Edit = (item) => {
+    setEditingLevel4(item);
+    setLevel4FormData({ name: item.name, level3_id: selectedLevel3 || item.level3_id });
+    setShowLevel4Modal(true);
   };
 
   const handleCategoryDelete = async (category) => {
@@ -145,6 +217,48 @@ const CategoryManager = () => {
       }
     }
   };
+  const handleLevel3Delete = async (item) => {
+    const hasChildren = (item.children_count || 0) > 0;
+    const hasProducts = (item.skus_count || 0) > 0;
+    let message = `Are you sure you want to delete the sub-category level 3 "${item.name}"?`;
+    if (hasChildren || hasProducts) {
+      message = `Cannot delete category level 3 "${item.name}"\n\n`;
+      if (hasChildren) message += `• Has ${item.children_count} child category(ies)\n`;
+      if (hasProducts) message += `• Used by ${item.skus_count} product(s)\n`;
+      message += '\nPlease remove all dependencies first.';
+      alert(message);
+      return;
+    }
+    if (window.confirm(message)) {
+      try {
+        await categoryLevel3API.delete(item.id);
+        fetchLevel3(selectedLevel2);
+      } catch (error) {
+        console.error('Error deleting level 3 category:', error);
+        alert(error.response?.data?.error || 'Error deleting level 3 category');
+      }
+    }
+  };
+  const handleLevel4Delete = async (item) => {
+    const hasProducts = (item.skus_count || 0) > 0;
+    let message = `Are you sure you want to delete the category level 4 "${item.name}"?`;
+    if (hasProducts) {
+      message = `Cannot delete category level 4 "${item.name}"\n\n`;
+      message += `• Used by ${item.skus_count} product(s)\n`;
+      message += '\nPlease change the category of these products first.';
+      alert(message);
+      return;
+    }
+    if (window.confirm(message)) {
+      try {
+        await categoryLevel4API.delete(item.id);
+        fetchLevel4(selectedLevel3);
+      } catch (error) {
+        console.error('Error deleting level 4 category:', error);
+        alert(error.response?.data?.error || 'Error deleting level 4 category');
+      }
+    }
+  };
 
   const resetCategoryForm = () => {
     setCategoryFormData({ name: '' });
@@ -161,6 +275,20 @@ const CategoryManager = () => {
   const handleCategorySelect = (categoryId) => {
     setSelectedCategory(categoryId);
     fetchSubCategories(categoryId);
+    setSelectedLevel2(null);
+    setSelectedLevel3(null);
+    setLevel3Categories([]);
+    setLevel4Categories([]);
+  };
+  const handleLevel2Select = (level2Id) => {
+    setSelectedLevel2(level2Id);
+    fetchLevel3(level2Id);
+    setSelectedLevel3(null);
+    setLevel4Categories([]);
+  };
+  const handleLevel3Select = (level3Id) => {
+    setSelectedLevel3(level3Id);
+    fetchLevel4(level3Id);
   };
 
   if (loading) {
@@ -258,30 +386,146 @@ const CategoryManager = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {subCategories.map((subCategory) => (
-                             <div key={subCategory.id} className="border border-gray-200 rounded-lg p-4">
-                 <h3 className="font-medium text-gray-900 mb-2">{subCategory.name}</h3>
-                 <p className="text-sm text-gray-500 mb-1">Category: {subCategory.category_name}</p>
-                 <p className="text-xs text-gray-500 mb-3">Products: {subCategory.skus_count}</p>
-                 <div className="flex space-x-2">
-                   <button
-                     onClick={() => handleSubCategoryEdit(subCategory)}
-                     className="bg-yellow-500 text-white px-2 py-1 rounded text-xs hover:bg-yellow-600"
-                   >
-                     Edit
-                   </button>
-                   <button
-                     onClick={() => handleSubCategoryDelete(subCategory)}
-                     className={`px-2 py-1 rounded text-xs ${
-                       subCategory.can_delete 
-                         ? 'bg-red-500 text-white hover:bg-red-600' 
-                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                     }`}
-                     disabled={!subCategory.can_delete}
-                   >
-                     Delete
-                   </button>
-                 </div>
-               </div>
+              <div key={subCategory.id} className="border border-gray-200 rounded-lg p-4">
+                <h3 className="font-medium text-gray-900 mb-2">{subCategory.name}</h3>
+                <p className="text-sm text-gray-500 mb-1">Category: {subCategory.category_name}</p>
+                <p className="text-xs text-gray-500 mb-3">Products: {subCategory.skus_count}</p>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleSubCategoryEdit(subCategory)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded text-xs hover:bg-yellow-600"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleLevel2Select(subCategory.id)}
+                    className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
+                  >
+                    View L3
+                  </button>
+                  <button
+                    onClick={() => handleSubCategoryDelete(subCategory)}
+                    className={`px-2 py-1 rounded text-xs ${
+                      subCategory.can_delete 
+                        ? 'bg-red-500 text-white hover:bg-red-600' 
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                    disabled={!subCategory.can_delete}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Category Level 3 Section */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold text-gray-900">
+            Category Level 3 {selectedLevel2 && `(Parent: ${subCategories.find(s => s.id === selectedLevel2)?.name})`}
+          </h2>
+          <button
+            onClick={() => {
+              setLevel3FormData({ name: '', level2_id: selectedLevel2 || '' });
+              setShowLevel3Modal(true);
+            }}
+            disabled={!selectedLevel2}
+            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          >
+            Add Level 3
+          </button>
+        </div>
+
+        {!selectedLevel2 ? (
+          <p className="text-gray-500 text-center py-8">Select a level 2 category to view level 3</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {level3Categories.map((item) => (
+              <div key={item.id} className="border border-gray-200 rounded-lg p-4">
+                <h3 className="font-medium text-gray-900 mb-2">{item.name}</h3>
+                <p className="text-sm text-gray-500 mb-1">Parent: {item.level2_name}</p>
+                <p className="text-xs text-gray-500 mb-3">Products: {item.skus_count}</p>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleLevel3Edit(item)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded text-xs hover:bg-yellow-600"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleLevel3Select(item.id)}
+                    className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
+                  >
+                    View L4
+                  </button>
+                  <button
+                    onClick={() => handleLevel3Delete(item)}
+                    className={`px-2 py-1 rounded text-xs ${
+                      item.can_delete 
+                        ? 'bg-red-500 text-white hover:bg-red-600' 
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                    disabled={!item.can_delete}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Category Level 4 Section */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold text-gray-900">
+            Category Level 4 {selectedLevel3 && `(Parent: ${level3Categories.find(s => s.id === selectedLevel3)?.name})`}
+          </h2>
+          <button
+            onClick={() => {
+              setLevel4FormData({ name: '', level3_id: selectedLevel3 || '' });
+              setShowLevel4Modal(true);
+            }}
+            disabled={!selectedLevel3}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          >
+            Add Level 4
+          </button>
+        </div>
+
+        {!selectedLevel3 ? (
+          <p className="text-gray-500 text-center py-8">Select a level 3 category to view level 4</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {level4Categories.map((item) => (
+              <div key={item.id} className="border border-gray-200 rounded-lg p-4">
+                <h3 className="font-medium text-gray-900 mb-2">{item.name}</h3>
+                <p className="text-sm text-gray-500 mb-1">Parent: {item.level3_name}</p>
+                <p className="text-xs text-gray-500 mb-3">Products: {item.skus_count}</p>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleLevel4Edit(item)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded text-xs hover:bg-yellow-600"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleLevel4Delete(item)}
+                    className={`px-2 py-1 rounded text-xs ${
+                      item.can_delete 
+                        ? 'bg-red-500 text-white hover:bg-red-600' 
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                    disabled={!item.can_delete}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         )}
@@ -370,6 +614,113 @@ const CategoryManager = () => {
                   <button
                     type="button"
                     onClick={resetSubCategoryForm}
+                    className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Level 3 Modal */}
+      {showLevel3Modal && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div className="mt-3">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                {editingLevel3 ? 'Edit Category Level 3' : 'Add Category Level 3'}
+              </h3>
+              <form onSubmit={handleLevel3Submit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={level3FormData.name}
+                    onChange={(e) => setLevel3FormData({ ...level3FormData, name: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Parent (Level 2)</label>
+                  <select
+                    required
+                    value={level3FormData.level2_id}
+                    onChange={(e) => setLevel3FormData({ ...level3FormData, level2_id: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  >
+                    <option value="">Select Level 2</option>
+                    {subCategories.map((sc) => (
+                      <option key={sc.id} value={sc.id}>{sc.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    type="submit"
+                    className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700"
+                  >
+                    {editingLevel3 ? 'Update' : 'Create'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setShowLevel3Modal(false); setEditingLevel3(null); setLevel3FormData({ name: '', level2_id: selectedLevel2 || '' }); }}
+                    className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Level 4 Modal */}
+      {showLevel4Modal && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div className="mt-3">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                {editingLevel4 ? 'Edit Category Level 4' : 'Add Category Level 4'}
+              </h3>
+              <form onSubmit={handleLevel4Submit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={level4FormData.name}
+                    onChange={(e) => setLevel4FormData({ ...level4FormData, name: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Parent (Level 3)</label>
+                  <select
+                    required
+                    value={level4FormData.level3_id}
+                    onChange={(e) => setLevel4FormData({ ...level4FormData, level3_id: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  >
+                    <option value="">Select Level 3</option>
+                    {level3Categories.map((c3) => (
+                      <option key={c3.id} value={c3.id}>{c3.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    type="submit"
+                    className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
+                  >
+                    {editingLevel4 ? 'Update' : 'Create'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setShowLevel4Modal(false); setEditingLevel4(null); setLevel4FormData({ name: '', level3_id: selectedLevel3 || '' }); }}
                     className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
                   >
                     Cancel

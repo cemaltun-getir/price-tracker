@@ -25,6 +25,28 @@ export const subCategoryAPI = {
   delete: (id) => api.delete(`/api/sub-categories/${id}`)
 };
 
+// Category Level 3 API calls
+export const categoryLevel3API = {
+  getAll: (level2Id = null) => {
+    const params = level2Id ? { level2_id: level2Id } : {};
+    return api.get('/api/category-level3', { params });
+  },
+  create: (data) => api.post('/api/category-level3', data),
+  update: (id, data) => api.put(`/api/category-level3/${id}`, data),
+  delete: (id) => api.delete(`/api/category-level3/${id}`)
+};
+
+// Category Level 4 API calls
+export const categoryLevel4API = {
+  getAll: (level3Id = null) => {
+    const params = level3Id ? { level3_id: level3Id } : {};
+    return api.get('/api/category-level4', { params });
+  },
+  create: (data) => api.post('/api/category-level4', data),
+  update: (id, data) => api.put(`/api/category-level4/${id}`, data),
+  delete: (id) => api.delete(`/api/category-level4/${id}`)
+};
+
 // SKU API calls
 export const skuAPI = {
   getAll: () => api.get('/api/skus'),
