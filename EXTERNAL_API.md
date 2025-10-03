@@ -57,7 +57,7 @@ GET /api/external/price-locations/:id
 ```
 
 ### 3. SKUs
-Product information including name, brand, unit, category, subcategory, and buying price details.
+Product information including name, brand, unit, category, subcategory, buying price details, and selling price.
 
 **Get all SKUs:**
 ```
@@ -86,6 +86,7 @@ GET /api/external/skus/:id
   "buying_price": 15.99,
   "buying_vat": 20.0,
   "buying_price_without_vat": 13.33,
+  "selling_price": 19.99,
   "created_at": "2024-01-01T00:00:00.000Z"
 }
 ```

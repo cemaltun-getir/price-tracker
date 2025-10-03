@@ -15,7 +15,7 @@ const PriceMappingManager = () => {
     price: '',
     struck_price: '',
     is_discounted: false,
-    currency: 'USD'
+    currency: 'TRY'
   });
   const [excelFile, setExcelFile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -106,7 +106,7 @@ const PriceMappingManager = () => {
       price: '',
       struck_price: '',
       is_discounted: false,
-      currency: 'USD'
+      currency: 'TRY'
     });
     setShowModal(false);
   };
@@ -118,6 +118,8 @@ const PriceMappingManager = () => {
       </div>
     );
   }
+
+  const selectedSku = skus.find((s) => s.id === formData.sku_id);
 
   return (
     <div>
@@ -343,6 +345,11 @@ const PriceMappingManager = () => {
                   <p className="text-xs text-gray-500 mt-1">
                     Unit price will be automatically calculated based on the SKU's unit value
                   </p>
+                  {selectedSku && selectedSku.selling_price > 0 && (
+                    <p className="text-xs text-blue-600 mt-1">
+                      Selling price for this SKU: {Number(selectedSku.selling_price).toFixed(2)} TRY
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Struck Price</label>
@@ -375,9 +382,6 @@ const PriceMappingManager = () => {
                     onChange={(e) => setFormData({ ...formData, currency: e.target.value })}
                     className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
                   >
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
                     <option value="TRY">TRY</option>
                   </select>
                 </div>

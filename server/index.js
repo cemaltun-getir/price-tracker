@@ -101,9 +101,10 @@ const skuSchema = new mongoose.Schema({
     enum: ['SKVI', 'KVI', 'Background (BG)', 'Foreground (FG)'], 
     default: 'Background (BG)' 
   },
-  buying_price: { type: Number, default: 0 },
+  buying_price: { type: mongoose.Schema.Types.Decimal128, default: 0 },
   buying_vat: { type: Number, default: 0 },
-  buying_price_without_vat: { type: Number, default: 0 },
+  buying_price_without_vat: { type: mongoose.Schema.Types.Decimal128, default: 0 },
+  selling_price: { type: mongoose.Schema.Types.Decimal128, required: true },
   // Legacy fields for backward compatibility
   category: { type: String },
   sub_category: { type: String }
@@ -111,25 +112,35 @@ const skuSchema = new mongoose.Schema({
 
 // Pre-save middleware to calculate buying_price_without_vat
 skuSchema.pre('save', function(next) {
-  if (this.buying_price && this.buying_vat > 0) {
-    this.buying_price_without_vat = this.buying_price / (1 + (this.buying_vat / 100));
-  } else if (this.buying_price) {
-    this.buying_price_without_vat = this.buying_price; // If VAT is 0, price without VAT equals price
+  const price = this.buying_price ? parseFloat(this.buying_price.toString()) : 0;
+  const vat = this.buying_vat ? parseFloat(this.buying_vat) : 0;
+  let priceWithoutVat = 0;
+  if (price && vat > 0) {
+    priceWithoutVat = price / (1 + (vat / 100));
+  } else if (price) {
+    priceWithoutVat = price;
   } else {
-    this.buying_price_without_vat = 0;
+    priceWithoutVat = 0;
   }
+  this.buying_price_without_vat = mongoose.Types.Decimal128.fromString(priceWithoutVat.toFixed(2));
   next();
 });
 
 // Pre-update middleware to calculate buying_price_without_vat
 skuSchema.pre('findOneAndUpdate', function(next) {
   const update = this.getUpdate();
-  if (update.buying_price && update.buying_vat > 0) {
-    update.buying_price_without_vat = update.buying_price / (1 + (update.buying_vat / 100));
-  } else if (update.buying_price) {
-    update.buying_price_without_vat = update.buying_price; // If VAT is 0, price without VAT equals price
+  const price = update.buying_price ? parseFloat(update.buying_price.toString()) : 0;
+  const vat = update.buying_vat ? parseFloat(update.buying_vat) : 0;
+  let priceWithoutVat = 0;
+  if (price && vat > 0) {
+    priceWithoutVat = price / (1 + (vat / 100));
+  } else if (price) {
+    priceWithoutVat = price;
   } else if (update.buying_price !== undefined || update.buying_vat !== undefined) {
-    update.buying_price_without_vat = 0;
+    priceWithoutVat = 0;
+  }
+  if (update.buying_price !== undefined || update.buying_vat !== undefined) {
+    update.buying_price_without_vat = mongoose.Types.Decimal128.fromString(priceWithoutVat.toFixed(2));
   }
   next();
 });
@@ -180,7 +191,7 @@ const priceMappingSchema = new mongoose.Schema({
   struck_price: { type: Number, required: false },
   is_discounted: { type: Boolean, default: false },
   unit_price: { type: Number, required: true },
-  currency: { type: String, default: 'USD' }
+  currency: { type: String, default: 'TRY' }
 }, { timestamps: true });
 
 // Simple Location Schema for Price Mappings
@@ -597,9 +608,10 @@ app.get('/api/skus', async (req, res) => {
       category_level1_id: sku.category_level4_id?.category_level3_id?.category_level2_id?.category_id?._id || null,
       category_level1_name: sku.category_level4_id?.category_level3_id?.category_level2_id?.category_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
-      buying_price: sku.buying_price || 0,
+      buying_price: sku.buying_price ? parseFloat(sku.buying_price.toString()) : 0,
       buying_vat: sku.buying_vat || 0,
-      buying_price_without_vat: sku.buying_price_without_vat || 0,
+      buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
+      selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
       created_at: sku.createdAt
     }));
     res.json(formattedSkus);
@@ -610,7 +622,7 @@ app.get('/api/skus', async (req, res) => {
 
 app.post('/api/skus', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price } = req.body;
     const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : null;
@@ -621,10 +633,16 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
       skuData.kvi_label = kvi_label;
     }
     if (buying_price && buying_price !== '') {
-      skuData.buying_price = parseFloat(buying_price);
+      const bpStr = String(buying_price).replace(',', '.');
+      skuData.buying_price = mongoose.Types.Decimal128.fromString((Number(bpStr)).toFixed(2));
     }
     if (buying_vat && buying_vat !== '') {
-      skuData.buying_vat = parseFloat(buying_vat);
+      const bvStr = String(buying_vat).replace(',', '.');
+      skuData.buying_vat = parseFloat(bvStr);
+    }
+    if (selling_price && selling_price !== '') {
+      const spStr = String(selling_price).replace(',', '.');
+      skuData.selling_price = mongoose.Types.Decimal128.fromString((Number(spStr)).toFixed(2));
     }
 
     const sku = new SKU(skuData);
@@ -638,7 +656,7 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
 
 app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price } = req.body;
     const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : undefined;
@@ -656,10 +674,16 @@ app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
       updateData.kvi_label = kvi_label;
     }
     if (buying_price && buying_price !== '') {
-      updateData.buying_price = parseFloat(buying_price);
+      const bpStr = String(buying_price).replace(',', '.');
+      updateData.buying_price = mongoose.Types.Decimal128.fromString((Number(bpStr)).toFixed(2));
     }
     if (buying_vat && buying_vat !== '') {
-      updateData.buying_vat = parseFloat(buying_vat);
+      const bvStr = String(buying_vat).replace(',', '.');
+      updateData.buying_vat = parseFloat(bvStr);
+    }
+    if (selling_price && selling_price !== '') {
+      const spStr = String(selling_price).replace(',', '.');
+      updateData.selling_price = mongoose.Types.Decimal128.fromString((Number(spStr)).toFixed(2));
     }
     if (image) {
       updateData.image = image;
@@ -1016,9 +1040,10 @@ app.get('/api/external/skus', async (req, res) => {
       category_level4_id: sku.category_level4_id?._id.toString() || null,
       category_level4_name: sku.category_level4_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
-      buying_price: sku.buying_price || 0,
+      buying_price: sku.buying_price ? parseFloat(sku.buying_price.toString()) : 0,
       buying_vat: sku.buying_vat || 0,
-      buying_price_without_vat: sku.buying_price_without_vat || 0,
+      buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
+      selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
       created_at: sku.createdAt
     }));
     res.json(externalSkus);
@@ -1047,9 +1072,10 @@ app.get('/api/external/skus/:id', async (req, res) => {
       category_level4_id: sku.category_level4_id?._id.toString() || null,
       category_level4_name: sku.category_level4_id?.name || null,
       kvi_label: sku.kvi_label || 'Background (BG)',
-      buying_price: sku.buying_price || 0,
+      buying_price: sku.buying_price ? parseFloat(sku.buying_price.toString()) : 0,
       buying_vat: sku.buying_vat || 0,
-      buying_price_without_vat: sku.buying_price_without_vat || 0,
+      buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
+      selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
       created_at: sku.createdAt
     };
     
@@ -1209,9 +1235,10 @@ app.get('/api/external/all', async (req, res) => {
         category_level4_id: sku.category_level4_id?._id.toString() || null,
         category_level4_name: sku.category_level4_id?.name || null,
         kvi_label: sku.kvi_label || 'Background (BG)',
-        buying_price: sku.buying_price || 0,
+        buying_price: sku.buying_price ? parseFloat(sku.buying_price.toString()) : 0,
         buying_vat: sku.buying_vat || 0,
-        buying_price_without_vat: sku.buying_price_without_vat || 0,
+        buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
+        selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
         created_at: sku.createdAt
       })),
       vendors: vendors.map(vendor => ({
@@ -1595,7 +1622,7 @@ app.post('/api/price-mappings', async (req, res) => {
     }
 
     // Validate struck price if provided
-    if (struck_price && struck_price >= price) {
+    if (struck_price && parseFloat(struck_price) >= parseFloat(price)) {
       return res.status(400).json({ error: 'Struck price must be lower than the regular price' });
     }
 
@@ -1616,7 +1643,7 @@ app.post('/api/price-mappings', async (req, res) => {
       existingMapping.struck_price = struck_price || null;
       existingMapping.is_discounted = is_discounted || false;
       existingMapping.unit_price = unitPrice;
-      existingMapping.currency = currency || 'USD';
+      existingMapping.currency = currency || 'TRY';
       const updated = await existingMapping.save();
       res.json({ id: updated._id, message: 'Price mapping updated successfully' });
     } else {
@@ -1629,7 +1656,7 @@ app.post('/api/price-mappings', async (req, res) => {
         struck_price: struck_price || null,
         is_discounted: is_discounted || false,
         unit_price: unitPrice,
-        currency: currency || 'USD'
+        currency: currency || 'TRY'
       });
       const saved = await priceMapping.save();
       res.json({ id: saved._id, message: 'Price mapping created successfully' });
@@ -1676,7 +1703,7 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
       }
 
       // Validate struck price if provided
-      if (struck_price && struck_price >= price) {
+      if (struck_price && parseFloat(struck_price) >= parseFloat(price)) {
         errors.push(`Row ${index + 2}: Struck price must be lower than the regular price`);
         errorCount++;
         continue;
@@ -1722,7 +1749,7 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
           existingMapping.struck_price = struck_price || null;
           existingMapping.is_discounted = is_discounted || false;
           existingMapping.unit_price = unitPrice;
-          existingMapping.currency = currency || 'USD';
+          existingMapping.currency = currency || 'TRY';
           await existingMapping.save();
         } else {
           // Create new
@@ -1734,7 +1761,7 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
             struck_price: struck_price || null,
             is_discounted: is_discounted || false,
             unit_price: unitPrice,
-            currency: currency || 'USD'
+            currency: currency || 'TRY'
           });
           await priceMapping.save();
         }

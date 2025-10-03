@@ -37,6 +37,7 @@ const SKUManager = () => {
     kvi_label: 'Background (BG)',
     buying_price: '',
     buying_vat: '',
+    selling_price: '',
     image: null
   });
   const [loading, setLoading] = useState(true);
@@ -117,6 +118,7 @@ const SKUManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
+    const norm = (v) => (typeof v === 'string' ? v.replace(',', '.') : v);
     data.append('name', formData.name);
     data.append('brand', formData.brand);
     data.append('unit', formData.unit);
@@ -124,8 +126,9 @@ const SKUManager = () => {
     data.append('category_id', formData.category_id);
     data.append('sub_category_id', formData.sub_category_id);
     data.append('kvi_label', formData.kvi_label);
-    data.append('buying_price', formData.buying_price);
-    data.append('buying_vat', formData.buying_vat);
+    data.append('buying_price', norm(formData.buying_price));
+    data.append('buying_vat', norm(formData.buying_vat));
+    data.append('selling_price', norm(formData.selling_price));
     // New category levels
     // Only level 4 is authoritative for product-category relation
     data.append('category_level4_id', formData.category_level4_id);
@@ -160,6 +163,7 @@ const SKUManager = () => {
       kvi_label: sku.kvi_label || 'Background (BG)',
       buying_price: sku.buying_price || '',
       buying_vat: sku.buying_vat || '',
+      selling_price: sku.selling_price || '',
       image: null
     });
     // Load sub-categories for the selected category
@@ -211,6 +215,7 @@ const SKUManager = () => {
       kvi_label: 'Background (BG)',
       buying_price: '',
       buying_vat: '',
+      selling_price: '',
       image: null
     });
     setSubCategories([]);
@@ -269,9 +274,14 @@ const SKUManager = () => {
               <p className="text-gray-600 mb-1">Value: {sku.unit_value}</p>
               {sku.buying_price > 0 && (
                 <div className="mb-2">
-                  <p className="text-gray-600 mb-1">Buying Price: ${sku.buying_price}</p>
+                  <p className="text-gray-600 mb-1">Buying Price: {Number(sku.buying_price).toFixed(2)} TRY</p>
                   <p className="text-gray-600 mb-1">Buying VAT: {sku.buying_vat}%</p>
-                  <p className="text-gray-600 mb-1 font-semibold">Price without VAT: ${sku.buying_price_without_vat?.toFixed(2)}</p>
+                  <p className="text-gray-600 mb-1 font-semibold">Price without VAT: {Number(sku.buying_price_without_vat).toFixed(2)} TRY</p>
+                </div>
+              )}
+              {sku.selling_price > 0 && (
+                <div className="mb-2">
+                  <p className="text-green-600 mb-1 font-semibold">Selling Price: {Number(sku.selling_price).toFixed(2)} TRY</p>
                 </div>
               )}
               <div className="mb-2">
@@ -447,7 +457,7 @@ const SKUManager = () => {
                   <p className="text-sm text-gray-500 mt-1">SKVI = Super Key Value Item, KVI = Key Value Item</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Buying Price ($)</label>
+                  <label className="block text-sm font-medium text-gray-700">Buying Price (TRY)</label>
                   <input
                     type="number"
                     step="0.01"
@@ -473,11 +483,25 @@ const SKUManager = () => {
                   />
                   <p className="text-sm text-gray-500 mt-1">Enter the VAT percentage (e.g., 20 for 20%)</p>
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Selling Price (TRY) *</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    placeholder="0.00"
+                    required
+                    value={formData.selling_price}
+                    onChange={(e) => setFormData({ ...formData, selling_price: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  />
+                  <p className="text-sm text-gray-500 mt-1">Enter the selling price (required)</p>
+                </div>
                 {formData.buying_price && (
                   <div className="bg-blue-50 p-3 rounded-md">
                     <p className="text-sm font-medium text-blue-800">Price Calculation Preview:</p>
                     <p className="text-sm text-blue-700">
-                      Price without VAT: ${
+                      Price without VAT: {
                         (() => {
                           const price = parseFloat(formData.buying_price) || 0;
                           const vat = parseFloat(formData.buying_vat) || 0;
@@ -488,7 +512,7 @@ const SKUManager = () => {
                           }
                           return '0.00';
                         })()
-                      }
+                      } TRY
                     </p>
                   </div>
                 )}
