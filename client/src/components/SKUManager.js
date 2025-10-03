@@ -263,8 +263,8 @@ const SKUManager = () => {
             <div className="p-4">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">{sku.name}</h3>
               <p className="text-gray-600 mb-1">Brand: {sku.brand}</p>
-              <p className="text-gray-600 mb-1">Category: {sku.category_name}</p>
-              <p className="text-gray-600 mb-1">Sub-Category: {sku.sub_category_name}</p>
+              <p className="text-gray-600 mb-1">Category: {sku.category_level1_name || 'N/A'}</p>
+              <p className="text-gray-600 mb-1">Sub-Category: {sku.category_level2_name || 'N/A'}</p>
               <p className="text-gray-600 mb-1">Unit: {sku.unit}</p>
               <p className="text-gray-600 mb-1">Value: {sku.unit_value}</p>
               {sku.buying_price > 0 && (
