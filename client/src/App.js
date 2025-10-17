@@ -6,6 +6,7 @@ import VendorManager from './components/VendorManager';
 import LocationManager from './components/LocationManager';
 import SimpleLocationManager from './components/SimpleLocationManager';
 import PriceMappingManager from './components/PriceMappingManager';
+import WarehouseInventoryManager from './components/WarehouseInventoryManager';
 import Dashboard from './components/Dashboard';
 
 function App() {
@@ -90,6 +91,16 @@ function App() {
                 >
                   Price Mappings
                 </NavLink>
+                <NavLink
+                  to="/warehouse-inventory"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-white border-b-2 border-white px-3 py-1 text-sm font-medium"
+                      : "text-gray-200 hover:text-white px-3 py-1 text-sm font-medium"
+                  }
+                >
+                  Warehouse Inventory
+                </NavLink>
               </div>
             </div>
           </div>
@@ -105,6 +116,7 @@ function App() {
             <Route path="/locations" element={<LocationManager />} />
             <Route path="/price-locations" element={<SimpleLocationManager />} />
             <Route path="/price-mappings" element={<PriceMappingManager />} />
+            <Route path="/warehouse-inventory" element={<WarehouseInventoryManager />} />
           </Routes>
         </main>
       </div>

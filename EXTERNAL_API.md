@@ -87,6 +87,7 @@ GET /api/external/skus/:id
   "buying_vat": 20.0,
   "buying_price_without_vat": 13.33,
   "selling_price": 19.99,
+  "waste_price": 5.99,
   "created_at": "2024-01-01T00:00:00.000Z"
 }
 ```
@@ -233,6 +234,81 @@ GET /api/external/all
 }
 ```
 
+### 9. Warehouse Product Expiry Data
+Get inventory data with expiry information for products across warehouses.
+
+**Get warehouse product expiry data:**
+```
+GET /api/external/warehouse-product-expiry
+```
+
+**Response format:**
+```json
+[
+  {
+    "warehouse_id": "string",
+    "warehouse_name": "string", 
+    "sku_id": "string",
+    "sku_name": "string",
+    "category_id": "string",
+    "category_name": "string",
+    "quantity_on_hand": "number",
+    "days_until_expiry": "number",
+    "expiry_date": "string (ISO date)"
+  }
+]
+```
+
+**Features:**
+- Returns ALL inventory with expiry dates (frontend will filter)
+- Includes products from all warehouses
+- Sorted by days_until_expiry (ascending) for critical items first
+- Real-time data (fetch on each request)
+- Days until expiry calculated dynamically
+
+### 10. Waste Price Update
+Update waste price for a specific SKU from external sources.
+
+**Update waste price:**
+```
+POST /api/external/waste-price
+```
+
+**Request body:**
+```json
+{
+  "sku_id": "string",
+  "warehouse_id": "string",
+  "waste_price": "number", 
+  "user_id": "string",
+  "applied_at": "ISO 8601 timestamp"
+}
+```
+
+**Response format:**
+```json
+{
+  "message": "Waste price updated successfully",
+  "sku_id": "string",
+  "warehouse_id": "string",
+  "waste_price": "number",
+  "applied_at": "ISO 8601 timestamp",
+  "updated_at": "ISO 8601 timestamp"
+}
+```
+
+**Validation:**
+- All fields are required
+- `waste_price` must be a non-negative number
+- `applied_at` must be a valid ISO 8601 timestamp
+- `sku_id` must reference an existing SKU
+- `warehouse_id` must reference an existing warehouse (Location or SimpleLocation)
+
+**Error responses:**
+- `400` - Missing required fields or invalid data
+- `404` - SKU or warehouse not found
+- `500` - Server error
+
 ## Usage Examples
 
 ### JavaScript/Fetch
@@ -276,6 +352,27 @@ const subCategory = await subCategoryResponse.json();
 // Get all data at once
 const allDataResponse = await fetch('/api/external/all');
 const allData = await allDataResponse.json();
+
+// Get warehouse product expiry data
+const expiryResponse = await fetch('/api/external/warehouse-product-expiry');
+const expiryData = await expiryResponse.json();
+
+// Update waste price
+const wastePrice = {
+  sku_id: "sku_id_here",
+  warehouse_id: "warehouse_id_here",
+  waste_price: 5.99,
+  user_id: "user_id_here",
+  applied_at: new Date().toISOString()
+};
+const wastePriceResponse = await fetch('/api/external/waste-price', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(wastePrice)
+});
+const wastePriceResult = await wastePriceResponse.json();
 ```
 
 ### cURL
@@ -309,6 +406,20 @@ curl -X GET http://localhost:3001/api/external/sub-categories/sub_category_id_he
 
 # Get all data
 curl -X GET http://localhost:3001/api/external/all
+
+# Get warehouse product expiry data
+curl -X GET http://localhost:3001/api/external/warehouse-product-expiry
+
+# Update waste price
+curl -X POST http://localhost:3001/api/external/waste-price \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sku_id": "sku_id_here",
+    "warehouse_id": "warehouse_id_here",
+    "waste_price": 5.99,
+    "user_id": "user_id_here",
+    "applied_at": "2024-01-01T12:00:00.000Z"
+  }'
 ```
 
 ## Error Handling

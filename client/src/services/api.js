@@ -97,4 +97,17 @@ export const priceMappingAPI = {
   })
 };
 
+// Warehouse Inventory API calls
+export const warehouseInventoryAPI = {
+  getAll: () => api.get('/api/warehouse-inventory'),
+  create: (data) => api.post('/api/warehouse-inventory', data),
+  update: (id, data) => api.put(`/api/warehouse-inventory/${id}`, data),
+  delete: (id) => api.delete(`/api/warehouse-inventory/${id}`)
+};
+
+// External API calls
+export const externalAPI = {
+  updateWastePrice: (data) => api.post('/api/external/waste-price', data)
+};
+
 export default api; 

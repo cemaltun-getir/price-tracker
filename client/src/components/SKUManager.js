@@ -38,6 +38,7 @@ const SKUManager = () => {
     buying_price: '',
     buying_vat: '',
     selling_price: '',
+    waste_price: '',
     image: null
   });
   const [loading, setLoading] = useState(true);
@@ -129,6 +130,7 @@ const SKUManager = () => {
     data.append('buying_price', norm(formData.buying_price));
     data.append('buying_vat', norm(formData.buying_vat));
     data.append('selling_price', norm(formData.selling_price));
+    data.append('waste_price', norm(formData.waste_price));
     // New category levels
     // Only level 4 is authoritative for product-category relation
     data.append('category_level4_id', formData.category_level4_id);
@@ -164,6 +166,7 @@ const SKUManager = () => {
       buying_price: sku.buying_price || '',
       buying_vat: sku.buying_vat || '',
       selling_price: sku.selling_price || '',
+      waste_price: sku.waste_price || '',
       image: null
     });
     // Load sub-categories for the selected category
@@ -216,6 +219,7 @@ const SKUManager = () => {
       buying_price: '',
       buying_vat: '',
       selling_price: '',
+      waste_price: '',
       image: null
     });
     setSubCategories([]);
@@ -279,11 +283,16 @@ const SKUManager = () => {
                   <p className="text-gray-600 mb-1 font-semibold">Price without VAT: {Number(sku.buying_price_without_vat).toFixed(2)} TRY</p>
                 </div>
               )}
-              {sku.selling_price > 0 && (
-                <div className="mb-2">
-                  <p className="text-green-600 mb-1 font-semibold">Selling Price: {Number(sku.selling_price).toFixed(2)} TRY</p>
-                </div>
-              )}
+                  {sku.selling_price > 0 && (
+                    <div className="mb-2">
+                      <p className="text-green-600 mb-1 font-semibold">Selling Price: {Number(sku.selling_price).toFixed(2)} TRY</p>
+                    </div>
+                  )}
+                  {sku.waste_price > 0 && (
+                    <div className="mb-2">
+                      <p className="text-orange-600 mb-1 font-semibold">Waste Price: {Number(sku.waste_price).toFixed(2)} TRY</p>
+                    </div>
+                  )}
               <div className="mb-2">
                 <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
                   sku.kvi_label === 'SKVI' ? 'bg-red-100 text-red-800' :
@@ -496,6 +505,20 @@ const SKUManager = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
                   />
                   <p className="text-sm text-gray-500 mt-1">Enter the selling price (required)</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Waste Price (TRY)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    placeholder="0.00"
+                    value={formData.waste_price}
+                    onChange={(e) => setFormData({ ...formData, waste_price: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  />
+                  <p className="text-sm text-gray-500 mt-1">Enter the waste price (optional)</p>
                 </div>
                 {formData.buying_price && (
                   <div className="bg-blue-50 p-3 rounded-md">

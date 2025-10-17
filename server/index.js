@@ -16,8 +16,10 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, '../client/build')));
+// Serve static files from React build (only in production)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
 // Configure Cloudinary
 cloudinary.config({
@@ -105,6 +107,7 @@ const skuSchema = new mongoose.Schema({
   buying_vat: { type: Number, default: 0 },
   buying_price_without_vat: { type: mongoose.Schema.Types.Decimal128, default: 0 },
   selling_price: { type: mongoose.Schema.Types.Decimal128, required: true },
+  waste_price: { type: mongoose.Schema.Types.Decimal128, default: 0 },
   // Legacy fields for backward compatibility
   category: { type: String },
   sub_category: { type: String }
@@ -199,6 +202,15 @@ const simpleLocationSchema = new mongoose.Schema({
   name: { type: String, required: true }
 }, { timestamps: true });
 
+// Warehouse Inventory Schema
+const warehouseInventorySchema = new mongoose.Schema({
+  location_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true },
+  sku_id: { type: mongoose.Schema.Types.ObjectId, ref: 'SKU', required: true },
+  quantity_on_hand: { type: Number, required: true, min: 0 },
+  expiry_date: { type: Date, required: true },
+  batch_number: { type: String }
+}, { timestamps: true });
+
 // Models
 const CategoryLevel1 = mongoose.model('CategoryLevel1', categoryLevel1Schema);
 const CategoryLevel2 = mongoose.model('CategoryLevel2', categoryLevel2Schema);
@@ -212,6 +224,7 @@ const Vendor = mongoose.model('Vendor', vendorSchema);
 const Location = mongoose.model('Location', locationSchema);
 const SimpleLocation = mongoose.model('SimpleLocation', simpleLocationSchema);
 const PriceMapping = mongoose.model('PriceMapping', priceMappingSchema);
+const WarehouseInventory = mongoose.model('WarehouseInventory', warehouseInventorySchema);
 
 // Cloudinary storage configuration
 const cloudinaryStorage = new CloudinaryStorage({
@@ -612,6 +625,7 @@ app.get('/api/skus', async (req, res) => {
       buying_vat: sku.buying_vat || 0,
       buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
       selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
       created_at: sku.createdAt
     }));
     res.json(formattedSkus);
@@ -622,7 +636,7 @@ app.get('/api/skus', async (req, res) => {
 
 app.post('/api/skus', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price, waste_price } = req.body;
     const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : null;
@@ -644,6 +658,10 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
       const spStr = String(selling_price).replace(',', '.');
       skuData.selling_price = mongoose.Types.Decimal128.fromString((Number(spStr)).toFixed(2));
     }
+    if (waste_price && waste_price !== '') {
+      const wpStr = String(waste_price).replace(',', '.');
+      skuData.waste_price = mongoose.Types.Decimal128.fromString((Number(wpStr)).toFixed(2));
+    }
 
     const sku = new SKU(skuData);
     const savedSku = await sku.save();
@@ -656,7 +674,7 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
 
 app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price, waste_price } = req.body;
     const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : undefined;
@@ -684,6 +702,10 @@ app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
     if (selling_price && selling_price !== '') {
       const spStr = String(selling_price).replace(',', '.');
       updateData.selling_price = mongoose.Types.Decimal128.fromString((Number(spStr)).toFixed(2));
+    }
+    if (waste_price && waste_price !== '') {
+      const wpStr = String(waste_price).replace(',', '.');
+      updateData.waste_price = mongoose.Types.Decimal128.fromString((Number(wpStr)).toFixed(2));
     }
     if (image) {
       updateData.image = image;
@@ -1044,6 +1066,7 @@ app.get('/api/external/skus', async (req, res) => {
       buying_vat: sku.buying_vat || 0,
       buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
       selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
       created_at: sku.createdAt
     }));
     res.json(externalSkus);
@@ -1076,6 +1099,7 @@ app.get('/api/external/skus/:id', async (req, res) => {
       buying_vat: sku.buying_vat || 0,
       buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
       selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
       created_at: sku.createdAt
     };
     
@@ -1239,6 +1263,7 @@ app.get('/api/external/all', async (req, res) => {
         buying_vat: sku.buying_vat || 0,
         buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
         selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
         created_at: sku.createdAt
       })),
       vendors: vendors.map(vendor => ({
@@ -1549,6 +1574,127 @@ app.get('/api/external/sub-categories/:id', async (req, res) => {
   }
 });
 
+// External API endpoint for warehouse product expiry data
+app.get('/api/external/warehouse-product-expiry', async (req, res) => {
+  try {
+    const inventory = await WarehouseInventory.find()
+      .populate('location_id', 'name')
+      .populate({
+        path: 'sku_id',
+        select: 'name category_level4_id',
+        populate: {
+          path: 'category_level4_id',
+          select: 'name',
+          populate: {
+            path: 'category_level3_id',
+            model: 'CategoryLevel3',
+            populate: {
+              path: 'category_level2_id',
+              model: 'CategoryLevel2',
+              populate: {
+                path: 'category_id',
+                model: 'Category',
+                select: 'name'
+              }
+            }
+          }
+        }
+      })
+      .sort({ createdAt: -1 });
+
+    const now = new Date();
+    const formattedInventory = inventory.map(item => {
+      const expiryDate = new Date(item.expiry_date);
+      const daysUntilExpiry = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
+      
+      const categoryName = item.sku_id?.category_level4_id?.category_level3_id?.category_level2_id?.category_id?.name || 'Uncategorized';
+      const categoryId = item.sku_id?.category_level4_id?.category_level3_id?.category_level2_id?.category_id?._id || null;
+
+      return {
+        warehouse_id: item.location_id._id.toString(),
+        warehouse_name: item.location_id.name,
+        sku_id: item.sku_id._id.toString(),
+        sku_name: item.sku_id.name,
+        category_id: categoryId ? categoryId.toString() : null,
+        category_name: categoryName,
+        quantity_on_hand: item.quantity_on_hand,
+        days_until_expiry: daysUntilExpiry,
+        expiry_date: item.expiry_date.toISOString()
+      };
+    }).sort((a, b) => a.days_until_expiry - b.days_until_expiry);
+
+    res.json(formattedInventory);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// External API endpoint for waste price updates
+app.post('/api/external/waste-price', async (req, res) => {
+  try {
+    const { sku_id, warehouse_id, waste_price, user_id, applied_at } = req.body;
+
+    // Validate required fields
+    if (!sku_id || !warehouse_id || waste_price === undefined || !user_id || !applied_at) {
+      return res.status(400).json({ 
+        error: 'Missing required fields: sku_id, warehouse_id, waste_price, user_id, applied_at' 
+      });
+    }
+
+    // Validate waste_price is a number
+    if (typeof waste_price !== 'number' || waste_price < 0) {
+      return res.status(400).json({ 
+        error: 'waste_price must be a non-negative number' 
+      });
+    }
+
+    // Validate applied_at is a valid ISO 8601 timestamp
+    const appliedAtDate = new Date(applied_at);
+    if (isNaN(appliedAtDate.getTime())) {
+      return res.status(400).json({ 
+        error: 'applied_at must be a valid ISO 8601 timestamp' 
+      });
+    }
+
+    // Validate that SKU exists
+    const sku = await SKU.findById(sku_id);
+    if (!sku) {
+      return res.status(404).json({ error: 'SKU not found' });
+    }
+
+    // Validate that warehouse exists (check both Location and SimpleLocation models)
+    let warehouse = await Location.findById(warehouse_id);
+    if (!warehouse) {
+      warehouse = await SimpleLocation.findById(warehouse_id);
+      if (!warehouse) {
+        return res.status(404).json({ error: 'Warehouse not found' });
+      }
+    }
+
+    // Update the SKU with the new waste price
+    const wastePriceDecimal = mongoose.Types.Decimal128.fromString(waste_price.toFixed(2));
+    await SKU.findByIdAndUpdate(sku_id, { 
+      waste_price: wastePriceDecimal 
+    });
+
+    // Log the update (you might want to create a separate audit log table for this)
+    console.log(`Waste price updated for SKU ${sku_id} at warehouse ${warehouse_id} by user ${user_id} at ${applied_at}: ${waste_price}`);
+
+    res.json({ 
+      message: 'Waste price updated successfully',
+      sku_id,
+      warehouse_id,
+      waste_price,
+      applied_at,
+      updated_at: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Error updating waste price:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Price Mapping Routes
 app.get('/api/price-mappings', async (req, res) => {
   try {
@@ -1787,6 +1933,128 @@ app.post('/api/upload-excel', upload.single('excel'), async (req, res) => {
   }
 });
 
+// Warehouse Inventory Routes
+app.get('/api/warehouse-inventory', async (req, res) => {
+  try {
+    const inventory = await WarehouseInventory.find()
+      .populate('location_id', 'name')
+      .populate('sku_id', 'name brand unit unit_value')
+      .sort({ createdAt: -1 });
+
+    const formattedInventory = inventory.map(item => {
+      const expiryDate = new Date(item.expiry_date);
+      const now = new Date();
+      const daysUntilExpiry = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
+
+      return {
+        id: item._id,
+        location_id: item.location_id._id,
+        location_name: item.location_id.name,
+        sku_id: item.sku_id._id,
+        sku_name: item.sku_id.name,
+        sku_brand: item.sku_id.brand,
+        sku_unit: item.sku_id.unit,
+        sku_unit_value: item.sku_id.unit_value,
+        quantity_on_hand: item.quantity_on_hand,
+        expiry_date: item.expiry_date,
+        days_until_expiry: daysUntilExpiry,
+        batch_number: item.batch_number,
+        created_at: item.createdAt,
+        updated_at: item.updatedAt
+      };
+    });
+
+    res.json(formattedInventory);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/warehouse-inventory', async (req, res) => {
+  try {
+    const { location_id, sku_id, quantity_on_hand, expiry_date, batch_number } = req.body;
+
+    if (!location_id || !sku_id || !quantity_on_hand || !expiry_date) {
+      return res.status(400).json({ error: 'Missing required fields: location_id, sku_id, quantity_on_hand, expiry_date' });
+    }
+
+    if (quantity_on_hand < 0) {
+      return res.status(400).json({ error: 'Quantity on hand must be non-negative' });
+    }
+
+    // Validate that location and SKU exist
+    const location = await Location.findById(location_id);
+    if (!location) {
+      return res.status(400).json({ error: 'Location not found' });
+    }
+
+    const sku = await SKU.findById(sku_id);
+    if (!sku) {
+      return res.status(400).json({ error: 'SKU not found' });
+    }
+
+    const warehouseInventory = new WarehouseInventory({
+      location_id,
+      sku_id,
+      quantity_on_hand,
+      expiry_date: new Date(expiry_date),
+      batch_number: batch_number || null
+    });
+
+    const savedInventory = await warehouseInventory.save();
+    res.json({ id: savedInventory._id, message: 'Warehouse inventory created successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.put('/api/warehouse-inventory/:id', async (req, res) => {
+  try {
+    const { location_id, sku_id, quantity_on_hand, expiry_date, batch_number } = req.body;
+    const id = req.params.id;
+
+    if (quantity_on_hand !== undefined && quantity_on_hand < 0) {
+      return res.status(400).json({ error: 'Quantity on hand must be non-negative' });
+    }
+
+    const updateData = {};
+    if (location_id !== undefined) updateData.location_id = location_id;
+    if (sku_id !== undefined) updateData.sku_id = sku_id;
+    if (quantity_on_hand !== undefined) updateData.quantity_on_hand = quantity_on_hand;
+    if (expiry_date !== undefined) updateData.expiry_date = new Date(expiry_date);
+    if (batch_number !== undefined) updateData.batch_number = batch_number;
+
+    // Validate location and SKU if they're being updated
+    if (location_id) {
+      const location = await Location.findById(location_id);
+      if (!location) {
+        return res.status(400).json({ error: 'Location not found' });
+      }
+    }
+
+    if (sku_id) {
+      const sku = await SKU.findById(sku_id);
+      if (!sku) {
+        return res.status(400).json({ error: 'SKU not found' });
+      }
+    }
+
+    await WarehouseInventory.findByIdAndUpdate(id, updateData);
+    res.json({ message: 'Warehouse inventory updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.delete('/api/warehouse-inventory/:id', async (req, res) => {
+  try {
+    await WarehouseInventory.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Warehouse inventory deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Debug endpoint to get server IP
 app.get('/api/server-ip', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -1823,9 +2091,11 @@ app.get('/api/db-status', async (req, res) => {
   }
 });
 
-// Catch all handler: send back React's index.html file for any non-API routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// Catch all handler: send back React's index.html file for any non-API routes (only in production)
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+}
 
 // Server is started in connectToDatabase() function after DB connection 
