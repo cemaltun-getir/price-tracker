@@ -107,44 +107,79 @@ const skuSchema = new mongoose.Schema({
   buying_vat: { type: Number, default: 0 },
   buying_price_without_vat: { type: mongoose.Schema.Types.Decimal128, default: 0 },
   selling_price: { type: mongoose.Schema.Types.Decimal128, required: true },
+  selling_vat: { type: Number, default: 0 },
+  selling_price_without_vat: { type: mongoose.Schema.Types.Decimal128, default: 0 },
   waste_price: { type: mongoose.Schema.Types.Decimal128, default: 0 },
   // Legacy fields for backward compatibility
   category: { type: String },
   sub_category: { type: String }
 }, { timestamps: true });
 
-// Pre-save middleware to calculate buying_price_without_vat
+// Pre-save middleware to calculate buying_price_without_vat and selling_price_without_vat
 skuSchema.pre('save', function(next) {
-  const price = this.buying_price ? parseFloat(this.buying_price.toString()) : 0;
-  const vat = this.buying_vat ? parseFloat(this.buying_vat) : 0;
-  let priceWithoutVat = 0;
-  if (price && vat > 0) {
-    priceWithoutVat = price / (1 + (vat / 100));
-  } else if (price) {
-    priceWithoutVat = price;
+  // Calculate buying price without VAT
+  const buyingPrice = this.buying_price ? parseFloat(this.buying_price.toString()) : 0;
+  const buyingVat = this.buying_vat ? parseFloat(this.buying_vat) : 0;
+  let buyingPriceWithoutVat = 0;
+  if (buyingPrice && buyingVat > 0) {
+    buyingPriceWithoutVat = buyingPrice / (1 + (buyingVat / 100));
+  } else if (buyingPrice) {
+    buyingPriceWithoutVat = buyingPrice;
   } else {
-    priceWithoutVat = 0;
+    buyingPriceWithoutVat = 0;
   }
-  this.buying_price_without_vat = mongoose.Types.Decimal128.fromString(priceWithoutVat.toFixed(2));
+  this.buying_price_without_vat = mongoose.Types.Decimal128.fromString(buyingPriceWithoutVat.toFixed(2));
+
+  // Calculate selling price without VAT
+  const sellingPrice = this.selling_price ? parseFloat(this.selling_price.toString()) : 0;
+  const sellingVat = this.selling_vat ? parseFloat(this.selling_vat) : 0;
+  let sellingPriceWithoutVat = 0;
+  if (sellingPrice && sellingVat > 0) {
+    sellingPriceWithoutVat = sellingPrice / (1 + (sellingVat / 100));
+  } else if (sellingPrice) {
+    sellingPriceWithoutVat = sellingPrice;
+  } else {
+    sellingPriceWithoutVat = 0;
+  }
+  this.selling_price_without_vat = mongoose.Types.Decimal128.fromString(sellingPriceWithoutVat.toFixed(2));
+  
   next();
 });
 
-// Pre-update middleware to calculate buying_price_without_vat
+// Pre-update middleware to calculate buying_price_without_vat and selling_price_without_vat
 skuSchema.pre('findOneAndUpdate', function(next) {
   const update = this.getUpdate();
-  const price = update.buying_price ? parseFloat(update.buying_price.toString()) : 0;
-  const vat = update.buying_vat ? parseFloat(update.buying_vat) : 0;
-  let priceWithoutVat = 0;
-  if (price && vat > 0) {
-    priceWithoutVat = price / (1 + (vat / 100));
-  } else if (price) {
-    priceWithoutVat = price;
+  
+  // Calculate buying price without VAT
+  const buyingPrice = update.buying_price ? parseFloat(update.buying_price.toString()) : 0;
+  const buyingVat = update.buying_vat ? parseFloat(update.buying_vat) : 0;
+  let buyingPriceWithoutVat = 0;
+  if (buyingPrice && buyingVat > 0) {
+    buyingPriceWithoutVat = buyingPrice / (1 + (buyingVat / 100));
+  } else if (buyingPrice) {
+    buyingPriceWithoutVat = buyingPrice;
   } else if (update.buying_price !== undefined || update.buying_vat !== undefined) {
-    priceWithoutVat = 0;
+    buyingPriceWithoutVat = 0;
   }
   if (update.buying_price !== undefined || update.buying_vat !== undefined) {
-    update.buying_price_without_vat = mongoose.Types.Decimal128.fromString(priceWithoutVat.toFixed(2));
+    update.buying_price_without_vat = mongoose.Types.Decimal128.fromString(buyingPriceWithoutVat.toFixed(2));
   }
+
+  // Calculate selling price without VAT
+  const sellingPrice = update.selling_price ? parseFloat(update.selling_price.toString()) : 0;
+  const sellingVat = update.selling_vat ? parseFloat(update.selling_vat) : 0;
+  let sellingPriceWithoutVat = 0;
+  if (sellingPrice && sellingVat > 0) {
+    sellingPriceWithoutVat = sellingPrice / (1 + (sellingVat / 100));
+  } else if (sellingPrice) {
+    sellingPriceWithoutVat = sellingPrice;
+  } else if (update.selling_price !== undefined || update.selling_vat !== undefined) {
+    sellingPriceWithoutVat = 0;
+  }
+  if (update.selling_price !== undefined || update.selling_vat !== undefined) {
+    update.selling_price_without_vat = mongoose.Types.Decimal128.fromString(sellingPriceWithoutVat.toFixed(2));
+  }
+
   next();
 });
 
@@ -625,6 +660,8 @@ app.get('/api/skus', async (req, res) => {
       buying_vat: sku.buying_vat || 0,
       buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
       selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      selling_vat: sku.selling_vat || 0,
+      selling_price_without_vat: sku.selling_price_without_vat ? parseFloat(sku.selling_price_without_vat.toString()) : 0,
       waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
       created_at: sku.createdAt
     }));
@@ -636,7 +673,7 @@ app.get('/api/skus', async (req, res) => {
 
 app.post('/api/skus', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price, waste_price } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price, selling_vat, waste_price } = req.body;
     const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : null;
@@ -658,6 +695,10 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
       const spStr = String(selling_price).replace(',', '.');
       skuData.selling_price = mongoose.Types.Decimal128.fromString((Number(spStr)).toFixed(2));
     }
+    if (selling_vat && selling_vat !== '') {
+      const svStr = String(selling_vat).replace(',', '.');
+      skuData.selling_vat = parseFloat(svStr);
+    }
     if (waste_price && waste_price !== '') {
       const wpStr = String(waste_price).replace(',', '.');
       skuData.waste_price = mongoose.Types.Decimal128.fromString((Number(wpStr)).toFixed(2));
@@ -674,7 +715,7 @@ app.post('/api/skus', upload.single('image'), async (req, res) => {
 
 app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price, waste_price } = req.body;
+    const { name, brand, unit, unit_value, kvi_label, buying_price, buying_vat, selling_price, selling_vat, waste_price } = req.body;
     const cat4 = req.body.category_level4_id || '';
     // Use Cloudinary URL if available, otherwise use filename
     const image = req.file ? (req.file.path || req.file.filename) : undefined;
@@ -702,6 +743,10 @@ app.put('/api/skus/:id', upload.single('image'), async (req, res) => {
     if (selling_price && selling_price !== '') {
       const spStr = String(selling_price).replace(',', '.');
       updateData.selling_price = mongoose.Types.Decimal128.fromString((Number(spStr)).toFixed(2));
+    }
+    if (selling_vat && selling_vat !== '') {
+      const svStr = String(selling_vat).replace(',', '.');
+      updateData.selling_vat = parseFloat(svStr);
     }
     if (waste_price && waste_price !== '') {
       const wpStr = String(waste_price).replace(',', '.');
@@ -1066,6 +1111,8 @@ app.get('/api/external/skus', async (req, res) => {
       buying_vat: sku.buying_vat || 0,
       buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
       selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      selling_vat: sku.selling_vat || 0,
+      selling_price_without_vat: sku.selling_price_without_vat ? parseFloat(sku.selling_price_without_vat.toString()) : 0,
       waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
       created_at: sku.createdAt
     }));
@@ -1099,6 +1146,8 @@ app.get('/api/external/skus/:id', async (req, res) => {
       buying_vat: sku.buying_vat || 0,
       buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
       selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
+      selling_vat: sku.selling_vat || 0,
+      selling_price_without_vat: sku.selling_price_without_vat ? parseFloat(sku.selling_price_without_vat.toString()) : 0,
       waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
       created_at: sku.createdAt
     };
@@ -1263,7 +1312,9 @@ app.get('/api/external/all', async (req, res) => {
         buying_vat: sku.buying_vat || 0,
         buying_price_without_vat: sku.buying_price_without_vat ? parseFloat(sku.buying_price_without_vat.toString()) : 0,
         selling_price: sku.selling_price ? parseFloat(sku.selling_price.toString()) : 0,
-      waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
+        selling_vat: sku.selling_vat || 0,
+        selling_price_without_vat: sku.selling_price_without_vat ? parseFloat(sku.selling_price_without_vat.toString()) : 0,
+        waste_price: sku.waste_price ? parseFloat(sku.waste_price.toString()) : 0,
         created_at: sku.createdAt
       })),
       vendors: vendors.map(vendor => ({

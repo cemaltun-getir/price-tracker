@@ -38,6 +38,7 @@ const SKUManager = () => {
     buying_price: '',
     buying_vat: '',
     selling_price: '',
+    selling_vat: '',
     waste_price: '',
     image: null
   });
@@ -130,6 +131,7 @@ const SKUManager = () => {
     data.append('buying_price', norm(formData.buying_price));
     data.append('buying_vat', norm(formData.buying_vat));
     data.append('selling_price', norm(formData.selling_price));
+    data.append('selling_vat', norm(formData.selling_vat));
     data.append('waste_price', norm(formData.waste_price));
     // New category levels
     // Only level 4 is authoritative for product-category relation
@@ -166,6 +168,7 @@ const SKUManager = () => {
       buying_price: sku.buying_price || '',
       buying_vat: sku.buying_vat || '',
       selling_price: sku.selling_price || '',
+      selling_vat: sku.selling_vat || '',
       waste_price: sku.waste_price || '',
       image: null
     });
@@ -219,6 +222,7 @@ const SKUManager = () => {
       buying_price: '',
       buying_vat: '',
       selling_price: '',
+      selling_vat: '',
       waste_price: '',
       image: null
     });
@@ -286,6 +290,12 @@ const SKUManager = () => {
                   {sku.selling_price > 0 && (
                     <div className="mb-2">
                       <p className="text-green-600 mb-1 font-semibold">Selling Price: {Number(sku.selling_price).toFixed(2)} TRY</p>
+                      {sku.selling_vat > 0 && (
+                        <>
+                          <p className="text-green-600 mb-1">Selling VAT: {sku.selling_vat}%</p>
+                          <p className="text-green-600 mb-1">Price without VAT: {Number(sku.selling_price_without_vat).toFixed(2)} TRY</p>
+                        </>
+                      )}
                     </div>
                   )}
                   {sku.waste_price > 0 && (
@@ -506,6 +516,39 @@ const SKUManager = () => {
                   />
                   <p className="text-sm text-gray-500 mt-1">Enter the selling price (required)</p>
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Selling VAT (%)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="100"
+                    placeholder="0.00"
+                    value={formData.selling_vat}
+                    onChange={(e) => setFormData({ ...formData, selling_vat: e.target.value })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  />
+                  <p className="text-sm text-gray-500 mt-1">Enter the VAT percentage for selling price (e.g., 20 for 20%)</p>
+                </div>
+                {formData.selling_price && formData.selling_vat && (
+                  <div className="bg-green-50 p-3 rounded-md">
+                    <p className="text-sm font-medium text-green-800">Selling Price Calculation Preview:</p>
+                    <p className="text-sm text-green-700">
+                      Price without VAT: {
+                        (() => {
+                          const price = parseFloat(formData.selling_price) || 0;
+                          const vat = parseFloat(formData.selling_vat) || 0;
+                          if (price && vat > 0) {
+                            return (price / (1 + (vat / 100))).toFixed(2);
+                          } else if (price) {
+                            return price.toFixed(2);
+                          }
+                          return '0.00';
+                        })()
+                      } TRY
+                    </p>
+                  </div>
+                )}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Waste Price (TRY)</label>
