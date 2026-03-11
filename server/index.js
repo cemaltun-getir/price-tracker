@@ -2150,3 +2150,20 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Server is started in connectToDatabase() function after DB connection 
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
+
+// Example endpoint for testing
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+module.exports = app; // Export for testing
