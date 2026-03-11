@@ -2150,3 +2150,122 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Server is started in connectToDatabase() function after DB connection 
+
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const AuditLog = require('./models/AuditLog');
+const Task = require('./models/Task'); // Assuming Task model exists
+const User = require('./models/User'); // Assuming User model exists
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+mongoose.connect('mongodb://localhost:27017/yourdbname', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Example endpoint for task approval
+app.post('/tasks/:taskId/approve', async (req, res) => {
+  const { taskId } = req.params;
+  const { userId } = req.body; // Assuming userId is sent in body or from auth middleware
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    // Find task
+    const task = await Task.findById(taskId).session(session);
+    if (!task) {
+      await session.abortTransaction();
+      session.endSession();
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Update task approval status
+    task.approved = true;
+    task.approvedBy = userId;
+    task.approvedAt = new Date();
+    await task.save({ session });
+
+    // Create audit log entry
+    const auditLog = new AuditLog({
+      action_type: 'approval',
+      user_id: userId,
+      task_id: taskId,
+      details: `Task approved`,
+    });
+    await auditLog.save({ session });
+
+    await session.commitTransaction();
+    session.endSession();
+
+    res.json({ message: 'Task approved and audit logged' });
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
+    console.error('Error approving task:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Example endpoint for reviewer action
+app.post('/tasks/:taskId/reviewer-action', async (req, res) => {
+  const { taskId } = req.params;
+  const { userId, action, comment } = req.body; // action could be 'commented', 'rejected', etc.
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    // Find task
+    const task = await Task.findById(taskId).session(session);
+    if (!task) {
+      await session.abortTransaction();
+      session.endSession();
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Here you would handle the reviewer action on the task
+    // For example, add a comment or update status
+    // This is a placeholder for actual logic
+    if (!task.reviewerActions) {
+      task.reviewerActions = [];
+    }
+    task.reviewerActions.push({
+      user: userId,
+      action,
+      comment,
+      timestamp: new Date(),
+    });
+    await task.save({ session });
+
+    // Create audit log entry
+    const auditLog = new AuditLog({
+      action_type: 'reviewer_action',
+      user_id: userId,
+      task_id: taskId,
+      details: `Reviewer action: ${action}${comment ? ` - ${comment}` : ''}`,
+    });
+    await auditLog.save({ session });
+
+    await session.commitTransaction();
+    session.endSession();
+
+    res.json({ message: 'Reviewer action recorded and audit logged' });
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
+    console.error('Error recording reviewer action:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

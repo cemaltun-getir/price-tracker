@@ -125,3 +125,32 @@ function App() {
 }
 
 export default App; 
+
+import React from 'react';
+import TaskApproval from './components/TaskApproval';
+import ReviewerAction from './components/ReviewerAction';
+
+function App() {
+  // Example user and task IDs for demonstration
+  const userId = '64a1f2b3c4d5e6f789012345';
+  const taskId = '64a1f2b3c4d5e6f789098765';
+
+  const handleApproved = () => {
+    console.log('Task approved callback');
+  };
+
+  const handleReviewerActionComplete = () => {
+    console.log('Reviewer action complete callback');
+  };
+
+  return (
+    <div>
+      <h1>Task Management</h1>
+      <TaskApproval taskId={taskId} userId={userId} onApproved={handleApproved} />
+      <hr />
+      <ReviewerAction taskId={taskId} userId={userId} onActionComplete={handleReviewerActionComplete} />
+    </div>
+  );
+}
+
+export default App;
