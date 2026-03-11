@@ -285,3 +285,50 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+@@
++# Security Improvements on Login Process
++
++## Overview
++This update enhances the security of the login process by:
++
++- Enforcing HTTPS connections in production.
++- Using bcrypt for secure password hashing and verification.
++- Implementing rate limiting on login attempts to mitigate brute force attacks.
++- Using HttpOnly, Secure cookies for session tokens to prevent XSS access.
++- Adding CSRF protection with tokens.
++- Sanitizing user inputs to prevent injection and XSS.
++- Improving error messages to avoid leaking sensitive information.
++
++## Developer Notes
++
++- Ensure environment variable `JWT_SECRET` is set for signing tokens.
++- The login endpoint now requires a CSRF token sent in the `CSRF-Token` header.
++- The client fetches the CSRF token from `/csrf-token` endpoint before login.
++- Session tokens expire after 2 hours.
++- Rate limiting allows max 5 login attempts per 15 minutes per IP.
++
++## Testing
++
++- Manual and automated tests should verify:
++  - Login works correctly with valid credentials.
++  - Invalid credentials do not reveal user existence.
++  - Rate limiting triggers after repeated failed attempts.
++  - CSRF tokens are required and validated.
++  - Session cookies are HttpOnly and Secure in production.
++  - No sensitive info leaks in error messages.
++
++## Dependencies Added
++
++- `helmet` for setting secure HTTP headers.
++- `express-rate-limit` for rate limiting.
++- `bcrypt` for password hashing.
++- `cookie-parser` for cookie handling.
++- `csurf` for CSRF protection.
++- `xss` for input sanitization.
++- `jsonwebtoken` for session token creation and verification.
++
++## Next Steps
++
++- Review and test thoroughly before deployment.
++- Monitor login attempts and logs for suspicious activity.

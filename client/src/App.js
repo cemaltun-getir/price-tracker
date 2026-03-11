@@ -125,3 +125,68 @@ function App() {
 }
 
 export default App; 
+
+@@
+-import React, { useState } from 'react';
+-import Login from './components/Login';
+-
+-function App() {
+-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+-
+-  const handleLogin = () => {
+-    setIsAuthenticated(true);
+-  };
+-
+-  return (
+-    <div>
+-      {isAuthenticated ? (
+-        <h1>Welcome!</h1>
+-      ) : (
+-        <Login onLogin={handleLogin} />
+-      )}
+-    </div>
+-  );
+-}
+-
+-export default App;
++import React, { useState, useEffect } from 'react';
++import Login from './components/Login';
++
++function App() {
++  const [isAuthenticated, setIsAuthenticated] = useState(false);
++  const [loading, setLoading] = useState(true);
++
++  // Check auth status on mount
++  useEffect(() => {
++    fetch('/auth-status', { credentials: 'include' })
++      .then(res => res.json())
++      .then(data => {
++        setIsAuthenticated(data.authenticated);
++        setLoading(false);
++      })
++      .catch(() => {
++        setIsAuthenticated(false);
++        setLoading(false);
++      });
++  }, []);
++
++  const handleLogin = () => {
++    setIsAuthenticated(true);
++  };
++
++  if (loading) {
++    return <p>Loading...</p>;
++  }
++
++  return (
++    <div>
++      {isAuthenticated ? (
++        <h1>Welcome!</h1>
++      ) : (
++        <Login onLogin={handleLogin} />
++      )}
++    </div>
++  );
++}
++
++export default App;

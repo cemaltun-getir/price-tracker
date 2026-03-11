@@ -2150,3 +2150,136 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Server is started in connectToDatabase() function after DB connection 
+
+@@ -1,50 +1,90 @@
++/**
++ * Security improvements on login process:
++ * - Enforce HTTPS redirect middleware
++ * - Use bcrypt for password hashing and verification
++ * - Implement rate limiting on login route to prevent brute force
++ * - Use HttpOnly, Secure cookies for session tokens
++ * - Sanitize inputs to prevent injection
++ * - Improved error messages to avoid info leakage
++ */
++
+ const express = require('express');
++const helmet = require('helmet');
++const rateLimit = require('express-rate-limit');
++const bcrypt = require('bcrypt');
++const cookieParser = require('cookie-parser');
++const csurf = require('csurf');
++const xss = require('xss');
++
++const { getUserByUsername } = require('./utils/userUtils'); // hypothetical user lookup
++
+ const app = express();
+ 
+-app.use(express.json());
++app.use(helmet());
++app.use(express.json());
++app.use(cookieParser());
++
++// Enforce HTTPS middleware
++app.use((req, res, next) => {
++  if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production') {
++    return res.redirect(`https://${req.headers.host}${req.url}`);
++  }
++  next();
++});
++
++// Rate limiter for login route - max 5 attempts per 15 minutes per IP
++const loginLimiter = rateLimit({
++  windowMs: 15 * 60 * 1000,
++  max: 5,
++  message: { error: 'Too many login attempts, please try again later.' },
++  standardHeaders: true,
++  legacyHeaders: false,
++});
++
++// CSRF protection middleware setup
++const csrfProtection = csurf({
++  cookie: {
++    httpOnly: true,
++    secure: process.env.NODE_ENV === 'production',
++    sameSite: 'strict',
++  },
++});
+ 
+-app.post('/login', (req, res) => {
+-  const { username, password } = req.body;
+-  // TODO: Implement login logic
+-  res.send('Login endpoint');
+-});
++app.post('/login', loginLimiter, csrfProtection, async (req, res) => {
++  try {
++    // Sanitize inputs to prevent injection
++    const username = xss(req.body.username);
++    const password = req.body.password; // password should not be altered
++
++    if (!username || !password) {
++      return res.status(400).json({ error: 'Username and password are required.' });
++    }
++
++    const user = await getUserByUsername(username);
++    if (!user) {
++      // Do not reveal if user exists
++      return res.status(401).json({ error: 'Invalid username or password.' });
++    }
++
++    const passwordMatch = await bcrypt.compare(password, user.passwordHash);
++    if (!passwordMatch) {
++      return res.status(401).json({ error: 'Invalid username or password.' });
++    }
++
++    // Create session token (e.g., JWT or session id)
++    // For demo, assume a function createSessionToken(userId)
++    const token = createSessionToken(user.id);
++
++    // Set HttpOnly, Secure cookie for session token
++    res.cookie('session_token', token, {
++      httpOnly: true,
++      secure: process.env.NODE_ENV === 'production',
++      sameSite: 'strict',
++      maxAge: 1000 * 60 * 60 * 2, // 2 hours
++    });
++
++    res.json({ message: 'Login successful' });
++  } catch (err) {
++    console.error('Login error:', err);
++    res.status(500).json({ error: 'An error occurred during login.' });
++  }
++});
++
++// Dummy function for session token creation (to be replaced with real implementation)
++function createSessionToken(userId) {
++  // For example, sign a JWT with secret and expiry
++  const jwt = require('jsonwebtoken');
++  const token = jwt.sign({ userId }, process.env.JWT_SECRET || 'secret', { expiresIn: '2h' });
++  return token;
++}
++
++// Export app for server start elsewhere
++module.exports = app;
+
+
+@@
++// Add route to provide CSRF token to client
++app.get('/csrf-token', csrfProtection, (req, res) => {
++  res.json({ csrfToken: req.csrfToken() });
++});
++
++// Add route to check auth status
++app.get('/auth-status', (req, res) => {
++  // For demo, check if session_token cookie exists and is valid
++  const token = req.cookies.session_token;
++  if (!token) {
++    return res.json({ authenticated: false });
++  }
++  try {
++    const jwt = require('jsonwebtoken');
++    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
++    return res.json({ authenticated: true, userId: decoded.userId });
++  } catch {
++    return res.json({ authenticated: false });
++  }
++});

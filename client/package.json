@@ -44,3 +44,12 @@
   },
   "proxy": "http://localhost:3001"
 } 
+
+@@
+-  "dependencies": {
+-    "react": "^17.0.2"
+-  }
++  "dependencies": {
++    "react": "^17.0.2",
++    "dompurify": "^2.4.0"
++  }
