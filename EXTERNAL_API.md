@@ -444,3 +444,13 @@ Error responses include an error message:
 - Image and logo fields contain filenames, not full URLs
 - The `/api/external/all` endpoint is useful for initial data loading or synchronization
 - All endpoints support CORS for cross-origin requests 
+
+# External API Integration
+
+## Security Notes
+
+- All API keys and secrets must be stored in environment variables.
+- Do not commit API keys to the repository.
+- Use HTTPS for all API calls.
+- Validate and sanitize all inputs and outputs.
+- Monitor API usage for suspicious activity.

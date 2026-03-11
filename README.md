@@ -285,3 +285,22 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+# Project
+
+## Security Improvements
+
+- Added `helmet` middleware in the server to set secure HTTP headers.
+- Configured strict CORS policy using environment variable `CORS_ALLOWED_ORIGINS`.
+- Added Content Security Policy (CSP) meta tag in `client/public/index.html`.
+- Updated dependencies to latest secure versions.
+- Added ESLint with security plugin to detect security issues in code.
+- Added npm scripts for security scanning (`npm audit`, `snyk test`).
+- Added `.env` to `.gitignore` to prevent committing secrets.
+- Recommended running `npm audit` and `snyk test` regularly.
+- Use environment variables for all secrets and sensitive configuration.
+
+## Running Security Scans
+
+Run the following commands to check for vulnerabilities:
+

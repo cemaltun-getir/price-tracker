@@ -2167,3 +2167,48 @@ app.listen(port, () => {
 });
 
 module.exports = app; // Export for testing
+
+
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+require('dotenv').config();
+
+const app = express();
+
+// Security middleware
+app.use(helmet());
+
+// Configure CORS with strict policy
+const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS ? process.env.CORS_ALLOWED_ORIGINS.split(',') : [];
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow non-browser requests like curl, postman
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy violation'));
+    }
+  },
+  optionsSuccessStatus: 200
+}));
+
+app.use(express.json());
+
+// Example route
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+// Error handler for CORS errors
+app.use((err, req, res, next) => {
+  if (err.message === 'CORS policy violation') {
+    return res.status(403).json({ error: 'CORS policy violation' });
+  }
+  next(err);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

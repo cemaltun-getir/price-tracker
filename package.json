@@ -37,3 +37,22 @@
     "npm": "9.x"
   }
 }
+
+
+{
+  "name": "project-root",
+  "version": "1.0.0",
+  "scripts": {
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --ext .js,.jsx --fix",
+    "security:scan": "npm audit && snyk test",
+    "security:monitor": "snyk monitor"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-plugin-security": "^1.4.0",
+    "snyk": "^1.1234.0"
+  }
+}

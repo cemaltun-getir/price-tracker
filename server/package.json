@@ -55,3 +55,30 @@
     }
   }
 }
+
+
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix",
+    "security:scan": "npm audit && snyk test",
+    "security:monitor": "snyk monitor"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-plugin-security": "^1.4.0",
+    "snyk": "^1.1234.0"
+  }
+}
