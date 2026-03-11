@@ -125,3 +125,46 @@ function App() {
 }
 
 export default App; 
+
+import React, { useState, useEffect } from 'react';
+import Login from './components/Login';
+
+function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check session on mount
+    fetch('/session', { credentials: 'include' })
+      .then(res => {
+        if (res.ok) {
+          setAuthenticated(true);
+        } else {
+          setAuthenticated(false);
+        }
+      })
+      .catch(() => setAuthenticated(false));
+  }, []);
+
+  const handleLogin = () => {
+    setAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    fetch('/logout', { method: 'POST', credentials: 'include' })
+      .then(() => setAuthenticated(false))
+      .catch(() => setAuthenticated(false));
+  };
+
+  if (!authenticated) {
+    return <Login onLogin={handleLogin} />;
+  }
+
+  return (
+    <div>
+      <h1>Welcome!</h1>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
+}
+
+export default App;

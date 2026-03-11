@@ -2150,3 +2150,105 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Server is started in connectToDatabase() function after DB connection 
+
+// Added security improvements to login process
+
+const express = require('express');
+const bcrypt = require('bcrypt');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const csurf = require('csurf');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const xss = require('xss-clean');
+const { body, validationResult } = require('express-validator');
+
+const app = express();
+
+// Security middlewares
+app.use(helmet()); // Set secure HTTP headers
+app.use(express.json());
+app.use(xss()); // Sanitize user input to prevent XSS
+
+// Session management with secure cookies and MongoDB store
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'supersecretkey',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // HTTPS only in prod
+    maxAge: 1000 * 60 * 60, // 1 hour
+    sameSite: 'lax',
+  }
+}));
+
+// CSRF protection
+app.use(csurf());
+
+// Rate limiter to prevent brute force attacks on login endpoint
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // limit each IP to 5 login requests per windowMs
+  message: 'Too many login attempts from this IP, please try again after 15 minutes'
+});
+
+// Login route with input validation and sanitization
+app.post('/login', loginLimiter, [
+  body('username').trim().escape().notEmpty().withMessage('Username is required'),
+  body('password').notEmpty().withMessage('Password is required')
+], async (req, res) => {
+  // Validate inputs
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { username, password } = req.body;
+
+  try {
+    // Fetch user from DB (pseudo code)
+    const user = await getUserByUsername(username);
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    // Compare hashed password
+    const passwordMatch = await bcrypt.compare(password, user.passwordHash);
+    if (!passwordMatch) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    // Regenerate session to prevent fixation
+    req.session.regenerate((err) => {
+      if (err) {
+        return res.status(500).json({ error: 'Session regeneration failed' });
+      }
+      // Store user info in session
+      req.session.userId = user.id;
+      res.json({ message: 'Login successful' });
+    });
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Error handler for CSRF token errors
+app.use((err, req, res, next) => {
+  if (err.code === 'EBADCSRFTOKEN') {
+    return res.status(403).json({ error: 'Invalid CSRF token' });
+  }
+  next(err);
+});
+
+module.exports = app;
+
+// Helper function (pseudo)
+async function getUserByUsername(username) {
+  // Implement DB lookup here
+  // Example:
+  // return await User.findOne({ username });
+  return null; // placeholder
+}

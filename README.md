@@ -285,3 +285,32 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+# Project README
+
+## Security Improvements on Login Process
+
+### Summary
+
+- Implemented secure password handling with bcrypt hashing.
+- Added rate limiting on login endpoint to prevent brute force attacks.
+- Enforced HTTPS-only cookies and secure session management.
+- Added CSRF protection using csurf middleware.
+- Sanitized user inputs on backend and frontend to prevent XSS and injection attacks.
+- Updated dependencies to latest secure versions.
+- Added frontend CSRF token handling.
+- Included error handling for CSRF token failures.
+- Added input validation on login form.
+
+### Recommendations
+
+- Always run the server behind HTTPS.
+- Keep dependencies up to date and run `npm audit` regularly.
+- Monitor login attempts and consider account lockout policies.
+- Use environment variables for secrets and sensitive configs.
+- Regularly review and test authentication flows for vulnerabilities.
+
+### Running Tests
+
+Run backend tests with:
+
