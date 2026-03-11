@@ -2150,3 +2150,57 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Server is started in connectToDatabase() function after DB connection 
+
+require('dotenv').config();
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const xssClean = require('xss-clean');
+
+const app = express();
+
+// Security middlewares
+app.use(helmet());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(xssClean());
+
+// Rate limiting to prevent brute force attacks
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: 'Too many requests from this IP, please try again later.'
+});
+app.use(limiter);
+
+// Body parser
+app.use(express.json());
+
+// Example route with input validation and sanitization
+app.post('/api/data', (req, res) => {
+  const { input } = req.body;
+  if (typeof input !== 'string' || input.length > 1000) {
+    return res.status(400).json({ error: 'Invalid input' });
+  }
+  // Further sanitization if needed
+  const sanitizedInput = input.replace(/[<>]/g, '');
+  // Process sanitizedInput...
+  res.json({ success: true, data: sanitizedInput });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal Server Error' });
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

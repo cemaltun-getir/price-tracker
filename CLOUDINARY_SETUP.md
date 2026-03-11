@@ -41,3 +41,11 @@ heroku restart --app price-tracker-mern-app
 
 ## After Setup
 Once configured, all new image uploads will be stored on Cloudinary and will persist across Heroku deployments!
+
+
+# Cloudinary Setup
+
+- Store Cloudinary API keys and secrets in environment variables.
+- Do not commit `.env` files or keys to version control.
+- Use secure HTTPS URLs for Cloudinary resources.
+- Validate and sanitize any user-generated content before uploading to Cloudinary.

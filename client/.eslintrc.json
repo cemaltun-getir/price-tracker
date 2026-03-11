@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "react-app",
+    "plugin:security/recommended"
+  ],
+  "plugins": [
+    "security"
+  ],
+  "rules": {
+    "security/detect-object-injection": "warn"
+  }
+}

@@ -285,3 +285,26 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+# Project
+
+## Security Updates
+
+- Updated server dependencies to latest secure versions including helmet, cors, express-rate-limit, and xss-clean for enhanced security.
+- Added security middlewares in server/index.js: Helmet for HTTP headers, CORS with restricted origins, rate limiting, and XSS cleaning.
+- Sanitized user inputs in server and client to prevent injection and XSS attacks.
+- Added ESLint with security plugin to both server and client for static code analysis.
+- Updated .gitignore to exclude environment files and sensitive data.
+- Reviewed Procfile to ensure no sensitive data exposure.
+- Recommend running `npm run lint` in both server and client to detect security issues.
+- Use environment variables for sensitive configuration; do not commit secrets.
+
+## Running
+
+- Use `.env` files for environment variables in server and client.
+- Start server and client with `npm start` from root.
+
+## Testing
+
+- Run linting with security rules: `npm run lint` in root, server, and client.
+- Perform manual and automated security testing regularly.

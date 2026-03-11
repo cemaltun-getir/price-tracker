@@ -326,3 +326,67 @@ const LocationManager = () => {
 };
 
 export default LocationManager; 
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import DOMPurify from 'dompurify';
+
+const LocationManager = () => {
+  const [location, setLocation] = useState('');
+  const [error, setError] = useState(null);
+
+  const fetchLocation = async () => {
+    try {
+      const response = await axios.get('/api/location');
+      // Sanitize any HTML content before setting state
+      const cleanLocation = DOMPurify.sanitize(response.data.location);
+      setLocation(cleanLocation);
+    } catch (err) {
+      setError('Failed to fetch location');
+    }
+  };
+
+  useEffect(() => {
+    fetchLocation();
+  }, []);
+
+  const handleInputChange = (e) => {
+    // Basic input validation: limit length and strip tags
+    const value = e.target.value;
+    if (value.length <= 100) {
+      const cleanValue = DOMPurify.sanitize(value);
+      setLocation(cleanValue);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Send sanitized data to server
+      await axios.post('/api/location', { location });
+      alert('Location saved successfully');
+    } catch (err) {
+      setError('Failed to save location');
+    }
+  };
+
+  return (
+    <div>
+      <h2>Location Manager</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={location}
+          onChange={handleInputChange}
+          maxLength={100}
+          aria-label="Location"
+          required
+        />
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  );
+};
+
+export default LocationManager;

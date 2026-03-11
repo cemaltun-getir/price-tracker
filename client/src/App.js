@@ -125,3 +125,16 @@ function App() {
 }
 
 export default App; 
+
+import React from 'react';
+import LocationManager from './components/LocationManager';
+
+function App() {
+  return (
+    <div className="App">
+      <LocationManager />
+    </div>
+  );
+}
+
+export default App;
