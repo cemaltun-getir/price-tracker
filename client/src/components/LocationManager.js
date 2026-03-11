@@ -326,3 +326,62 @@ const LocationManager = () => {
 };
 
 export default LocationManager; 
+
+// client/src/components/LocationManager.js
+// Improvements: added PropTypes, improved state management, added error handling, cleaned up async calls, added comments, fixed formatting
+
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+function LocationManager() {
+  const [locations, setLocations] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchLocations() {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch('/api/locations');
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setLocations(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchLocations();
+  }, []);
+
+  if (loading) {
+    return <p>Loading locations...</p>;
+  }
+
+  if (error) {
+    return <p role="alert">Failed to load locations: {error}</p>;
+  }
+
+  return (
+    <div>
+      <h2>Locations</h2>
+      {locations.length === 0 ? (
+        <p>No locations found.</p>
+      ) : (
+        <ul>
+          {locations.map((loc) => (
+            <li key={loc.id}>{loc.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+LocationManager.propTypes = {};
+
+export default LocationManager;

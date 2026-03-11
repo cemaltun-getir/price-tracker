@@ -285,3 +285,15 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+# Project Name
+
+## Overview
+
+This project is a full-stack application with a React client and an Express server.
+
+## Setup
+
+1. Clone the repository.
+2. Install dependencies for both server and client:
+   

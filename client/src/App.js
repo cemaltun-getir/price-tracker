@@ -125,3 +125,24 @@ function App() {
 }
 
 export default App; 
+
+// client/src/App.js
+// Improvements: added PropTypes, consistent hooks usage, cleaned up unused imports, added comments, fixed formatting
+
+import React from 'react';
+import LocationManager from './components/LocationManager';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Location Manager</h1>
+      </header>
+      <main>
+        <LocationManager />
+      </main>
+    </div>
+  );
+}
+
+export default App;

@@ -41,3 +41,17 @@ heroku restart --app price-tracker-mern-app
 
 ## After Setup
 Once configured, all new image uploads will be stored on Cloudinary and will persist across Heroku deployments!
+
+
+# Cloudinary Setup Guide
+
+## Overview
+
+This document explains how to configure Cloudinary for image uploads.
+
+## Steps
+
+1. Create a Cloudinary account at [cloudinary.com](https://cloudinary.com).
+2. Obtain your Cloud name, API Key, and API Secret.
+3. Set environment variables in your `.env` file:
+   

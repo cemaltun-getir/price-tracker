@@ -444,3 +444,24 @@ Error responses include an error message:
 - Image and logo fields contain filenames, not full URLs
 - The `/api/external/all` endpoint is useful for initial data loading or synchronization
 - All endpoints support CORS for cross-origin requests 
+
+# External API Documentation
+
+## Overview
+
+This document describes the external APIs used by the project.
+
+## API Endpoints
+
+- `/api/locations` - Retrieves a list of locations.
+  - Method: GET
+  - Response: JSON array of location objects.
+
+## Usage
+
+Ensure the server is running before making API requests.
+
+## Notes
+
+- All API requests should handle errors gracefully.
+- Authentication is not required for the current endpoints.
