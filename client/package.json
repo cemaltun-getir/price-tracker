@@ -77,3 +77,27 @@
     }
   }
 }
+
+
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "axios": "^1.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint src",
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-plugin-security": "^1.4.0"
+  }
+}

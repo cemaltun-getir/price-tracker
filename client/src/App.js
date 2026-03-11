@@ -125,3 +125,64 @@ function App() {
 }
 
 export default App; 
+
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Use HTTPS endpoint and send credentials securely
+      const response = await axios.post('/api/login', { username, password }, { withCredentials: true });
+      setMessage(response.data.message);
+    } catch (error) {
+      if (error.response) {
+        setMessage(error.response.data.error || 'Login failed');
+      } else {
+        setMessage('Network error');
+      }
+    }
+  };
+
+  return (
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin} autoComplete="off">
+        <label>
+          Username:
+          <input 
+            type="text" 
+            value={username} 
+            onChange={e => setUsername(e.target.value)} 
+            autoComplete="username"
+            required 
+            pattern="[a-zA-Z0-9]+"
+            title="Alphanumeric characters only"
+          />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input 
+            type="password" 
+            value={password} 
+            onChange={e => setPassword(e.target.value)} 
+            autoComplete="current-password"
+            required 
+            minLength={8}
+          />
+        </label>
+        <br />
+        <button type="submit">Login</button>
+      </form>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+export default App;

@@ -43,12 +43,10 @@ if (!fs.existsSync('uploads/logos')) {
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/price-tracker';
 
 // Log current setup information
-console.log('MongoDB connection configured for:', MONGODB_URI.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
 // Connect to MongoDB with retry logic
 async function connectToDatabase() {
   try {
-    console.log('Attempting to connect to MongoDB Atlas...');
     await mongoose.connect(MONGODB_URI, {
       serverSelectionTimeoutMS: 10000, // Increase timeout to 10s
       socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
@@ -56,8 +54,6 @@ async function connectToDatabase() {
       connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
       authSource: 'admin', // Specify auth source
     });
-    console.log('✅ Connected to MongoDB Atlas successfully');
-    console.log('Database:', MONGODB_URI.split('/').pop().split('?')[0]);
   } catch (err) {
     console.error('❌ Error connecting to MongoDB:', err.message);
     console.error('Error details:', {
@@ -65,11 +61,9 @@ async function connectToDatabase() {
       code: err.code,
       codeName: err.codeName
     });
-    console.log('Server will start anyway, but database operations will fail until connection is established');
     
     // Retry connection after 30 seconds
     setTimeout(() => {
-      console.log('Retrying MongoDB connection...');
       connectToDatabase();
     }, 30000);
   }
@@ -77,7 +71,6 @@ async function connectToDatabase() {
 
 // Start server immediately and connect to database in parallel
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });
 
 // Initialize database connection (non-blocking)
@@ -1258,7 +1251,6 @@ app.get('/api/external/all', async (req, res) => {
             locationId = oldLocation._id;
           }
         } catch (err) {
-          console.log('Could not find location in old Location model:', err.message);
         }
       }
 
@@ -1397,7 +1389,6 @@ app.get('/api/external/price-mappings', async (req, res) => {
             locationId = oldLocation._id;
           }
         } catch (err) {
-          console.log('Could not find location in old Location model:', err.message);
         }
       }
 
@@ -1459,7 +1450,6 @@ app.get('/api/external/price-mappings/:id', async (req, res) => {
           locationId = oldLocation._id;
         }
       } catch (err) {
-        console.log('Could not find location in old Location model:', err.message);
       }
     }
     
@@ -1729,7 +1719,6 @@ app.post('/api/external/waste-price', async (req, res) => {
     });
 
     // Log the update (you might want to create a separate audit log table for this)
-    console.log(`Waste price updated for SKU ${sku_id} at warehouse ${warehouse_id} by user ${user_id} at ${applied_at}: ${waste_price}`);
 
     res.json({ 
       message: 'Waste price updated successfully',
@@ -1777,7 +1766,6 @@ app.get('/api/price-mappings', async (req, res) => {
             locationId = oldLocation._id;
           }
         } catch (err) {
-          console.log('Could not find location in old Location model:', err.message);
         }
       }
 
@@ -2163,7 +2151,63 @@ app.get('/api/health', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
 });
 
 module.exports = app; // Export for testing
+
+
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const app = express();
+
+// Security middleware
+app.use(helmet());
+
+// CORS policy - restrict origins as needed
+const allowedOrigins = ['https://yourdomain.com', 'https://www.yourdomain.com'];
+app.use(cors({
+  origin: function(origin, callback){
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
+
+app.use(express.json());
+
+// Example of input validation middleware
+const { body, validationResult } = require('express-validator');
+
+app.post('/api/login', 
+  body('username').isAlphanumeric().trim().escape(),
+  body('password').isLength({ min: 8 }),
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    // Authentication logic here
+    res.json({ message: 'Login successful' });
+  }
+);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  if (err) {
+    console.error('Error:', err.message);
+    if (err.message.includes('CORS')) {
+      return res.status(403).json({ error: err.message });
+    }
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+  next();
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+});

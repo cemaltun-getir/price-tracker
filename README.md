@@ -285,3 +285,28 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+# Project
+
+## Security Updates
+
+- Updated dependencies to latest secure versions.
+- Added security middleware (Helmet) to backend.
+- Implemented strict CORS policy to restrict origins.
+- Added input validation on API endpoints to prevent injection attacks.
+- Enabled React StrictMode to detect potential issues in frontend.
+- Added ESLint with security plugin for static code analysis.
+- Updated .gitignore to exclude sensitive files and environment variables.
+- Added security-related scripts for auditing and linting.
+
+## Running Security Checks
+
+- Run `npm run audit` or `npm run audit:fix` in root, server, and client directories.
+- Run `npm run lint` to check for security issues in code.
+- Follow best practices for environment variable management and secrets.
+
+## Notes
+
+- Ensure environment variables are never committed.
+- Review CORS origins before deployment.
+- Use HTTPS in production environments.
