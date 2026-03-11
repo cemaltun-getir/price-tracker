@@ -326,3 +326,65 @@ const LocationManager = () => {
 };
 
 export default LocationManager; 
+
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+
+const LocationManager = ({ apiUrl }) => {
+  const [location, setLocation] = useState('');
+  const [error, setError] = useState(null);
+
+  const validateLocation = (loc) => {
+    // Basic validation: non-empty, no script tags
+    if (!loc || typeof loc !== 'string' || loc.trim() === '') {
+      return false;
+    }
+    const pattern = /<script.*?>.*?<\/script>/gi;
+    if (pattern.test(loc)) {
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    if (!validateLocation(location)) {
+      setError('Invalid location input.');
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${apiUrl}/locations`, { location });
+      alert('Location saved successfully');
+      setLocation('');
+    } catch (err) {
+      setError('Failed to save location.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} noValidate>
+      <label htmlFor="location">Location:</label>
+      <input
+        id="location"
+        name="location"
+        type="text"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        required
+        aria-describedby="location-error"
+      />
+      {error && <div id="location-error" style={{ color: 'red' }}>{error}</div>}
+      <button type="submit">Save Location</button>
+    </form>
+  );
+};
+
+LocationManager.propTypes = {
+  apiUrl: PropTypes.string.isRequired,
+};
+
+export default LocationManager;

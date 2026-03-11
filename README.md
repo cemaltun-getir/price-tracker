@@ -285,3 +285,21 @@ For issues or questions:
 ## License
 
 MIT License - feel free to use this project for your own price tracking needs! 
+
+# Project Security Update
+
+## Security Improvements
+
+- Added `helmet` middleware to server for setting secure HTTP headers.
+- Enabled CORS with controlled origins.
+- Added input validation in server and client components.
+- Integrated ESLint with security plugin for static code analysis.
+- Updated `.gitignore` to exclude environment files and sensitive keys.
+- Added npm audit scripts to root, server, and client for dependency vulnerability scanning.
+- Reviewed configuration files to avoid secrets exposure.
+
+## How to Run Security Checks
+
+- Run `npm run audit` in root, server, and client directories to check for vulnerabilities.
+- Run `npm run lint` to perform static code analysis with security rules.
+- Follow manual review and penetration testing as per security plan.

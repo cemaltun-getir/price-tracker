@@ -37,3 +37,21 @@
     "npm": "9.x"
   }
 }
+
+
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .js,.jsx",
+    "audit": "npm audit"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-plugin-security": "^1.4.0"
+  }
+}
